@@ -1,0 +1,71 @@
+{
+    "_note": "Rule values for Alpha Strike as data, not as code (CLAUDE.md working rule 1). These tables were hard-coded in js/as-battle.js until they were checked against the book; see docs/RULES-SOURCES.md for what is confirmed and what is not.",
+    "version": 1,
+    "asOf": "2026-09 · Alpha Strike: Commander's Edition, 7th printing tables + errata v7.02",
+    "_source": "Determining Critical Hits Table (AS:CE p. 50) and Motive Systems Damage Table (AS:CE p. 51), read against the official tables PDF (7th printing) and the effect texts against errata v7.02.",
+
+    "critTables": {
+        "_note": "2D6, one row per result. The effect texts follow errata v7.02 where it changed them - see the notes on mpHit and weaponHit below.",
+        "mech": [
+            ["2", "Ammo – destroyed, unless CASE/CASEII/ENE"],
+            ["3 · 11", "Engine – +1 heat in the end phase if it fired, second hit destroys"],
+            ["4 · 10", "Fire control – +2 to all attacks each"],
+            ["5 · 9", "no effect"],
+            ["6 · 8", "Weapon – all damage values −1 (1 → 0*, 0* → no attack)"],
+            ["7", "MP – halve MV and TMM, rounding down, at least −2″ and −1"],
+            ["12", "’Mech destroyed"]
+        ],
+        "vehicle": [
+            ["2", "Ammo – destroyed, unless CASE/CASEII/ENE"],
+            ["3", "Crew stunned – no movement, no attacks, counts as immobile"],
+            ["4 · 5", "Fire control – +2 to all attacks each"],
+            ["6 · 7 · 8", "no effect"],
+            ["9 · 10", "Weapon – all damage values −1 (1 → 0*, 0* → no attack)"],
+            ["11", "Crew killed – vehicle out of action"],
+            ["12", "Engine – MV and damage halved, a second hit destroys"]
+        ],
+        "proto": [
+            ["2 · 3 · 11 · 12", "Weapon – all damage values −1 (1 → 0*, 0* → no attack)"],
+            ["4", "Fire control – +2 to all attacks"],
+            ["5 · 7 · 9", "MP – halve MV and TMM, rounding down, at least −2″ and −1, stacks"],
+            ["6 · 8", "no effect"],
+            ["10", "ProtoMech destroyed"]
+        ]
+    },
+
+    "critEffects": {
+        "_note": "Errata v7.02 rewrote three of these. Kept here as prose so the rules page and the tracker cannot drift apart.",
+        "engineMech": "The 'Mech generates 1 heat point in the end phase if it made any weapon attack that turn. Separate from overheating and adds to it. A second engine hit destroys the unit.",
+        "mpHit": "Halves all Move ratings and TMM, rounding down. Each MP hit takes at least 2″ of MV and 1 TMM, down to a minimum of 0.",
+        "weaponHit": "All damage values, including those of special abilities that carry damage (AC, ARTX, FLK, HT, IF, LRM, SRM, TOR, TUR), are reduced by 1. A value of 1 becomes 0*, and 0* becomes no attack at that range.",
+        "crewStunned": "No movement and no attacks, and the vehicle counts as an immobile target, until the end of the following turn."
+    },
+
+    "crewStunnedRounds": 1,
+
+    "motiveTable": {
+        "_note": "2D6 plus the modifier for the unit's motive type, rolled on every hit against a vehicle - armour damage included.",
+        "rows": [
+            ["2–8", "no effect"],
+            ["9 · 10", "MV −2″, TMM −1"],
+            ["11", "MV and TMM halved, rounding down, at least −2″ and −1"],
+            ["12+", "immobile"]
+        ],
+        "levels": [
+            "no motive damage",
+            "MV −2″, TMM −1",
+            "MV and TMM halved",
+            "immobile"
+        ],
+        "modifiers": {
+            "_note": "Keyed by the movement code in the MV value: t tracked, n naval, s submersible, w wheeled, h hover, v VTOL, g WiGE.",
+            "t": 0, "n": 0, "s": 0,
+            "w": 1, "h": 1,
+            "v": 2, "g": 2
+        },
+        "abilityModifiers": {
+            "_note": "NOT on the Motive Systems Damage Table itself. ARS is described in the special abilities section (AS:CE p. 77), which is not part of the free tables PDF - unconfirmed, see docs/RULES-SOURCES.md.",
+            "ARS": -1
+        }
+    }
+}

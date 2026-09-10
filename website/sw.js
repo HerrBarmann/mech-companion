@@ -4,7 +4,7 @@
    subfolder) and on the domain (at the root). */
 "use strict";
 
-var VERSION = "mechs-v147";
+var VERSION = "mechs-v148";
 /* Units from the unit database live in a cache of their OWN, which survives
    app updates - it only changes when the DATABASE has been generated again
    (count it up after every converter run!). The old units cache is cleared
@@ -99,6 +99,7 @@ var FILES = [
     "./css/tokens.local.css",
     "./de/manifest.webmanifest",
     "./manifest.webmanifest",
+    "./data/alpha-strike-rules.json",
     "./data/as-abilities.json",
     "./data/calculator-alpha-strike.json",
     "./data/calculator-classic.json",

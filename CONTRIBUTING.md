@@ -23,6 +23,27 @@ Most welcome, roughly in order:
   with a clear scope, and a pull request that does not fit it is a waste of
   your evening.
 
+## What gets closed unread
+
+There is **no bounty, no payment and no tip** for contributing here, and a
+pull request that asks for one is closed as spam.
+
+A pull request has to change the project. Specifically, it is closed unmerged
+if it:
+
+- adds a summary, plan or "solution" document instead of changing the code it
+  describes,
+- describes an implementation without implementing it,
+- claims `Closes #N` for an issue it does not resolve,
+- or does not pass the checks below.
+
+Use whatever tools you like, including an AI, to write a change — but run it,
+read it, and make sure it fits *this* codebase. Text generated from the issue
+alone tends to invent things this project does not have: there is no
+`data-i18n` attribute system (display text goes through `T()` at runtime), no
+`css/style.css`, and no build step for the app itself. That is the tell, and
+it is why such pull requests get closed rather than reviewed.
+
 ## The rules that are not negotiable
 
 They come out of where this thing runs — a plain FTP webspace, on phones, at

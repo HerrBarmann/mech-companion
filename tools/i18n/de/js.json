@@ -404,5 +404,10 @@
     "Weapon out": "Waffe ausgefallen",
     "Hit location silhouette": "Trefferzonen-Silhouette",
     "round": "Runde",
-    "Mech Companion by Dennis Bormann · CC BY-NC-SA 4.0": "Mech Companion von Dennis Bormann · CC BY-NC-SA 4.0"
+    "Mech Companion by Dennis Bormann · CC BY-NC-SA 4.0": "Mech Companion von Dennis Bormann · CC BY-NC-SA 4.0",
+    "Engine – +1 heat in the end phase if it fired, second hit destroys": "Triebwerk – +1 Hitze in der Endphase, wenn gefeuert wurde, zweiter Treffer zerstört",
+    "Weapon – all damage values −1 (1 → 0*, 0* → no attack)": "Waffe – alle Schadenswerte −1 (1 → 0*, 0* → kein Angriff)",
+    "MP – halve MV and TMM, rounding down, at least −2″ and −1": "MP – MV und TMM halbieren, abgerundet, mind. −2″ und −1",
+    "MP – halve MV and TMM, rounding down, at least −2″ and −1, stacks": "MP – MV und TMM halbieren, abgerundet, mind. −2″ und −1, stapelt sich",
+    "MV and TMM halved, rounding down, at least −2″ and −1": "MV und TMM halbiert, abgerundet, mind. −2″ und −1"
 }

@@ -133,5 +133,9 @@
     "immobile — VTOL/WiGE crashes": "bewegungsunfähig — VTOL/WiGE stürzt ab",
     "Critical hit table, ProtoMechs (2D6)": "Krit-Tabelle ProtoMechs (2W6)",
     "Fire control — +2 to all attacks": "Fire Control — +2 auf alle Angriffe",
-    "MP — halve MV and TMM (at least −2″ and −1), stacks": "MP — MV und TMM halbieren (mind. −2″ und −1), stapelt sich"
+    "MP — halve MV and TMM (at least −2″ and −1), stacks": "MP — MV und TMM halbieren (mind. −2″ und −1), stapelt sich",
+    "Engine — +1 heat in the end phase if it fired, second hit destroys": "Triebwerk — +1 Hitze in der Endphase, wenn gefeuert wurde, zweiter Treffer zerstört",
+    "Weapon — all damage values −1 (1 → 0*, 0* → no attack)": "Waffe — alle Schadenswerte −1 (1 → 0*, 0* → kein Angriff)",
+    "MP — halve MV and TMM, rounding down, at least −2″ and −1": "MP — MV und TMM halbieren, abgerundet, mind. −2″ und −1",
+    "MP — halve MV and TMM, rounding down, at least −2″ and −1, stacks": "MP — MV und TMM halbieren, abgerundet, mind. −2″ und −1, stapelt sich"
 }

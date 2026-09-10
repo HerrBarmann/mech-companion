@@ -33,9 +33,15 @@
     var objectUrls = [];
     var calculatorConfig = null;
     var glossary = null;
+    /* Rule values live in data/alpha-strike-rules.json, never here. The
+       fallbacks below only cover the moment before the file has arrived. */
+    var rules = null;
     fetch(new URL("data/as-abilities.json", new URL("..", document.currentScript.src)))
         .then(function (r) { return r.json(); })
         .then(function (d) { glossary = d.abilities; });
+    fetch(new URL("data/alpha-strike-rules.json", new URL("..", document.currentScript.src)))
+        .then(function (r) { return r.json(); })
+        .then(function (d) { rules = d; if (!battleView.hidden) { showBattle(); } });
     fetch(new URL("data/calculator-alpha-strike.json", new URL("..", document.currentScript.src)))
         .then(function (r) { return r.json(); })
         .then(function (d) {
@@ -63,12 +69,19 @@
         if (t === "BA" || t === "CI") { return "none"; }
         return "mech";
     }
-    /* Motive modifier from the MV suffix: t tracked, w wheeled, h hover,
-       v VTOL, g WiGE, n naval - ARS (Armored Motive System) gives −1. */
+    /* Motive modifier from the movement code in the MV value, plus whatever
+       special abilities change it. Both tables come from the rules file. */
     function motiveModifier(m) {
+        var table = rules && rules.motiveTable;
+        if (!table) { return 0; }
         var code = (/["″]([a-z])/.exec(String(m.mv || "")) || [])[1] || "";
-        var mod = /[vg]/.test(code) ? 2 : (/[wh]/.test(code) ? 1 : 0);
-        if (/\bARS\b/.test(m.special || "")) { mod -= 1; }
+        var mod = table.modifiers && typeof table.modifiers[code] === "number"
+            ? table.modifiers[code] : 0;
+        var byAbility = table.abilityModifiers || {};
+        Object.keys(byAbility).forEach(function (key) {
+            if (key.charAt(0) === "_") { return; }
+            if (new RegExp("\\b" + key + "\\b").test(m.special || "")) { mod += byAbility[key]; }
+        });
         return mod;
     }
     /* Crit counters with defaults - older battle states do not know the
@@ -80,6 +93,28 @@
         return k;
     }
     function immobile(e) { var k = critsOf(e); return k.crewStunned || k.motive >= 3; }
+
+    /* A stunned crew comes back: the effect runs out at the end of the
+       FOLLOWING turn, so a crew stunned in turn 3 acts again in turn 5.
+       Nothing used to clear the flag - a stunned vehicle stayed stunned for
+       the rest of the battle, which is not what the rules page said either. */
+    function stunCrew(k) {
+        k.crewStunned = true;
+        k.crewStunnedUntil = state.round + ((rules && rules.crewStunnedRounds) || 1);
+    }
+    function advanceRound() {
+        state.round++;
+        delete state.initiative;
+        state.units.forEach(function (e) {
+            var k = critsOf(e);
+            /* An older battle state carries no expiry - let it run out now
+               rather than keeping the unit stunned forever. */
+            if (k.crewStunned && (k.crewStunnedUntil || 0) < state.round) {
+                k.crewStunned = false;
+                delete k.crewStunnedUntil;
+            }
+        });
+    }
     var T = window.T || function (s) { return s; };
     function el(tag, className, text) {
         var e = document.createElement(tag);
@@ -284,8 +319,7 @@
         if (!state.units.some(function (e) { return !e.destroyed; })) { return; }
         if (!alive.length) {
             if (!confirm(T("No heat to resolve – end turn") + " " + state.round + " " + T("now?"))) { return; }
-            state.round++;
-            delete state.initiative;
+            advanceRound();
             store(); showBattle();
             return;
         }
@@ -405,8 +439,7 @@
         function next() {
             step++;
             if (step < alive.length) { show(); return; }
-            state.round++;
-            delete state.initiative;
+            advanceRound();
             epCancel = null;
             epDialog.close();
             store(); showBattle();
@@ -616,7 +649,11 @@
                 crew.type = "button";
                 crew.dataset.count = k.crewStunned ? "1" : "0";
                 crew.title = T("No movement, no attacks, counts as immobile – deselect again after the next turn");
-                crew.addEventListener("click", function () { k.crewStunned = !k.crewStunned; store(); showBattle(); });
+                crew.addEventListener("click", function () {
+                    if (k.crewStunned) { k.crewStunned = false; delete k.crewStunnedUntil; }
+                    else { stunCrew(k); }
+                    store(); showBattle();
+                });
                 critBox.appendChild(crew);
             }
             critRow.appendChild(critBox);
@@ -829,42 +866,15 @@
         });
         return row;
     }
-    /* Crit tables (2D6) as a quick reference - the same state as
-       rules.html#damage and #units; keep them in step on rule changes. */
-    var CRIT_TABLES = {
-        mech: [
-            ["2", "Ammo – destroyed, unless CASE/CASEII/ENE"],
-            ["3 · 11", "Engine – +1 heat when firing, second hit destroys"],
-            ["4 · 10", "Fire control – +2 to all attacks each"],
-            ["5 · 9", "no effect"],
-            ["6 · 8", "Weapon – all damage values −1"],
-            ["7", "MP – halve MV and TMM, at least −2″ and −1"],
-            ["12", "’Mech destroyed"]
-        ],
-        vehicle: [
-            ["2", "Ammo – destroyed, unless CASE/CASEII/ENE"],
-            ["3", "Crew stunned – no movement, no attacks, counts as immobile"],
-            ["4 · 5", "Fire control – +2 to all attacks each"],
-            ["6 · 7 · 8", "no effect"],
-            ["9 · 10", "Weapon – all damage values −1"],
-            ["11", "Crew killed – vehicle out of action"],
-            ["12", "Engine – MV and damage halved, a second hit destroys"]
-        ],
-        proto: [
-            ["2 · 3 · 11 · 12", "Weapon – all damage values −1"],
-            ["4", "Fire control – +2 to all attacks"],
-            ["5 · 7 · 9", "MP – halve MV and TMM (at least −2″/−1), stacks"],
-            ["6 · 8", "no effect"],
-            ["10", "ProtoMech destroyed"]
-        ]
-    };
-    var MOTIVE_TABLE = [
-        ["2–8", "no effect"],
-        ["9 · 10", "MV −2″, TMM −1"],
-        ["11", "MV and TMM halved (at least −2″/−1)"],
-        ["12+", "immobile – VTOL/WiGE crashes"]
-    ];
-    var MOTIVE_LEVELS = ["no motive damage", "MV −2″, TMM −1", "MV and TMM halved", "immobile"];
+    /* Crit and motive tables are the quick reference next to the chips. They
+       come from data/alpha-strike-rules.json - the same file the rules page
+       quotes, so the two cannot drift apart any more. */
+    function critTable(kind) { return (rules && rules.critTables && rules.critTables[kind]) || []; }
+    function motiveTable() { return (rules && rules.motiveTable && rules.motiveTable.rows) || []; }
+    function motiveLevels() {
+        return (rules && rules.motiveTable && rules.motiveTable.levels)
+            || ["no motive damage", "MV −2″, TMM −1", "MV and TMM halved", "immobile"];
+    }
     function tableOf(rows) {
         var t = el("table");
         rows.forEach(function (row) {
@@ -877,7 +887,7 @@
     }
     var ktDialog = null;
     function showCritTable(kind) {
-        kind = CRIT_TABLES[kind] ? kind : "mech";
+        kind = critTable(kind).length ? kind : "mech";
         if (!ktDialog) {
             ktDialog = document.createElement("dialog");
             ktDialog.className = "dialog-box crit-dialog";
@@ -893,7 +903,7 @@
         ktDialog.appendChild(header);
         ktDialog.appendChild(el("p", "hint",
             "Roll for every hit that damages structure."));
-        ktDialog.appendChild(tableOf(CRIT_TABLES[kind]));
+        ktDialog.appendChild(tableOf(critTable(kind)));
         if (kind === "vehicle") {
             var motiveHeader = el("div", "pip-label");
             motiveHeader.style.marginTop = "0.8rem";
@@ -901,7 +911,7 @@
             ktDialog.appendChild(motiveHeader);
             ktDialog.appendChild(el("p", "hint",
                 "Modifier: tracked/naval +0 · wheeled/hover +1 · VTOL/WiGE +2 · ARS −1"));
-            ktDialog.appendChild(tableOf(MOTIVE_TABLE));
+            ktDialog.appendChild(tableOf(motiveTable()));
         }
         var footer = el("p", "cta");
         var close = el("button", "btn btn-small", "Close");
@@ -922,7 +932,7 @@
         lab.appendChild(el("span", "", "Motive damage (roll on every hit)"));
         box.appendChild(lab);
         var chips = el("div", "chips");
-        MOTIVE_LEVELS.forEach(function (name, i) {
+        motiveLevels().forEach(function (name, i) {
             var chip = el("button", "chip", i === 0 ? "–" : name);
             chip.type = "button";
             chip.setAttribute("aria-pressed", String(k.motive === i));
@@ -947,7 +957,7 @@
             box.appendChild(el("p", "heat-effect",
                 DIE_FACES[w.a - 1] + DIE_FACES[w.b - 1] + " " + (w.a + w.b) +
                 (w.mod ? (w.mod > 0 ? " + " : " − ") + Math.abs(w.mod) + " = " + (w.a + w.b + w.mod) : "") +
-                " → " + T(MOTIVE_LEVELS[w.level])));
+                " → " + T(motiveLevels()[w.level])));
         }
         return box;
     }

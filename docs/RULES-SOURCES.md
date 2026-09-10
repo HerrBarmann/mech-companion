@@ -26,6 +26,47 @@ tables for all four directions, crit slot counts and default filling, the
 crit components with their levels, the BV skill factor table, the Cluster
 Hits Table and the damage transfer chain.
 
+## Alpha Strike tables — checked 10 September 2026
+
+The crit and motive tables used to sit in `website/js/as-battle.js` with a
+note that they came from "AS:CE reference tables". They are now
+`website/data/alpha-strike-rules.json`, and they were read against two
+official free downloads from [battletech.com/downloads](https://battletech.com/downloads/):
+the **Alpha Strike CE 7th printing tables** PDF and **errata v7.02**.
+
+**Confirmed, unchanged:**
+
+| What | Against |
+|---|---|
+| Determining Critical Hits Table — the 'Mech, ProtoMech and Vehicle columns, all eleven results each | AS:CE p. 50, tables PDF |
+| Motive Systems Damage Table — the four result bands | AS:CE p. 51, tables PDF |
+| Motive roll modifiers: tracked/naval +0, wheeled/hover +1, VTOL/WiGE +2 | AS:CE p. 51, tables PDF |
+
+**Confirmed, and our wording was out of date.** Errata v7.02 rewrote three
+effects; the texts in the app now follow the errata:
+
+- **Engine hit ('Mech)**: heat is generated in the end phase *if the unit made
+  any weapon attack that turn* — we said "when firing", which was close but
+  did not name the phase.
+- **MP hit**: the errata replaced "rounding normally" with **rounding down**,
+  and added a floor of 0. We had neither.
+- **Weapon hit**: damage values drop by 1, and the errata spells out the last
+  two steps — **1 becomes 0\*, and 0\* becomes no attack at that range**. We
+  stopped at "−1".
+
+**Still not confirmed — needs the book:**
+
+| What | Why it is open |
+|---|---|
+| **ARS (Armored Motive System) gives −1** on the motive roll | ARS is described in the special abilities section (AS:CE p. 77). That section is not in the free tables PDF and the errata does not touch it. The app applies −1; treat it as unverified until someone reads p. 77. |
+| **Crew stunned lasts until the end of the following turn** | The duration is in the crit effect prose (AS:CE p. 50–51), which the tables PDF does not reproduce. The app now expires the flag after one further turn — before this it never expired at all. |
+| The footnote *"a unit reduced to 0″ Move is immobilized"* | On the official table. The app annotates movement rather than computing it, so it cannot notice this by itself. |
+
+One thing the app deliberately does not do: it shows crit effects as
+annotations ("MV 8″ ·½", "S/M/L 2/2/1 each −1") rather than computing the
+result. The errata's rounding and floor rules therefore change the text a
+player reads, not a number the app produces.
+
 ## Secondary and derived
 
 | File | Source | Note |

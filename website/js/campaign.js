@@ -43,8 +43,10 @@
         fields.forEach(function (f) {
             var value = copy(e[f]);
             if (f === "crits" && system === "alpha-strike" && value) {
-                /* A stunned crew is a round state, not damage. */
+                /* A stunned crew is a round state, not damage - and so is
+                   the turn it wears off in. */
                 delete value.crewStunned;
+                delete value.crewStunnedUntil;
             }
             if (!isEmpty(value)) { state[f] = value; anything = true; }
         });

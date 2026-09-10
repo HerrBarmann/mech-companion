@@ -227,8 +227,10 @@ What is planned but unbuilt is filed under the
 straight out of the design document. Two of them are a good place to start:
 a [weapons quick reference](https://github.com/HerrBarmann/mech-companion/issues/8)
 and a [falling damage calculator](https://github.com/HerrBarmann/mech-companion/issues/9).
-If you play BattleTech in a language this app does not speak yet, there is
-[an issue for that too](https://github.com/HerrBarmann/mech-companion/issues/10).
+
+The rules revision for the new Core Rulebook comes before everything else on
+that list, and a further language pack comes after it — translating text that
+is about to change means translating it twice.
 
 ## License
 

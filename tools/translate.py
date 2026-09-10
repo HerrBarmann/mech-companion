@@ -511,6 +511,20 @@ def js_und_daten_pruefen(ue):
     for f in a["abilities"]:
         ue.text(f.get("name", ""))
         ue.text(f.get("text", ""))
+    # Alpha-Strike-Krit- und Bewegungsschadenstabellen. Sie standen bis zur
+    # Prüfung gegen das Buch als Literale in as-battle.js und wurden darüber
+    # eingesammelt; als Datei müssen sie hier stehen, sonst fällt eine
+    # geänderte Zeile still auf Englisch zurück.
+    asr = json.loads((d / "alpha-strike-rules.json").read_text(encoding="utf-8"))
+    for kind, zeilen in asr["critTables"].items():
+        if kind.startswith("_"):
+            continue
+        for zeile in zeilen:
+            ue.text(zeile[1])
+    for zeile in asr["motiveTable"]["rows"]:
+        ue.text(zeile[1])
+    for stufe in asr["motiveTable"]["levels"]:
+        ue.text(stufe)
     fr = json.loads((d / "factions.json").read_text(encoding="utf-8"))
     for k in fr["categories"]:
         ue.text(k.get("name", ""))

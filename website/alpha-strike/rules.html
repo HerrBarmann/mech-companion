@@ -130,11 +130,11 @@
 <div class="table-scroll">
 <table>
 <tr><td class="num">2</td><td>Ammo — destroyed, unless CASE/CASEII/ENE</td></tr>
-<tr><td class="num">3 · 11</td><td>Engine — +1 heat when firing, second hit destroys</td></tr>
+<tr><td class="num">3 · 11</td><td>Engine — +1 heat in the end phase if it fired, second hit destroys</td></tr>
 <tr><td class="num">4 · 10</td><td>Fire control — +2 to all attacks each</td></tr>
 <tr><td class="num">5 · 9</td><td>no effect</td></tr>
-<tr><td class="num">6 · 8</td><td>Weapon — all damage values −1</td></tr>
-<tr><td class="num">7</td><td>MP — halve MV and TMM, at least −2″ and −1</td></tr>
+<tr><td class="num">6 · 8</td><td>Weapon — all damage values −1 (1 → 0*, 0* → no attack)</td></tr>
+<tr><td class="num">7</td><td>MP — halve MV and TMM, rounding down, at least −2″ and −1</td></tr>
 <tr><td class="num">12</td><td>’Mech destroyed</td></tr>
 </table>
 </div>
@@ -157,7 +157,7 @@
 <tr><td class="num">3</td><td>Crew stunned — no movement, no attacks, counts as immobile (until the end of the next turn)</td></tr>
 <tr><td class="num">4 · 5</td><td>Fire control — +2 to all attacks each</td></tr>
 <tr><td class="num">6 · 7 · 8</td><td>no effect</td></tr>
-<tr><td class="num">9 · 10</td><td>Weapon — all damage values −1</td></tr>
+<tr><td class="num">9 · 10</td><td>Weapon — all damage values −1 (1 → 0*, 0* → no attack)</td></tr>
 <tr><td class="num">11</td><td>Crew killed — vehicle out of action</td></tr>
 <tr><td class="num">12</td><td>Engine — MV and damage halved, a second hit destroys</td></tr>
 </table>
@@ -169,15 +169,15 @@
 <tr><td class="num">2–8</td><td>no effect</td></tr>
 <tr><td class="num">9 · 10</td><td>MV −2″, TMM −1</td></tr>
 <tr><td class="num">11</td><td>MV and TMM halved (at least −2″ and −1)</td></tr>
-<tr><td class="num">12+</td><td>immobile — VTOL/WiGE crashes</td></tr>
+<tr><td class="num">12+</td><td>immobile</td></tr>
 </table>
 </div>
 <h3>Critical hit table, ProtoMechs (2D6)</h3>
 <div class="table-scroll">
 <table>
-<tr><td class="num">2 · 3 · 11 · 12</td><td>Weapon — all damage values −1</td></tr>
+<tr><td class="num">2 · 3 · 11 · 12</td><td>Weapon — all damage values −1 (1 → 0*, 0* → no attack)</td></tr>
 <tr><td class="num">4</td><td>Fire control — +2 to all attacks</td></tr>
-<tr><td class="num">5 · 7 · 9</td><td>MP — halve MV and TMM (at least −2″ and −1), stacks</td></tr>
+<tr><td class="num">5 · 7 · 9</td><td>MP — halve MV and TMM, rounding down, at least −2″ and −1, stacks</td></tr>
 <tr><td class="num">6 · 8</td><td>no effect</td></tr>
 <tr><td class="num">10</td><td>ProtoMech destroyed</td></tr>
 </table>
