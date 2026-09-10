@@ -1,0 +1,16 @@
+{
+    "name": "{{site.name}}",
+    "short_name": "{{site.shortName}}",
+    "description": "Rules reference, play aids and a painting guide for Classic BattleTech and Alpha Strike.",
+    "lang": "{{site.defaultLang}}",
+    "start_url": "./",
+    "scope": "./",
+    "display": "standalone",
+    "background_color": "#14161A",
+    "theme_color": "#14161A",
+    "icons": [
+        { "src": "img/icon-192.png", "sizes": "192x192", "type": "image/png" },
+        { "src": "img/icon-512.png", "sizes": "512x512", "type": "image/png" },
+        { "src": "img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    ]
+}

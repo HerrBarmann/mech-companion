@@ -1,0 +1,212 @@
+{
+    "_note": "SATOR configuration - the same engine as GATOR with a preset of its own (CONCEPT 4.1). pvSkill holds the AS:CE ladder that shifts the point value away from skill 4.",
+    "version": 1,
+    "asOf": "2026-08 · Alpha Strike: Commander's Edition",
+    "title": "SATOR",
+    "base": 0,
+    "above12": "Above 12 cannot hit. A rolled 12 still misses, but always triggers the crit roll.",
+    "categories": [
+        {
+            "id": "skill",
+            "group": "S",
+            "label": "Skill – base to-hit number",
+            "type": "chips",
+            "default": 2,
+            "options": [
+                {
+                    "label": "2",
+                    "value": 2
+                },
+                {
+                    "label": "3",
+                    "value": 3
+                },
+                {
+                    "label": "4",
+                    "value": 4
+                },
+                {
+                    "label": "5",
+                    "value": 5
+                },
+                {
+                    "label": "6",
+                    "value": 6
+                }
+            ],
+            "source": "mech"
+        },
+        {
+            "id": "attacker-movement",
+            "group": "A",
+            "label": "Attacker – own movement",
+            "type": "chips",
+            "default": 0,
+            "options": [
+                {
+                    "label": "Ground move +0",
+                    "value": 0
+                },
+                {
+                    "label": "Standstill −1",
+                    "value": -1
+                },
+                {
+                    "label": "Jumped +2",
+                    "value": 2
+                }
+            ]
+        },
+        {
+            "id": "tmm",
+            "group": "T",
+            "label": "Target – the target’s TMM",
+            "type": "chips",
+            "default": 0,
+            "options": [
+                {
+                    "label": "+0",
+                    "value": 0
+                },
+                {
+                    "label": "+1",
+                    "value": 1
+                },
+                {
+                    "label": "+2",
+                    "value": 2
+                },
+                {
+                    "label": "+3",
+                    "value": 3
+                },
+                {
+                    "label": "+4",
+                    "value": 4
+                },
+                {
+                    "label": "+5",
+                    "value": 5
+                },
+                {
+                    "label": "+6",
+                    "value": 6
+                }
+            ]
+        },
+        {
+            "id": "target-jumped",
+            "group": "T",
+            "label": "Target jumped (+1)",
+            "type": "toggle",
+            "value": 1
+        },
+        {
+            "id": "target-immobile",
+            "group": "T",
+            "label": "Target immobile / shut down (−4)",
+            "type": "toggle",
+            "value": -4
+        },
+        {
+            "id": "woods",
+            "group": "O",
+            "label": "Woods (in between or occupied)",
+            "type": "chips",
+            "default": 0,
+            "options": [
+                {
+                    "label": "No woods +0",
+                    "value": 0
+                },
+                {
+                    "label": "Light woods +1",
+                    "value": 1
+                },
+                {
+                    "label": "Heavy woods +2",
+                    "value": 2
+                }
+            ]
+        },
+        {
+            "id": "partial-cover",
+            "group": "O",
+            "label": "Partial cover (including water)",
+            "type": "toggle",
+            "value": 1
+        },
+        {
+            "id": "heat",
+            "group": "O",
+            "label": "Own heat level",
+            "type": "chips",
+            "default": 0,
+            "options": [
+                {
+                    "label": "+0",
+                    "value": 0
+                },
+                {
+                    "label": "+1",
+                    "value": 1
+                },
+                {
+                    "label": "+2",
+                    "value": 2
+                },
+                {
+                    "label": "+3",
+                    "value": 3
+                }
+            ],
+            "source": "mech"
+        },
+        {
+            "id": "fire-control",
+            "group": "O",
+            "label": "Fire control damage (+2 per hit)",
+            "type": "counter",
+            "value": 2,
+            "max": 4,
+            "source": "mech"
+        },
+        {
+            "id": "range",
+            "group": "R",
+            "label": "Range – measured distance",
+            "type": "chips",
+            "default": 0,
+            "options": [
+                {
+                    "label": "Short (up to 6″) +0",
+                    "value": 0
+                },
+                {
+                    "label": "Medium (up to 24″) +2",
+                    "value": 2
+                },
+                {
+                    "label": "Long (up to 42″) +4",
+                    "value": 4
+                }
+            ]
+        },
+        {
+            "id": "other",
+            "group": "O",
+            "label": "Other (±)",
+            "type": "counter",
+            "value": 1,
+            "min": -4,
+            "max": 8
+        }
+    ],
+    "pvSkill": {
+        "_note": "PV-Anpassung je Skillstufe (AS:CE S.29). Zuschlag je Stufe besser als 4: 1 + floor(max(0, basisPV - verbessernAb) / verbessernJe). Abzug je Stufe schlechter: 1 + floor(max(0, basisPV - verschlechternAb) / verschlechternJe). Minimum 1 PV.",
+        "improveFrom": 3,
+        "improveStep": 5,
+        "worsenFrom": 5,
+        "worsenStep": 10
+    }
+}

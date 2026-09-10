@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="{{site.defaultLang}}" name="site-default-lang"/>
+<meta content="{{site.name}}" name="site-name"/>
+<title>Print sheet – Classic · Mechs</title>
+<meta content="Record sheets of your own Classic ’Mechs as a print sheet: armor, structure, weapons, crit slots and the heat scale on one page." name="description"/>
+<meta content="#14161A" name="theme-color"/>
+<link href="../img/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="../manifest.webmanifest" rel="manifest"/>
+<link href="../css/tokens.css" rel="stylesheet"/>
+<link href="../css/components.css" rel="stylesheet"/>
+<link href="../css/app.css" rel="stylesheet"/>
+<link href="../css/tokens.local.css" rel="stylesheet"/>
+<link href="../css/style.local.css" rel="stylesheet"/>
+<link href="../css/print.css" rel="stylesheet"/>
+<script>try{if(localStorage.getItem("mechs-theme")==="light")document.documentElement.dataset.theme="light";}catch(e){}</script>
+
+<link href="../de/classic/record-sheet.html" hreflang="de" rel="alternate"/>
+<script src="../js/i18n.js"></script>
+</head>
+<body class="hat-bottom-nav">
+<header class="site-head">
+<div class="wrap">
+<a class="brand" href="../index.html">
+<img alt="" height="34" src="../img/logo-badge.svg" width="34"/>
+<span class="brand-name"><span class="brand-tld">{{site.brand.prefix}}</span>{{site.brand.core}}<span class="brand-tld">{{site.brand.suffix}}</span></span>
+</a>
+<div class="header-buttons">
+<button aria-label="Table mode: keep the display awake" aria-pressed="false" class="btn btn-small btn-icon" hidden="" id="table-btn" title="Table mode: keep the display awake" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="10" rx="1.5" width="14" x="5" y="10.5"></rect><path class="shackle-open" d="M8.5 10.5V7.5a3.5 3.5 0 0 1 6.6-1.6"></path><path class="shackle-shut" d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"></path></svg></button>
+<a aria-label="Deutsch" class="btn btn-small btn-icon" data-lang="de" href="../de/classic/record-sheet.html" hreflang="de" id="lang-btn" lang="de" title="Deutsch">DE</a>
+<button aria-label="Toggle light/dark" class="btn btn-small btn-icon" id="theme-btn" title="Light/Dark" type="button">◐</button>
+</div>
+</div>
+</header>
+<main class="wrap">
+<noscript><p class="flash flash-err">This page needs JavaScript – the sheets are built from the hangar data in the browser.</p></noscript>
+<div class="hero">
+<p class="eyebrow">Classic BattleTech</p>
+<h1>Print sheet</h1>
+<p class="sub short"><b>Pick → print.</b> One record sheet per ’Mech with armor, structure, weapons, crit slots and the heat scale. Choose “Save as PDF” in the print dialog and the set stays on the device.</p>
+</div>
+<div class="card print-selection" id="selection-card">
+<div class="pip-label"><span>’Mechs</span><span id="selection-status"></span></div>
+<p class="muted small" hidden="" id="selection-empty">The hangar is empty – <a href="hangar.html">add ’Mechs first</a>.</p>
+<div id="selection-list"></div>
+<p class="cta print-controls"><button class="btn btn-primary" id="print-btn" type="button">Print</button> <button class="btn btn-small" id="all-btn" type="button">All</button> <button class="btn btn-small" id="none-btn" type="button">None</button> <a class="btn btn-small" href="hangar.html">Back to the hangar</a></p>
+<p class="print-note">The sheets sit on white paper on purpose – the preview looks like the printout. Browser headers and footers can be switched off in the print dialog.</p>
+</div>
+<div id="sheet"></div>
+</main>
+<footer class="site-foot">
+<div class="wrap">
+<p class="rules-version">Rules values: Total Warfare / BattleMech Manual · as of August 2026.</p>
+<p>{{site.name}} · <a href="../imprint.html">Legal notice</a> · <a href="../privacy.html">Privacy</a><br/> <span class="small">Mech Companion by Dennis Bormann · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a><br/>MechWarrior, BattleMech, ’Mech and BattleTech are registered trademarks of The Topps Company, Inc. Catalyst Game Labs is the licensee. Unofficial, private fan site.</span></p>
+</div>
+</footer>
+<nav aria-label="Section navigation" class="bottom-nav">
+<a href="../index.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4 11 L12 4 L20 11 V20 H14 V15 H10 V20 H4 Z"></path></svg>
+        Home
+    </a>
+<a aria-current="page" href="hangar.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M3 20 V10 L12 4 L21 10 V20"></path><path d="M8 20 V13 H16 V20" stroke-width="1.4"></path></svg>
+        Hangar
+    </a>
+<a href="battle.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="6"></circle><path d="M12 2 V6 M12 18 V22 M2 12 H6 M18 12 H22" stroke-width="1.4"></path></svg>
+        Battle
+    </a>
+<a href="rules.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 3 H18 V21 H6 Z"></path><path d="M9 7 H15 M9 11 H15 M9 15 H13" stroke-width="1.4"></path></svg>
+        Rules
+    </a>
+<a href="hit-locations.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 3 L17 6 V12 C17 16 15 19 12 21 C9 19 7 16 7 12 V6 Z"></path><path d="M12 3 V21 M7 12 H17" stroke-width="1.2"></path></svg>
+        Hit Locations
+    </a>
+</nav>
+<script src="../js/app.js"></script>
+<script src="../js/migrate.js"></script>
+<script src="../js/storage.js"></script>
+<script src="../js/classic-record-sheet.js"></script>
+</body>
+</html>

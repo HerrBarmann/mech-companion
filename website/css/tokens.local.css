@@ -1,0 +1,10 @@
+/* Palette einer eigenen Instanz. Im Repository absichtlich leer: Jede Seite
+   lädt die Datei nach tokens.css, sodass ein Betreiber nur diese eine Datei
+   über das Overlay (site/overlay/css/tokens.local.css) ersetzen muss, um das
+   Aussehen zu ändern - ohne den Rest des Projekts anzufassen.
+
+   Beispiel (dunkel zuerst, hell als Abweichung):
+   :root                     { --accent: #7A5CD6; --accent-deep: #A78BEA; --accent-tint: #1E1830; }
+   :root[data-theme="light"] { --accent: #5B3FB5; --accent-deep: #4C339B; --accent-tint: #ECE6FA; }
+
+   Kontrastregel: --accent-deep muss auf --paper mindestens 4,5:1 erreichen. */

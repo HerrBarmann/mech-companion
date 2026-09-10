@@ -1,0 +1,39 @@
+name: Rule deviation
+description: A value in the app does not match the rulebook
+labels: ["rules"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Rule corrections are the most welcome kind of issue here — a wrong
+        value is worse than a missing feature. The book and the page are what
+        make it actionable: with them this is one commit, without them it is
+        an argument.
+  - type: input
+    id: where
+    attributes:
+      label: Where in the app
+      description: Page, calculator, unit — and the value it shows.
+      placeholder: "Classic battle · attack dialog · LRM 10 at 8 hexes shows 7+"
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Book and page
+      description: Which rulebook, which printing, which page.
+      placeholder: "Total Warfare, p. 113 (2019 printing)"
+    validations:
+      required: true
+  - type: textarea
+    id: says
+    attributes:
+      label: What the book says
+      description: The rule in your words, or a short quote.
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: A screenshot, the 'Mech you had loaded, whatever helps.

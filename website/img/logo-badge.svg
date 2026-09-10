@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mech Companion - neutrales Projektlogo. Sechseck (das Spielfeld ist aus
+     Hexfeldern), darin ein kantiger Cockpit-Kopf mit Sichtschlitz; die Antenne
+     bricht oben aus dem Sechseck aus. Bewusst geometrisch, damit es in
+     16 px noch lesbar ist. Wer eine eigene Instanz betreibt, ersetzt die
+     Datei über das site/overlay/. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Mech Companion">
+  <path d="M32 3 L57 17.5 V46.5 L32 61 L7 46.5 V17.5 Z" fill="#2F6FED"/>
+  <path d="M41.5 22 L44 4 L47.5 4.8 L45 22 Z" fill="#14161A"/>
+  <path d="M17 21 H47 L43.5 45 H20.5 Z" fill="#14161A"/>
+  <path d="M22 29 H42 V35 H22 Z" fill="#F6F5F2"/>
+  <path d="M25.5 39 H38.5 V42 H25.5 Z" fill="#2F6FED"/>
+</svg>

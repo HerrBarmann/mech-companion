@@ -1,0 +1,51 @@
+name: Pages
+
+# Publishes the neutral instance as a live demo. There is no site/ in a
+# fresh checkout (it is git-ignored), so the build takes site.default.json:
+# project name instead of an operator, English as the start language, and
+# placeholder text on the imprint and the privacy page. Nothing personal can
+# reach this deploy - it is not in the repository to begin with.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build the site
+        run: |
+          test ! -d site || (echo "::error::site/ must not be part of a deploy" && exit 1)
+          python3 tools/opensource/build.py --out dist
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

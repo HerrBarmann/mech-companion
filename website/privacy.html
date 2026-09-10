@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="{{site.defaultLang}}" name="site-default-lang"/>
+<meta content="{{site.name}}" name="site-name"/>
+<title>Privacy · Mechs</title>
+<meta content="noindex" name="robots"/>
+<meta content="#14161A" name="theme-color"/>
+<link href="img/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="manifest.webmanifest" rel="manifest"/>
+<link href="css/tokens.css" rel="stylesheet"/>
+<link href="css/components.css" rel="stylesheet"/>
+<link href="css/app.css" rel="stylesheet"/>
+<link href="css/tokens.local.css" rel="stylesheet"/>
+<link href="css/style.local.css" rel="stylesheet"/>
+<script>try{if(localStorage.getItem("mechs-theme")==="light")document.documentElement.dataset.theme="light";}catch(e){}</script>
+
+<link href="de/privacy.html" hreflang="de" rel="alternate"/>
+<script src="js/i18n.js"></script>
+</head>
+<body class="hat-bottom-nav">
+<header class="site-head">
+<div class="wrap">
+<a class="brand" href="index.html">
+<img alt="" height="34" src="img/logo-badge.svg" width="34"/>
+<span class="brand-name"><span class="brand-tld">{{site.brand.prefix}}</span>{{site.brand.core}}<span class="brand-tld">{{site.brand.suffix}}</span></span>
+</a>
+<div class="header-buttons">
+<a aria-label="Deutsch" class="btn btn-small btn-icon" data-lang="de" href="de/privacy.html" hreflang="de" id="lang-btn" lang="de" title="Deutsch">DE</a>
+<button aria-label="Toggle light/dark" class="btn btn-small btn-icon" id="theme-btn" title="Light/Dark" type="button">◐</button>
+</div>
+</div>
+</header>
+<main class="wrap">
+<noscript><p class="flash flash-err">This page needs JavaScript – the hangar, battle, dice and search are built with it.</p></noscript>
+<div class="hero">
+<h1>Privacy</h1>
+<p class="sub">In short: no cookies, no tracking, no accounts, no transfer of personal data. Everything you save here stays on your device.</p>
+</div>
+<div class="card">
+<h2 style="font-size:1.05rem">Controller</h2>
+<p>{{site.operator.name}}<br/> {{site.operator.street}}<br/> {{site.operator.city}}<br/> E-mail: <a href="mailto:{{site.operator.email}}">{{site.operator.email}}</a></p>
+<p class="small muted">No data protection officer has been appointed – not required by law.</p>
+</div>
+<div class="card">
+<h2 style="font-size:1.05rem">Hosting / server logs</h2>
+<p class="small">This website is hosted by {{site.hosting.provider}} ({{site.hosting.address}}). The provider is a processor under Art. 28 GDPR; a data processing agreement is in place. When you visit, the server processes technically necessary connection data (e.g. IP address, time, requested file) in log files. The legal basis is Art. 6(1)(f) GDPR (secure operation of the site).</p>
+</div>
+<div class="card">
+<h2 style="font-size:1.05rem">Local storage (localStorage)</h2>
+<p class="small">The site stores settings and game states – such as the light/dark choice, ticked-off painting steps, created ’Mechs and tracker states – exclusively in your browser’s local storage (localStorage/IndexedDB). This data never leaves your device and cannot be seen by the operator. You can delete it at any time via your browser’s website data settings.</p>
+</div>
+<div class="card">
+<h2 style="font-size:1.05rem">Offline function (service worker)</h2>
+<p class="small">For offline use, the browser keeps a copy of the site content in its local cache. No personal data is transferred in the process either.</p>
+</div>
+<div class="card">
+<h2 style="font-size:1.05rem">No cookies, no tracking, no third parties</h2>
+<p class="small">No cookies are set, no analytics or advertising services are embedded and no content is loaded from third-party servers (fonts and scripts are hosted on this server). External links (e.g. Sarna.net) lead to sites whose operators are responsible for their own content and data processing.</p>
+</div>
+<div class="card">
+<h2 style="font-size:1.05rem">Your rights</h2>
+<p class="small">Under Art. 15–21 GDPR you have the rights to access, rectification, erasure, restriction of processing, data portability and objection – requests to <a href="mailto:{{site.operator.email}}">{{site.operator.email}}</a>. You also have the right to lodge a complaint with a supervisory authority; the competent one is {{site.authority.name}} (<a href="{{site.authority.url}}" rel="noopener">{{site.authority.label}}</a>).</p>
+</div>
+<p class="muted small">Last updated: August 2026</p>
+</main>
+<footer class="site-foot">
+<div class="wrap">
+<p>{{site.name}} · <a href="imprint.html">Legal notice</a> · <a href="privacy.html">Privacy</a><br/> <span class="small">Mech Companion by Dennis Bormann · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a></span></p>
+</div>
+</footer>
+<nav aria-label="Main navigation" class="bottom-nav">
+<a href="index.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4 11 L12 4 L20 11 V20 H14 V15 H10 V20 H4 Z"></path></svg>
+        Home
+    </a>
+<a href="classic/hangar.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 3 L20 8 V16 L12 21 L4 16 V8 Z"></path><path d="M12 3 V21 M4 8 L20 16 M20 8 L4 16" stroke-width="0.9"></path></svg>
+        Classic
+    </a>
+<a href="alpha-strike/hangar.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M13 3 L5 14 H11 L9 21 L19 9 H13 Z"></path></svg>
+        Alpha Strike
+    </a>
+<a href="painting/index.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M17 4 L20 7 L9 18 L4 20 L6 15 Z"></path><path d="M14 7 L17 10" stroke-width="1.2"></path></svg>
+        Painting
+    </a>
+<a href="knowledge/index.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 4 H11 V20 H5 Z M13 4 H19 V20 H13 Z" stroke-width="1.4"></path><path d="M8 8 H8.01 M16 8 H16.01" stroke-linecap="round" stroke-width="2.4"></path></svg>
+        Reference
+    </a>
+</nav>
+<script src="js/app.js"></script>
+</body>
+</html>

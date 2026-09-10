@@ -1,0 +1,21 @@
+/* ===========================================================================
+   Local style layer - EMPTY ON PURPOSE.
+
+   Every page loads this file last, after css/tokens.local.css. In the
+   repository it stays empty; an instance that wants its own look puts a file
+   of the same name into its overlay:
+
+       site/overlay/css/style.local.css
+
+   The deploy build (tools/opensource/build.py) copies the overlay over
+   website/, so the instance's layer replaces this file in dist/ without a
+   single line of the project changing.
+
+   Division of labour between the two local files:
+     css/tokens.local.css   colours and measurements - overwrite variables
+     css/style.local.css    everything else - own rules, own components,
+                            background shapes, wordmark treatment, animation
+
+   The project itself stays plain: cards, clear tables, one accent. Anything
+   that makes an instance recognisable belongs here, not in css/.
+   =========================================================================== */

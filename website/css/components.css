@@ -1,0 +1,336 @@
+/* ===========================================================================
+   Components
+
+   Needs tokens.css.
+
+   The accent is DARK: filled accent areas carry light type. Whoever turns it
+   to a light colour in tokens.local.css has to think of that one place every
+   time.
+
+   The set is deliberately plain - cards, clear tables, one accent, mono only
+   where numbers have to line up (CONCEPT §6). What makes an instance
+   recognisable belongs in css/style.local.css, not here.
+
+   App parts for the game table and the painting table:
+     .chips / .chip     selection chips of the calculators, touch target ≥ 44 px
+     .readout           the big target number with its 2D6 probability
+     .bottom-nav        five areas within thumb reach
+     .hazard            section divider (.hazard-warn carries the accent)
+   =========================================================================== */
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+}
+
+a { color: var(--accent-deep); text-decoration: none; }
+a:hover { text-decoration: underline; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+code { font-family: var(--mono); }
+
+.muted { color: var(--muted); font-weight: 400; }
+.small { font-size: 0.85rem; }
+
+/* The content column. Nobody enjoys reading much more than 60 characters. */
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 1.2rem; }
+
+/* --- Cards ----------------------------------------------------------------
+   Flat. The border carries the separation, not a shadow. */
+.card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.4rem;
+    margin-bottom: 1.2rem;
+}
+.card h1 { margin-top: 0; }
+.card h2, .card h3 { margin: 0 0 0.8rem; }
+
+/* Emphasised: the bar sits at the TOP, across the full width. */
+.card.highlight { border-top: 3px solid var(--accent); }
+
+/* --- The stage ------------------------------------------------------------
+   Header and hero on one area. Plain here: a line below it, nothing else.
+   An instance may put a background shape underneath (style.local.css). */
+.stage { padding-bottom: 0.6rem; margin-bottom: 1.4rem; border-bottom: 1px solid var(--line); }
+
+/* --- Buttons --------------------------------------------------------------
+   At the game table fingers are busy with dice: 44 px minimum height is not
+   negotiable. */
+.btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 44px;
+    padding: 0.5rem 1.1rem;
+    border: 1px solid var(--ink);
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    /* A <label class="btn"> (file button) must not look like a form label -
+       the label rule further down would otherwise let caps and tracking
+       through. */
+    text-transform: none;
+    letter-spacing: normal;
+}
+.btn:hover { background: var(--accent-tint); text-decoration: none; }
+/* Small only where room beats grip (headers, table rows). */
+.btn-small { min-height: 0; padding: 0.28rem 0.7rem; font-size: 0.8rem; }
+
+/* Full width, for forms with exactly one way forward. */
+.btn-block { display: flex; width: 100%; text-align: center; }
+
+/* A button that looks like a link (forms that want to be links). */
+.btn-link {
+    border: 0; background: none; padding: 0; margin: 0;
+    font: inherit; color: var(--accent-deep); cursor: pointer;
+}
+.btn-link:hover { text-decoration: underline; }
+
+/* The main action is the ONLY filled accent area in the field of view.
+
+   The type on it is set light on purpose, not var(--ink): that way it
+   survives the theme switch as long as the accent stays dark. */
+.btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #F7F8FA;
+}
+.btn-primary:hover { background: var(--accent); filter: brightness(1.08); }
+.btn-primary:active { filter: brightness(0.94); }
+
+/* Restrained instead of loud: what deletes has to be findable, not red. */
+.btn-danger { border-color: var(--line); color: var(--muted); }
+.btn-danger:hover { border-color: var(--ink); color: var(--ink); background: transparent; }
+
+/* Several buttons side by side - ALWAYS with this class. */
+.cta { display: flex; flex-wrap: wrap; gap: 0.7rem; align-items: center; }
+
+/* Stopgap in case .cta is forgotten. The right way is .cta. */
+p:not([class]) > .btn + .btn { margin-left: 0.5rem; }
+
+/* Two equal ways, separated by a word in the line. */
+.or {
+    display: flex; align-items: center; gap: 0.8rem;
+    margin: 1.5rem 0 1.2rem;
+    font-size: 0.78rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--muted);
+}
+.or::before, .or::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+/* --- Selection chips (calculators, filters) ------------------------------
+   A category is a row of chips; exactly one is selected. The selected one
+   carries the tint, NOT the full accent area - that stays reserved for the
+   main action. State via aria-pressed, so the selection is a selection for
+   screen readers too. */
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.chip {
+    min-height: 44px; min-width: 44px;
+    padding: 0.4rem 0.85rem;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+    cursor: pointer;
+}
+.chip:hover { border-color: var(--muted); }
+.chip[aria-pressed="true"] {
+    border-color: var(--accent);
+    background: var(--accent-tint);
+    color: var(--accent-deep);
+    font-weight: 700;
+}
+
+/* --- Readout: the target number ------------------------------------------
+   The instrument: big value, underneath it the 2D6 probability - the actual
+   decision aid. Numbers tabular, so nothing jumps when a 7 becomes a 12.
+   This is where mono earns its place. */
+.readout {
+    text-align: center;
+    padding: 1.1rem 1rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--paper);
+    font-variant-numeric: tabular-nums;
+}
+.readout .readout-label {
+    font-size: 0.75rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--muted); margin: 0 0 0.2rem;
+}
+.readout .readout-value {
+    font-family: var(--mono); font-size: 3.2rem; font-weight: 700;
+    line-height: 1.05; color: var(--ink);
+}
+.readout .readout-aside {
+    font-family: var(--mono); font-size: 0.95rem; font-weight: 600;
+    color: var(--accent-deep); margin: 0.25rem 0 0;
+}
+/* Target number > 12: impossible. No red alarm - the value loses its colour,
+   the side text does the explaining. */
+.readout.impossible .readout-value { color: var(--muted); text-decoration: line-through; }
+.readout.impossible .readout-aside { color: var(--muted); }
+
+/* --- Section divider -----------------------------------------------------
+   A quiet line as structure; the accent variant is reserved for REAL
+   warnings (heat threshold, shutdown) - otherwise signal turns into
+   wallpaper. */
+.hazard {
+    height: 0;
+    border: 0;
+    border-top: 1px solid var(--line);
+    margin: 2rem 0;
+}
+.hazard-warn { border-top-width: 2px; border-top-color: var(--accent); }
+
+/* --- Bottom navigation ---------------------------------------------------
+   Five areas within thumb reach. The active area carries a notch at the top
+   - the same language as .card.highlight, only from the inside. */
+.bottom-nav {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+    display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+    background: var(--surface);
+    border-top: 1px solid var(--line);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+.bottom-nav a {
+    display: flex; flex-direction: column; align-items: center; gap: 0.2rem;
+    min-height: 52px;
+    padding: 0.55rem 0.2rem 0.5rem;
+    font-size: 0.64rem; font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--muted); text-decoration: none;
+}
+.bottom-nav a:hover { text-decoration: none; color: var(--ink); }
+.bottom-nav a svg { width: 22px; height: 22px; display: block; }
+.bottom-nav a[aria-current="page"] {
+    color: var(--accent-deep);
+    box-shadow: inset 0 2px 0 var(--accent);
+}
+/* Five columns on 380 px: "Alpha Strike" and "Hit Locations" have to stay on
+   one line - without side padding and tracking 13 characters fit. */
+@media (max-width: 430px) {
+    .bottom-nav a { font-size: 0.58rem; letter-spacing: 0; padding-left: 0; padding-right: 0; white-space: nowrap; }
+}
+@media (max-width: 350px) {
+    .bottom-nav a { font-size: 0.52rem; }
+}
+/* Pages with a bottom nav need room below, otherwise the foot sits under it. */
+.hat-bottom-nav { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
+
+/* --- Forms --------------------------------------------------------------- */
+label {
+    display: block; font-weight: 600; font-size: 0.78rem;
+    color: var(--muted); margin: 0.7rem 0 0.3rem;
+}
+input[type="text"], input[type="password"], input[type="search"], input[type="url"],
+input[type="email"], input[type="date"], input[type="number"], select, textarea {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    font-family: var(--sans);
+    font-variant-numeric: tabular-nums;
+    /* At least 16px, otherwise iOS Safari zooms into the field on focus (and
+       the fixed bottom nav "scrolls away"). */
+    font-size: 1rem;
+    background: var(--paper);
+    color: var(--ink);
+}
+/* Switch off double-tap zoom on controls - pinch zoom of the page stays
+   (accessibility), but tapping feels like an app. */
+a, button, input, select, textarea, label, summary {
+    touch-action: manipulation;
+}
+/* No horizontal page scrolling, whatever a row gets up to - wide content
+   scrolls in its own container (.table-scroll, .jump-bar, .tab-row).
+   hidden = fallback, clip overrides. */
+html {
+    overflow-x: hidden;
+    overflow-x: clip;
+}
+input:focus, select:focus, textarea:focus {
+    outline: 2px solid var(--accent); outline-offset: -1px; border-color: var(--accent);
+}
+input[type="range"] { width: 100%; accent-color: var(--accent); }
+
+/* --- Messages ------------------------------------------------------------
+   Success carries the accent; errors simply lack it. */
+.flash {
+    padding: 0.7rem 1rem;
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+    border: 1px solid;
+    font-size: 0.9rem;
+}
+.flash-ok { background: var(--accent-tint); border-color: var(--accent); color: var(--accent-deep); }
+.flash-err { background: var(--surface); border-color: var(--ink); color: var(--ink); }
+
+/* --- Tags and badges ----------------------------------------------------- */
+.tag, .badge {
+    display: inline-block; padding: 0.1rem 0.5rem; border-radius: var(--radius);
+    font-size: 0.72rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    border: 1px solid var(--line); color: var(--muted);
+}
+.tag-on, .badge-ok { background: var(--accent-tint); color: var(--accent-deep); border-color: var(--accent); }
+/* A state, not an error - dashed instead of coloured. */
+.tag-off { border-style: dashed; color: var(--muted); }
+
+/* --- Tables --------------------------------------------------------------
+   Numbers with tabular-nums, so columns stand still. */
+table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+th {
+    text-align: left; color: var(--muted); font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase; letter-spacing: 0.03em;
+}
+th, td { padding: 0.55rem 0.6rem; border-bottom: 1px solid var(--line); vertical-align: middle; }
+tr:last-child td { border-bottom: 0; }
+/* Wide tables scroll in themselves, never the page. */
+.table-scroll { overflow-x: auto; }
+
+/* --- Wordmark ------------------------------------------------------------
+   Plain: the name in the base tone, the parts around it muted. The three
+   pieces come from site.json at build time (brand.prefix / core / suffix),
+   for example:
+   <span class="brand-name"><span class="brand-tld">sub.</span>NAME<span class="brand-tld">.tld</span></span>
+
+   An instance that wants its own treatment (type, colour, a mark of its own)
+   sets it in css/style.local.css. */
+.brand {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 1.35rem; font-weight: 700; color: var(--ink);
+    letter-spacing: -0.01em; text-decoration: none;
+}
+.brand svg, .brand img { display: block; }
+.brand:hover { text-decoration: none; }
+.brand-tld { color: var(--muted); font-weight: 600; }
+
+/* --- Grid ----------------------------------------------------------------- */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1rem; }
+.tile { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.1rem; }
+
+/* A small label above a heading. */
+.eyebrow {
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--muted); margin: 0 0 0.3rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+}

@@ -1,0 +1,809 @@
+{
+    "_note": "Extracted from the painting guide. Per faction: id, abbreviation, name, subtitle, category, colors {base|trim|accent: {name, hex}} or null for a short profile, description, subunits (differing formations, optional), paintSequence (a Citadel recipe, optional), tip (the pitfall, optional), profile (true = a text card only, the scheme is still open).",
+    "version": 1,
+    "asOf": "2026-08",
+    "categories": [
+        {
+            "id": "inner-sphere",
+            "name": "Inner Sphere",
+            "description": "The five Successor States, plus ComStar and the lesser powers. If you want a classic start, this is the safest bet."
+        },
+        {
+            "id": "clans",
+            "name": "Clans",
+            "description": "From 3050 on. Clan schemes are more aggressive, use animal patterns more often and are kept uniform per Star (five ’Mechs)."
+        },
+        {
+            "id": "mercenaries",
+            "name": "Mercenaries",
+            "description": "Mercenaries have no prescribed colours – that is the invitation to invent your own scheme. The well-known units work as templates."
+        },
+        {
+            "id": "periphery",
+            "name": "Periphery",
+            "description": "Small states, pirates and special cases. The freest in colour, because the least canonised."
+        }
+    ],
+    "factions": [
+        {
+            "id": "federated-suns",
+            "abbreviation": "FS",
+            "name": "Federated Suns",
+            "subtitle": "House Davion",
+            "category": "inner-sphere",
+            "colors": {
+                "base": {
+                    "name": "Sun gold",
+                    "hex": "#E0A526"
+                },
+                "trim": {
+                    "name": "Deep black",
+                    "hex": "#17191C"
+                },
+                "accent": {
+                    "name": "Signal red",
+                    "hex": "#A4231E"
+                }
+            },
+            "description": "Sun and sword. The parade colours are gold and black, often with a red accent – rich, courtly, a little arrogant. Of all the Great Houses, Davion has the widest spread between regiments.",
+            "subunits": "Davion Guards: gold with red · Crucis Lancers: green · Deneb Light Cavalry: dark blue · Avalon Hussars: sand brown",
+            "paintSequence": "Grey primer → Zandri Dust → Averland Sunset → Yriel Yellow (edges). Wash only into the recesses.",
+            "tip": "Yellow covers badly. Never over black – always build it up over bone or light grey.",
+            "profile": false
+        },
+        {
+            "id": "lyran-commonwealth",
+            "abbreviation": "LC",
+            "name": "Lyran Commonwealth",
+            "subtitle": "House Steiner",
+            "category": "inner-sphere",
+            "colors": {
+                "base": {
+                    "name": "Royal blue",
+                    "hex": "#1F4C8F"
+                },
+                "trim": {
+                    "name": "Off-white",
+                    "hex": "#E9E9E4"
+                },
+                "accent": {
+                    "name": "Steel grey",
+                    "hex": "#7C848C"
+                }
+            },
+            "description": "The armoured fist. Strong blue with white panels, plus lots of bare metal – Lyrans drive heavy and want you to see it.",
+            "subunits": "Lyran Guards: blue/white · Royal Guards: blue with gold · many border regiments in winter or greyscale camouflage",
+            "paintSequence": "Kantor Blue → Macragge Blue → edge highlight Fenrisian Grey. Metal: Leadbelcher + Nuln Oil.",
+            "tip": "Blue over black primer goes dull. Mid grey is the better base.",
+            "profile": false
+        },
+        {
+            "id": "draconis-combine",
+            "abbreviation": "DC",
+            "name": "Draconis Combine",
+            "subtitle": "House Kurita",
+            "category": "inner-sphere",
+            "colors": {
+                "base": {
+                    "name": "Crimson",
+                    "hex": "#8E1B1B"
+                },
+                "trim": {
+                    "name": "Gloss black",
+                    "hex": "#17191C"
+                },
+                "accent": {
+                    "name": "Old gold",
+                    "hex": "#D9C27E"
+                }
+            },
+            "description": "The Dragon. Red, black and white with gold edges, preferably in strict blocks rather than soft transitions. The most disciplined sense of colour in the Inner Sphere.",
+            "subunits": "Sword of Light: red/white with gold · Genyosha: dark green · Ghost Regiments: black and grey, deliberately plain",
+            "paintSequence": "Mephiston Red → Evil Sunz Scarlet → Wazdakka Red in the recesses. Gold sparingly: edges and trim only.",
+            "tip": "Red needs 2–3 thin coats. One thick coat drowns every detail.",
+            "profile": false
+        },
+        {
+            "id": "free-worlds-league",
+            "abbreviation": "FWL",
+            "name": "Free Worlds League",
+            "subtitle": "House Marik",
+            "category": "inner-sphere",
+            "colors": {
+                "base": {
+                    "name": "Purple",
+                    "hex": "#5B3A8C"
+                },
+                "trim": {
+                    "name": "Gold",
+                    "hex": "#C9A227"
+                },
+                "accent": {
+                    "name": "Bone",
+                    "hex": "#E6E2D8"
+                }
+            },
+            "description": "The Eagle. Purple with gold – the most striking palette in the game and the most rewarding if you like contrast. Politically the League is a patchwork, and so are its colours.",
+            "subunits": "Marik Militia: purple/gold · Regulan, Andurien and Oriente each fly their own house colours – freedom is allowed here",
+            "paintSequence": "Naggaroth Night → Xereus Purple → Genestealer Purple. Gold: Balthasar Gold + Retributor Armour on the edges.",
+            "tip": "Purple over black turns muddy. Prime grey, then lighten.",
+            "profile": false
+        },
+        {
+            "id": "capellan-confederation",
+            "abbreviation": "CC",
+            "name": "Capellan Confederation",
+            "subtitle": "House Liao",
+            "category": "inner-sphere",
+            "colors": {
+                "base": {
+                    "name": "Jade green",
+                    "hex": "#2E6B4F"
+                },
+                "trim": {
+                    "name": "Black",
+                    "hex": "#17191C"
+                },
+                "accent": {
+                    "name": "Vermilion",
+                    "hex": "#B4462A"
+                }
+            },
+            "description": "Jade green with black panels and red trim. The Confederation is the poorest of the great powers – worn, patched-up ’Mechs fit the theme perfectly.",
+            "subunits": "Death Commandos: black with red, no insignia · the Warrior Houses (Imarra, Kamata, Hiritsu …) each have their own colours",
+            "paintSequence": "Caliban Green → Warpstone Glow drybrush → Biel-Tan Green into the recesses.",
+            "tip": "Green quickly looks flat. A touch of yellow in the edge highlight brings it to life.",
+            "profile": false
+        },
+        {
+            "id": "comstar",
+            "abbreviation": "CS",
+            "name": "ComStar",
+            "subtitle": "Com Guards",
+            "category": "inner-sphere",
+            "colors": {
+                "base": {
+                    "name": "Pure white",
+                    "hex": "#EFEFEA"
+                },
+                "trim": {
+                    "name": "Ochre/gold",
+                    "hex": "#C7A85C"
+                },
+                "accent": {
+                    "name": "Cool grey",
+                    "hex": "#8A9098"
+                }
+            },
+            "description": "Priestly white with gold trim bands. Looks spectacular on the table and is at the same time the hardest scheme for beginners.",
+            "subunits": "Com Guards: white/gold, division numbers painted large · ROM (intelligence): dark grey to black",
+            "paintSequence": "Prime grey → Apothecary White (Contrast) or Ulthuan Grey → White Scar only on the topmost edges.",
+            "tip": "Never paint white flat straight from the pot. A zenithal prime does half the work.",
+            "profile": false
+        },
+        {
+            "id": "word-of-blake",
+            "abbreviation": "WoB",
+            "name": "Word of Blake",
+            "subtitle": "Splinter of ComStar",
+            "category": "inner-sphere",
+            "colors": {
+                "base": {
+                    "name": "Grey-white",
+                    "hex": "#DAD9D2"
+                },
+                "trim": {
+                    "name": "Anthracite",
+                    "hex": "#3A3F45"
+                },
+                "accent": {
+                    "name": "Blood red",
+                    "hex": "#8E1B1B"
+                }
+            },
+            "description": "The same white, but cold and military instead of ceremonial: dark panels, hard edges, red markings. The villain look of the Jihad era.",
+            "subunits": "Militia divisions with numbered shoulder plates · Manei Domini: black with white markings",
+            "paintSequence": "Grey Seer → Basilicanum Grey into the recesses → pick out panels in Eshin Grey.",
+            "tip": null,
+            "profile": false
+        },
+        {
+            "id": "free-rasalhague-republic",
+            "abbreviation": "FRR",
+            "name": "Free Rasalhague Republic",
+            "subtitle": "Rasalhague",
+            "category": "inner-sphere",
+            "colors": {
+                "base": {
+                    "name": "Cobalt blue",
+                    "hex": "#1D5FA8"
+                },
+                "trim": {
+                    "name": "White",
+                    "hex": "#EFEFEA"
+                },
+                "accent": {
+                    "name": "Gold",
+                    "hex": "#D9B44A"
+                }
+            },
+            "description": "Scandinavian clarity: blue and white with a gold crest. Small, defiant, and from 3050 on right in the Clans’ flight path.",
+            "subunits": "Tyr, Freemen and the Kungsarmé units stick closely to blue/white",
+            "paintSequence": "Like Steiner, just a shade lighter and with more white.",
+            "tip": null,
+            "profile": false
+        },
+        {
+            "id": "federated-commonwealth",
+            "abbreviation": "FC",
+            "name": "Federated Commonwealth",
+            "subtitle": "Davion + Steiner",
+            "category": "inner-sphere",
+            "colors": {
+                "base": {
+                    "name": "Steiner blue",
+                    "hex": "#1F4C8F"
+                },
+                "trim": {
+                    "name": "Davion gold",
+                    "hex": "#E0A526"
+                },
+                "accent": {
+                    "name": "White",
+                    "hex": "#E9E9E4"
+                }
+            },
+            "description": "The alliance cast in colour: blue and gold side by side, sunburst and fist in the same crest. Handy if you can’t decide between two Houses.",
+            "subunits": "Mixed units often wear one half per House – fist on the left shoulder, sun on the right",
+            "paintSequence": null,
+            "tip": null,
+            "profile": false
+        },
+        {
+            "id": "clan-wolf",
+            "abbreviation": "CW",
+            "name": "Clan Wolf",
+            "subtitle": "Invading Clan",
+            "category": "clans",
+            "colors": {
+                "base": {
+                    "name": "Gunmetal grey",
+                    "hex": "#4A4F55"
+                },
+                "trim": {
+                    "name": "Black",
+                    "hex": "#17191C"
+                },
+                "accent": {
+                    "name": "Blood red",
+                    "hex": "#9E2B25"
+                }
+            },
+            "description": "Sober dark grey, black panels, red markings. The most pragmatic Clan – and the scheme that looks most like a war machine rather than a parade.",
+            "subunits": "Wolf-in-Exile later adds more grey and white markings",
+            "paintSequence": "Mechanicus Standard Grey → Dawnstone drybrush → Nuln Oil. Red only on cooling fins and weapons.",
+            "tip": null,
+            "profile": false
+        },
+        {
+            "id": "clan-jade-falcon",
+            "abbreviation": "CJF",
+            "name": "Clan Jade Falcon",
+            "subtitle": "Invading Clan",
+            "category": "clans",
+            "colors": {
+                "base": {
+                    "name": "Jade green",
+                    "hex": "#1F7A5A"
+                },
+                "trim": {
+                    "name": "Falcon yellow",
+                    "hex": "#E3B23C"
+                },
+                "accent": {
+                    "name": "Black",
+                    "hex": "#17191C"
+                }
+            },
+            "description": "The best-known Clan scheme of all: cool jade with sharp yellow flashes. Keep the green cold and let the yellow scream – a thin yellow stripe along the torso edge is enough.",
+            "subunits": "Falcon Guards and Turkina Keshik use more black",
+            "paintSequence": "Caliban Green → Warpstone Glow → mask the yellow stripes with tape, then Averland Sunset + Yriel Yellow.",
+            "tip": null,
+            "profile": false
+        },
+        {
+            "id": "clan-ghost-bear",
+            "abbreviation": "CGB",
+            "name": "Clan Ghost Bear",
+            "subtitle": "Invading Clan",
+            "category": "clans",
+            "colors": {
+                "base": {
+                    "name": "Ice white",
+                    "hex": "#C9D6DE"
+                },
+                "trim": {
+                    "name": "Deep blue",
+                    "hex": "#23384F"
+                },
+                "accent": {
+                    "name": "Grey",
+                    "hex": "#7C848C"
+                }
+            },
+            "description": "Polar scheme: almost white with dark blue panels. Ponderous, patient, extremely elegant on the table – especially with snow bases.",
+            "subunits": "From 3060 on, as the Rasalhague Dominion, often combined with blue-and-gold Rasalhague elements",
+            "paintSequence": "Zenithal grey/white → Gryph-charger Grey thinly over everything → panels in Kantor Blue.",
+            "tip": null,
+            "profile": false
+        },
+        {
+            "id": "clan-smoke-jaguar",
+            "abbreviation": "CSJ",
+            "name": "Clan Smoke Jaguar",
+            "subtitle": "Invading Clan",
+            "category": "clans",
+            "colors": {
+                "base": {
+                    "name": "Olive sand",
+                    "hex": "#8C8259"
+                },
+                "trim": {
+                    "name": "Black",
+                    "hex": "#17191C"
+                },
+                "accent": {
+                    "name": "Predator yellow",
+                    "hex": "#D9A72E"
+                }
+            },
+            "description": "Big-cat pelt as armour: sandy olive with yellow-and-black rosettes. The most brutal Clan of the invasion and the most elaborate pattern – but a few spots on shoulder and thigh already do the job.",
+            "subunits": "Garrison Clusters are often plainer, just dark grey with a yellow emblem",
+            "paintSequence": "Zandri Dust base → irregular yellow ovals → a black ring around each with your finest brush.",
+            "tip": null,
+            "profile": false
+        },
+        {
+            "id": "clan-nova-cat",
+            "abbreviation": "CNC",
+            "name": "Clan Nova Cat",
+            "subtitle": "Invading Clan",
+            "category": "clans",
+            "colors": {
+                "base": {
+                    "name": "Sand beige",
+                    "hex": "#C8B08A"
+                },
+                "trim": {
+                    "name": "Dark brown",
+                    "hex": "#4A4034"
+                },
+                "accent": {
+                    "name": "Turquoise",
+                    "hex": "#2E7E7A"
+                }
+            },
+            "description": "Light spotted pelt with turquoise trim lines. Mystics and visionaries – the warmest Clan scheme in colour.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": false
+        },
+        {
+            "id": "clan-steel-viper",
+            "abbreviation": "CSV",
+            "name": "Clan Steel Viper",
+            "subtitle": "Invading Clan",
+            "category": "clans",
+            "colors": {
+                "base": {
+                    "name": "Serpent green",
+                    "hex": "#3E7A3A"
+                },
+                "trim": {
+                    "name": "Gold",
+                    "hex": "#C9A227"
+                },
+                "accent": {
+                    "name": "Black",
+                    "hex": "#17191C"
+                }
+            },
+            "description": "Green with gold scale patterns. If you fancy freehand, paint real scales – if not, put gold bands on the arm and leg armour.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": false
+        },
+        {
+            "id": "clan-diamond-shark",
+            "abbreviation": "CDS",
+            "name": "Clan Diamond Shark",
+            "subtitle": "later Clan Sea Fox",
+            "category": "clans",
+            "colors": {
+                "base": {
+                    "name": "Ocean blue",
+                    "hex": "#3E6B8C"
+                },
+                "trim": {
+                    "name": "Belly white",
+                    "hex": "#DDE3E6"
+                },
+                "accent": {
+                    "name": "Red",
+                    "hex": "#A4231E"
+                }
+            },
+            "description": "Shark logic: dark blue-grey on top, light white underneath. A merchant Clan – well-kept, almost civilian-looking ’Mechs.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": false
+        },
+        {
+            "id": "clan-hells-horses",
+            "abbreviation": "CHH",
+            "name": "Clan Hell's Horses",
+            "subtitle": "Home Clan",
+            "category": "clans",
+            "colors": {
+                "base": {
+                    "name": "Rust orange",
+                    "hex": "#B45B22"
+                },
+                "trim": {
+                    "name": "Black",
+                    "hex": "#17191C"
+                },
+                "accent": {
+                    "name": "Khaki",
+                    "hex": "#8C8259"
+                }
+            },
+            "description": "Earthy rust orange with black panels. Combined arms, lots of infantry and tanks – ideal if you want to field mixed forces.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": false
+        },
+        {
+            "id": "clan-snow-raven",
+            "abbreviation": "CSR",
+            "name": "Clan Snow Raven",
+            "subtitle": "Home Clan",
+            "category": "clans",
+            "colors": {
+                "base": {
+                    "name": "Snow white",
+                    "hex": "#E4E4DF"
+                },
+                "trim": {
+                    "name": "Raven black",
+                    "hex": "#17191C"
+                },
+                "accent": {
+                    "name": "Grey",
+                    "hex": "#8A9098"
+                }
+            },
+            "description": "Only two colours, maximum contrast: white torso, black limbs and markings. Quick to paint, very effective.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": false
+        },
+        {
+            "id": "clan-blood-spirit",
+            "abbreviation": null,
+            "name": "Clan Blood Spirit",
+            "subtitle": "Home Clan",
+            "category": "clans",
+            "colors": {},
+            "description": "Deep red with black, isolationist and plain.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": true
+        },
+        {
+            "id": "clan-fire-mandrill",
+            "abbreviation": null,
+            "name": "Clan Fire Mandrill",
+            "subtitle": "Home Clan",
+            "category": "clans",
+            "colors": {},
+            "description": "Orange to yellow – every Kindraa with its own variant.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": true
+        },
+        {
+            "id": "clan-ice-hellion",
+            "abbreviation": null,
+            "name": "Clan Ice Hellion",
+            "subtitle": "Home Clan",
+            "category": "clans",
+            "colors": {},
+            "description": "Light blue and white, fast light ’Mechs.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": true
+        },
+        {
+            "id": "clan-star-adder",
+            "abbreviation": null,
+            "name": "Clan Star Adder",
+            "subtitle": "Home Clan",
+            "category": "clans",
+            "colors": {},
+            "description": "Grey with yellow-and-black hazard stripes.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": true
+        },
+        {
+            "id": "clan-coyote",
+            "abbreviation": null,
+            "name": "Clan Coyote",
+            "subtitle": "Home Clan",
+            "category": "clans",
+            "colors": {},
+            "description": "Earth brown and sand tones.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": true
+        },
+        {
+            "id": "clan-cloud-cobra",
+            "abbreviation": null,
+            "name": "Clan Cloud Cobra",
+            "subtitle": "Home Clan",
+            "category": "clans",
+            "colors": {},
+            "description": "White and sky blue, religiously influenced.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": true
+        },
+        {
+            "id": "clan-goliath-scorpion",
+            "abbreviation": null,
+            "name": "Clan Goliath Scorpion",
+            "subtitle": "Home Clan",
+            "category": "clans",
+            "colors": {},
+            "description": "Desert sand with dark armour plates.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": true
+        },
+        {
+            "id": "clan-widowmaker",
+            "abbreviation": null,
+            "name": "Clan Widowmaker",
+            "subtitle": "annihilated",
+            "category": "clans",
+            "colors": {},
+            "description": "Black with a red hourglass – long since annihilated.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": true
+        },
+        {
+            "id": "wolfs-dragoons",
+            "abbreviation": "WD",
+            "name": "Wolf's Dragoons",
+            "subtitle": "Mercenaries",
+            "category": "mercenaries",
+            "colors": {
+                "base": {
+                    "name": "Black-grey",
+                    "hex": "#2A2D31"
+                },
+                "trim": {
+                    "name": "Mid grey",
+                    "hex": "#5A6069"
+                },
+                "accent": {
+                    "name": "Regimental colour",
+                    "hex": "#A4231E"
+                }
+            },
+            "description": "Black with grey panels, plus an accent colour per regiment (Alpha to Zeta). That way you can tell several lances apart without changing the scheme.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": false
+        },
+        {
+            "id": "kell-hounds",
+            "abbreviation": "KH",
+            "name": "Kell Hounds",
+            "subtitle": "Mercenaries",
+            "category": "mercenaries",
+            "colors": {
+                "base": {
+                    "name": "Black",
+                    "hex": "#17191C"
+                },
+                "trim": {
+                    "name": "Red",
+                    "hex": "#A4231E"
+                },
+                "accent": {
+                    "name": "White",
+                    "hex": "#E9E9E4"
+                }
+            },
+            "description": "Black with red and white markings. Closely tied to Steiner – elitist and deliberately sombre.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": false
+        },
+        {
+            "id": "gray-death-legion",
+            "abbreviation": "GDL",
+            "name": "Gray Death Legion",
+            "subtitle": "Mercenaries",
+            "category": "mercenaries",
+            "colors": {
+                "base": {
+                    "name": "Mid grey",
+                    "hex": "#7A8087"
+                },
+                "trim": {
+                    "name": "Dark grey",
+                    "hex": "#3A3F45"
+                },
+                "accent": {
+                    "name": "White",
+                    "hex": "#E9E9E4"
+                }
+            },
+            "description": "Grey on grey, a skull as the emblem. The perfect practice scheme: mistakes forgive themselves, and weathering looks good right away.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": false
+        },
+        {
+            "id": "eridani-light-horse",
+            "abbreviation": "ELH",
+            "name": "Eridani Light Horse",
+            "subtitle": "Mercenaries",
+            "category": "mercenaries",
+            "colors": {
+                "base": {
+                    "name": "Olive green",
+                    "hex": "#4F5E36"
+                },
+                "trim": {
+                    "name": "Sand brown",
+                    "hex": "#A08A5E"
+                },
+                "accent": {
+                    "name": "Black",
+                    "hex": "#17191C"
+                }
+            },
+            "description": "Military olive and sand, descendants of the Star League. If you want to try real camouflage patterns, this is the faction for it.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": false
+        },
+        {
+            "id": "northwind-highlanders",
+            "abbreviation": "NH",
+            "name": "Northwind Highlanders",
+            "subtitle": "Mercenaries",
+            "category": "mercenaries",
+            "colors": {
+                "base": {
+                    "name": "Dark grey-green",
+                    "hex": "#3F5147"
+                },
+                "trim": {
+                    "name": "Tartan red",
+                    "hex": "#8E1B1B"
+                },
+                "accent": {
+                    "name": "Yellow",
+                    "hex": "#D9C27E"
+                }
+            },
+            "description": "Scottish regiments in space – with real tartan patterns on the torso armour. Two crossed lines in red and yellow across the chest plate, and the plaid effect is done.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": false
+        },
+        {
+            "id": "taurian-concordat",
+            "abbreviation": null,
+            "name": "Taurian Concordat",
+            "subtitle": "Periphery",
+            "category": "periphery",
+            "colors": {},
+            "description": "Maroon and grey, defensive and proud.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": true
+        },
+        {
+            "id": "magistracy-of-canopus",
+            "abbreviation": null,
+            "name": "Magistracy of Canopus",
+            "subtitle": "Periphery",
+            "category": "periphery",
+            "colors": {},
+            "description": "Purple and gold, openly decadent.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": true
+        },
+        {
+            "id": "marian-hegemony",
+            "abbreviation": null,
+            "name": "Marian Hegemony",
+            "subtitle": "Periphery",
+            "category": "periphery",
+            "colors": {},
+            "description": "Roman red and brass, eagles and legion numbers.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": true
+        },
+        {
+            "id": "outworlds-alliance",
+            "abbreviation": null,
+            "name": "Outworlds Alliance",
+            "subtitle": "Periphery",
+            "category": "periphery",
+            "colors": {},
+            "description": "Forest green and brown, sparsely equipped.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": true
+        },
+        {
+            "id": "aurigan-coalition",
+            "abbreviation": null,
+            "name": "Aurigan Coalition",
+            "subtitle": "Periphery",
+            "category": "periphery",
+            "colors": {},
+            "description": "Teal and orange – from the HBS video game.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": true
+        },
+        {
+            "id": "piraten",
+            "abbreviation": null,
+            "name": "Piraten",
+            "subtitle": "Periphery",
+            "category": "periphery",
+            "colors": {},
+            "description": "Repainted salvage: old schemes shimmer through.",
+            "subunits": null,
+            "paintSequence": null,
+            "tip": null,
+            "profile": true
+        }
+    ]
+}

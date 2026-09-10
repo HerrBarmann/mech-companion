@@ -1,0 +1,222 @@
+{
+ "version": 1,
+ "mechs": [
+  {
+   "_lizenz": "Abgeleitet aus MegaMek mm-data (github.com/MegaMek/mm-data), MegaMek Data (C) The MegaMek Team, CC BY-NC-SA 4.0. MechWarrior, BattleMech, 'Mech und BattleTech sind eingetragene Marken von The Topps Company, Inc.",
+   "id": "fixture-atlas",
+   "version": 1,
+   "name": "Atlas AS7-D",
+   "tonnage": 100,
+   "bv": 1897,
+   "notizen": "",
+   "quelle": "TR:3039,TR:SW",
+   "era": 2755,
+   "techbase": "IS",
+   "rolle": "Juggernaut",
+   "bewegung": {
+    "gehen": 3,
+    "springen": 0
+   },
+   "pilot": {
+    "name": "",
+    "gunnery": 4,
+    "piloting": 5
+   },
+   "waermetauscher": {
+    "anzahl": 20,
+    "doppelt": false
+   },
+   "panzerung": {
+    "kopf": 9,
+    "zt": 47,
+    "zth": 14,
+    "rt": 32,
+    "rth": 10,
+    "lt": 32,
+    "lth": 10,
+    "ra": 34,
+    "la": 34,
+    "rb": 41,
+    "lb": 41
+   },
+   "struktur": {
+    "kopf": 3,
+    "zt": 31,
+    "rt": 21,
+    "lt": 21,
+    "ra": 17,
+    "la": 17,
+    "rb": 21,
+    "lb": 21
+   },
+   "waffen": [
+    {
+     "name": "Medium Laser",
+     "zone": "LA",
+     "schaden": "5",
+     "hitze": 3,
+     "reichweite": "3/6/9",
+     "munition": null
+    },
+    {
+     "name": "Medium Laser",
+     "zone": "RA",
+     "schaden": "5",
+     "hitze": 3,
+     "reichweite": "3/6/9",
+     "munition": null
+    },
+    {
+     "name": "LRM 20",
+     "zone": "LT",
+     "schaden": "1/Rakete",
+     "hitze": 6,
+     "reichweite": "min 6 · 7/14/21",
+     "munition": 12
+    },
+    {
+     "name": "SRM 6",
+     "zone": "LT",
+     "schaden": "2/Rakete",
+     "hitze": 4,
+     "reichweite": "3/6/9",
+     "munition": 15
+    },
+    {
+     "name": "AC/20",
+     "zone": "RT",
+     "schaden": "20",
+     "hitze": 7,
+     "reichweite": "3/6/9",
+     "munition": 10
+    },
+    {
+     "name": "Medium Laser",
+     "zone": "ZT",
+     "schaden": "5",
+     "hitze": 3,
+     "reichweite": "3/6/9",
+     "munition": null
+    },
+    {
+     "name": "Medium Laser",
+     "zone": "ZT",
+     "schaden": "5",
+     "hitze": 3,
+     "reichweite": "3/6/9",
+     "munition": null
+    }
+   ],
+   "kritSlots": {
+    "la": [
+     "Schulter",
+     "Oberarm-Aktuator",
+     "Unterarm-Aktuator",
+     "Hand",
+     "Wärmetauscher",
+     "Medium Laser",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    "ra": [
+     "Schulter",
+     "Oberarm-Aktuator",
+     "Unterarm-Aktuator",
+     "Hand",
+     "Wärmetauscher",
+     "Medium Laser",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    "lt": [
+     "Wärmetauscher",
+     "LRM 20",
+     "LRM 20",
+     "LRM 20",
+     "LRM 20",
+     "LRM 20",
+     "SRM 6",
+     "SRM 6",
+     "Munition (LRM 20)",
+     "Munition (LRM 20)",
+     "Munition (SRM 6)",
+     ""
+    ],
+    "rt": [
+     "Autocannon/20",
+     "Autocannon/20",
+     "Autocannon/20",
+     "Autocannon/20",
+     "Autocannon/20",
+     "Autocannon/20",
+     "Autocannon/20",
+     "Autocannon/20",
+     "Autocannon/20",
+     "Autocannon/20",
+     "Munition (AC/20)",
+     "Munition (AC/20)"
+    ],
+    "zt": [
+     "Triebwerk",
+     "Triebwerk",
+     "Triebwerk",
+     "Gyroskop",
+     "Gyroskop",
+     "Gyroskop",
+     "Gyroskop",
+     "Triebwerk",
+     "Triebwerk",
+     "Triebwerk",
+     "Medium Laser (Heck)",
+     "Medium Laser (Heck)"
+    ],
+    "kopf": [
+     "Lebenserhaltung",
+     "Sensoren",
+     "Cockpit",
+     "Wärmetauscher",
+     "Sensoren",
+     "Lebenserhaltung"
+    ],
+    "lb": [
+     "Hüfte",
+     "Oberschenkel",
+     "Unterschenkel",
+     "Fuß",
+     "Wärmetauscher",
+     "Wärmetauscher"
+    ],
+    "rb": [
+     "Hüfte",
+     "Oberschenkel",
+     "Unterschenkel",
+     "Fuß",
+     "Wärmetauscher",
+     "Wärmetauscher"
+    ]
+   },
+   "icon": "img/mechs/Atlas.png",
+   "as": {
+    "pv": 52,
+    "sz": 4,
+    "mv": "6\"",
+    "tmm": 1,
+    "ov": 0,
+    "panzerung": 10,
+    "struktur": 8,
+    "s": "5",
+    "m": "5",
+    "l": "2",
+    "special": "AC2/2/-, IF1, LRM1/1/1, REAR1/1/-"
+   }
+  }
+ ]
+}

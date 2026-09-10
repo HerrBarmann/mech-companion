@@ -1,0 +1,33 @@
+[
+    [
+        "(\\d+)/missile",
+        "$1/Rakete",
+        "g"
+    ],
+    [
+        "^(\\d+) per shot$",
+        "$1 je Schuss"
+    ],
+    [
+        "^(\\d+) / cluster$",
+        "$1 / Cluster"
+    ],
+    [
+        " \\(water only\\)$",
+        " (nur Wasser)"
+    ],
+    [
+        "^Ammo \\((.+)\\)$",
+        "Munition ($1)"
+    ],
+    [
+        " \\(Rear\\)$",
+        " (Heck)"
+    ],
+    [
+        "^min \\d+ · [\\d/]+$"
+    ],
+    [
+        "^Cluster \\d+×\\d+$"
+    ]
+]

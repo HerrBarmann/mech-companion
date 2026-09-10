@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Component preview – Mech Companion</title>
+<link rel="icon" href="../website/img/favicon.svg" type="image/svg+xml">
+<!-- The real stylesheets of the app, in the order every page loads them.
+     Nothing is duplicated here - what you see is what ships. -->
+<link rel="stylesheet" href="../website/css/tokens.css">
+<link rel="stylesheet" href="../website/css/components.css">
+<link rel="stylesheet" href="../website/css/app.css">
+<link rel="stylesheet" href="../website/css/tokens.local.css">
+<link rel="stylesheet" href="../website/css/style.local.css">
+<script>
+    // Before the first render, otherwise the wrong theme flashes up.
+    try {
+        var t = localStorage.getItem("mechs-theme");
+        if (t === "light") document.documentElement.dataset.theme = "light";
+    } catch (e) {}
+</script>
+<style>
+    /* Only for this preview page - not part of the system. */
+    .sample { margin: 2.4rem 0 0.8rem; font-size: 0.75rem;
+              text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+    .narrow { max-width: 24rem; }
+    .brand img { width: 34px; height: 34px; }
+</style>
+</head>
+<body class="hat-bottom-nav">
+
+<!-- The stage: header and hero in one block -->
+<div class="stage">
+    <header class="site-head">
+        <div class="wrap">
+            <a class="brand" href="#">
+                <img src="../website/img/logo-badge.svg" width="34" height="34" alt="">
+                <span class="brand-name"><span class="brand-tld">sub.</span>NAME<span class="brand-tld">.tld</span></span>
+            </a>
+            <button class="btn btn-small" id="theme-toggle" type="button"
+                    aria-label="Toggle light/dark" title="Light/Dark">◐</button>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <div class="hero">
+            <p class="eyebrow">Design preview</p>
+            <h1>Tools for the <span class="accent">game table.</span></h1>
+            <p class="sub">Rules, calculators and a painting manual – offline, one-handed,
+            in dim light. Every part on a single page.</p>
+            <p class="cta">
+                <a class="btn btn-primary" href="#">GATOR calculator</a>
+                <a class="btn" href="#">Rules</a>
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>The main action</h2>
+            <p>One filled accent area per field of view – that is the primary button.
+            Everything else carries the border or the tint.</p>
+        </div>
+    </main>
+</div>
+
+<main class="wrap">
+
+    <p class="sample">Calculator</p>
+    <div class="card">
+        <label>Own movement</label>
+        <div class="chips" data-demo-chips>
+            <button class="chip" type="button" aria-pressed="false">Stood still</button>
+            <button class="chip" type="button" aria-pressed="true">Walked</button>
+            <button class="chip" type="button" aria-pressed="false">Ran</button>
+            <button class="chip" type="button" aria-pressed="false">Jumped</button>
+        </div>
+        <label style="margin-top:1rem">Target movement (TMM)</label>
+        <div class="chips" data-demo-chips>
+            <button class="chip" type="button" aria-pressed="false">+0</button>
+            <button class="chip" type="button" aria-pressed="false">+1</button>
+            <button class="chip" type="button" aria-pressed="true">+2</button>
+            <button class="chip" type="button" aria-pressed="false">+3</button>
+            <button class="chip" type="button" aria-pressed="false">+4</button>
+        </div>
+        <div class="readout" style="margin-top:1.2rem">
+            <p class="readout-label">Target number</p>
+            <div class="readout-value">8+</div>
+            <p class="readout-aside">41.7 % on 2D6</p>
+        </div>
+    </div>
+
+    <p class="sample">Readout · edge cases</p>
+    <div class="grid">
+        <div class="readout">
+            <p class="readout-label">Target number</p>
+            <div class="readout-value">4+</div>
+            <p class="readout-aside">91.7 % on 2D6</p>
+        </div>
+        <div class="readout impossible">
+            <p class="readout-label">Target number</p>
+            <div class="readout-value">13+</div>
+            <p class="readout-aside">impossible</p>
+        </div>
+    </div>
+
+    <p class="sample">Section divider</p>
+    <div class="hazard"></div>
+    <p class="muted small">Quiet as structure – the accent variant only for real warnings:</p>
+    <div class="hazard hazard-warn"></div>
+    <div class="flash flash-err" style="margin-top:0.8rem">Heat 14 · −4 MP · avoid shutdown with 6+</div>
+
+    <p class="sample">Buttons</p>
+    <p class="cta">
+        <button class="btn btn-primary">Roll</button>
+        <button class="btn">Reset</button>
+        <button class="btn btn-small">Small</button>
+        <button class="btn btn-danger">Delete tracker</button>
+    </p>
+
+    <p class="sample">Cards</p>
+    <div class="grid">
+        <div class="card"><h3>Ordinary</h3><p class="muted small">Border, no shadow.</p></div>
+        <div class="card highlight"><h3>Emphasised</h3><p class="muted small">Bar on top, not on the left.</p></div>
+    </div>
+
+    <p class="sample">Messages</p>
+    <div class="flash flash-ok">Scheme saved – success carries the accent.</div>
+    <div class="flash flash-err">No scheme chosen – errors simply lack it.</div>
+
+    <p class="sample">Form</p>
+    <div class="card narrow">
+        <label for="p-1">Unit name</label>
+        <input id="p-1" type="text" placeholder="Grey Legion">
+        <label for="p-2">Era</label>
+        <select id="p-2"><option>Succession Wars</option><option>Clan Invasion</option><option>IlClan</option></select>
+        <p class="cta" style="margin-top:1rem">
+            <button class="btn btn-primary">Save</button>
+            <button class="btn">Cancel</button>
+        </p>
+    </div>
+
+    <p class="sample">Tags</p>
+    <p><span class="tag">Standard</span> <span class="tag tag-on">Painted</span>
+       <span class="tag tag-off">Primed</span></p>
+
+    <p class="sample">Table</p>
+    <div class="card">
+        <div class="table-scroll">
+            <table>
+                <tr><th>Weapon</th><th>Short</th><th>Medium</th><th>Long</th><th>Damage</th><th>Heat</th></tr>
+                <tr><td><code>AC/5</code></td><td>6</td><td>12</td><td>18</td><td>5</td><td>1</td></tr>
+                <tr><td><code>LRM-15</code></td><td>7</td><td>14</td><td>21</td><td>1/missile</td><td>5</td></tr>
+                <tr><td><code>PPC</code></td><td>6</td><td>12</td><td>18</td><td>10</td><td>10</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <p class="sample">Grid</p>
+    <div class="grid">
+        <div class="tile"><strong>Classic</strong><p class="muted small" style="margin:0.3rem 0 0">Rules · tools</p></div>
+        <div class="tile"><strong>Alpha Strike</strong><p class="muted small" style="margin:0.3rem 0 0">Rules · tools</p></div>
+        <div class="tile"><strong>Painting</strong><p class="muted small" style="margin:0.3rem 0 0">Factions · manual</p></div>
+    </div>
+
+</main>
+
+<footer class="site-foot">
+    <div class="wrap">
+        <p>Mech Companion · Imprint · Privacy<br>
+        <span class="small">MechWarrior, BattleMech and BattleTech are registered trademarks of The Topps Company, Inc. – not an official site.</span></p>
+    </div>
+</footer>
+
+<!-- Bottom navigation: five areas within thumb reach -->
+<nav class="bottom-nav" aria-label="Main navigation">
+    <a href="#" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11 L12 4 L20 11 V20 H14 V15 H10 V20 H4 Z"/></svg>
+        Home
+    </a>
+    <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 L20 8 V16 L12 21 L4 16 V8 Z"/><path d="M12 3 V21 M4 8 L20 16 M20 8 L4 16" stroke-width="0.9"/></svg>
+        Classic
+    </a>
+    <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 3 L5 14 H11 L9 21 L19 9 H13 Z"/></svg>
+        Alpha Strike
+    </a>
+    <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 4 L20 7 L9 18 L4 20 L6 15 Z"/><path d="M14 7 L17 10" stroke-width="1.2"/></svg>
+        Painting
+    </a>
+    <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4 H11 V20 H5 Z M13 4 H19 V20 H13 Z" stroke-width="1.4"/><path d="M8 8 H8.01 M16 8 H16.01" stroke-width="2.4" stroke-linecap="round"/></svg>
+        Knowledge
+    </a>
+</nav>
+
+<script>
+    // Theme switch - dark is the default, light the remembered deviation.
+    document.getElementById("theme-toggle").addEventListener("click", function () {
+        var root = document.documentElement;
+        var light = root.dataset.theme === "light";
+        if (light) { delete root.dataset.theme; } else { root.dataset.theme = "light"; }
+        try { localStorage.setItem("mechs-theme", light ? "dark" : "light"); } catch (e) {}
+    });
+
+    // Chips: demo only - one selected per row.
+    document.querySelectorAll("[data-demo-chips]").forEach(function (row) {
+        row.addEventListener("click", function (ev) {
+            var chip = ev.target.closest(".chip");
+            if (!chip) return;
+            row.querySelectorAll(".chip").forEach(function (c) { c.setAttribute("aria-pressed", "false"); });
+            chip.setAttribute("aria-pressed", "true");
+        });
+    });
+</script>
+
+</body>
+</html>

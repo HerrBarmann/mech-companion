@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="{{site.defaultLang}}" name="site-default-lang"/>
+<meta content="{{site.name}}" name="site-name"/>
+<title>Hangar – Classic · Mechs</title>
+<meta content="Classic-BattleTech-Record-Sheets digital erfassen: Panzerung, Struktur, Waffen, Pilot – die Datenbasis für den digitalen Datenbogen." name="description"/>
+<meta content="#14161A" name="theme-color"/>
+<link href="../../img/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../../img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="../manifest.webmanifest" rel="manifest"/>
+<link href="../../css/tokens.css" rel="stylesheet"/>
+<link href="../../css/components.css" rel="stylesheet"/>
+<link href="../../css/app.css" rel="stylesheet"/>
+<link href="../../css/tokens.local.css" rel="stylesheet"/>
+<link href="../../css/style.local.css" rel="stylesheet"/>
+<script>try{if(localStorage.getItem("mechs-theme")==="light")document.documentElement.dataset.theme="light";}catch(e){}</script>
+
+<script src="../../js/i18n-de.js"></script>
+<link href="../../classic/hangar.html" hreflang="en" rel="alternate"/>
+<script src="../../js/i18n.js"></script>
+</head>
+<body class="hat-bottom-nav">
+<header class="site-head">
+<div class="wrap">
+<a class="brand" href="../index.html">
+<img alt="" height="34" src="../../img/logo-badge.svg" width="34"/>
+<span class="brand-name"><span class="brand-tld">{{site.brand.prefix}}</span>{{site.brand.core}}<span class="brand-tld">{{site.brand.suffix}}</span></span>
+</a>
+<div class="header-buttons">
+<button aria-label="Tisch-Modus: Display wachhalten" aria-pressed="false" class="btn btn-small btn-icon" hidden="" id="table-btn" title="Tisch-Modus: Display wachhalten" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="10" rx="1.5" width="14" x="5" y="10.5"></rect><path class="shackle-open" d="M8.5 10.5V7.5a3.5 3.5 0 0 1 6.6-1.6"></path><path class="shackle-shut" d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"></path></svg></button>
+<a aria-label="English" class="btn btn-small btn-icon" data-lang="en" href="../../classic/hangar.html" hreflang="en" id="lang-btn" lang="en" title="English">EN</a>
+<button aria-label="Hell/Dunkel umschalten" class="btn btn-small btn-icon" id="theme-btn" title="Hell/Dunkel" type="button">◐</button>
+</div>
+</div>
+</header>
+<main class="wrap">
+<noscript><p class="flash flash-err">Diese Seite braucht JavaScript – Hangar, Gefecht, Würfel und Suche werden damit aufgebaut.</p></noscript>
+<div class="hero">
+<p class="eyebrow">Classic BattleTech</p>
+<h1>Hangar</h1>
+<p class="sub short"><b>Suchen → übernehmen → Pilot eintragen → speichern.</b> Eigenbauten über „+ Eigenbau anlegen“. Struktur füllt sich automatisch aus der Tonnage.</p>
+<p class="cta"><a class="btn btn-primary" href="battle.html">Ins Gefecht</a></p>
+</div>
+<div class="flash" hidden="" id="message"></div>
+<div class="card highlight" hidden="" id="import-offer">
+<p id="import-offer-text" style="margin:0 0 0.8rem"></p>
+<p class="cta" style="margin:0"><button class="btn btn-primary" id="import-yes-btn" type="button">Übernehmen</button> <button class="btn" id="import-no-btn" type="button">Verwerfen</button></p>
+</div>
+<div class="card highlight">
+<h2 style="font-size:1.05rem">Aus der Datenbank</h2>
+<p class="muted small" style="margin-top:0">4000+ BattleMech-Varianten aus <a href="https://github.com/MegaMek/mm-data" rel="noopener">MegaMek mm-data</a> (CC BY-NC-SA 4.0) – aussuchen statt abschreiben: Panzerung, Waffen und Krit-Slots kommen fertig ausgefüllt.</p>
+<label for="db-search">’Mech suchen</label>
+<input id="db-search" placeholder="z. B. Atlas, Timber Wolf, Locust …" type="search"/>
+<p class="no-match" hidden="" id="db-status"></p>
+<div id="db-results"></div>
+</div>
+<p class="cta"><button class="btn btn-primary" id="new-btn" type="button">+ Eigenbau anlegen</button> <button class="btn" id="export-btn" type="button">Backup exportieren</button> <label class="btn" style="margin:0"> Backup einlesen <input accept=".json,application/json" hidden="" id="import-field" type="file"/> </label> <a class="btn" href="record-sheet.html">Bogen drucken</a> <a class="btn" href="campaign.html">Kampagne</a></p>
+<div class="card" hidden="" id="editor">
+<h2 id="editor-title" style="font-size:1.05rem">Neuer ’Mech</h2>
+<form id="mech-form">
+<div class="form-grid">
+<div class="wide">
+<label for="f-name">Name / Variante</label>
+<input id="f-name" name="name" placeholder="Atlas AS7-D" required="" type="text"/>
+</div>
+<div>
+<label for="f-tonnage">Tonnage</label>
+<select id="f-tonnage" name="tonnage" required="">
+<option value="20">20</option><option value="25">25</option>
+<option value="30">30</option><option value="35">35</option>
+<option value="40">40</option><option value="45">45</option>
+<option selected="" value="50">50</option><option value="55">55</option>
+<option value="60">60</option><option value="65">65</option>
+<option value="70">70</option><option value="75">75</option>
+<option value="80">80</option><option value="85">85</option>
+<option value="90">90</option><option value="95">95</option>
+<option value="100">100</option>
+</select>
+</div>
+<div><label for="f-walk">Gehen (MP)</label><input id="f-walk" inputmode="numeric" max="12" min="0" name="walk" required="" type="number"/></div>
+<div><label for="f-jump">Springen (MP)</label><input id="f-jump" inputmode="numeric" max="12" min="0" name="jump" type="number" value="0"/></div>
+<div><label for="f-bv">BV (optional)</label><input id="f-bv" inputmode="numeric" min="0" name="bv" type="number"/></div>
+<div><label for="f-pilotName">Pilot</label><input id="f-pilotName" name="pilotName" placeholder="Name (optional)" type="text"/></div>
+<div><label for="f-gunnery">Gunnery</label><input id="f-gunnery" inputmode="numeric" max="8" min="0" name="gunnery" required="" type="number" value="4"/></div>
+<div><label for="f-piloting">Piloting</label><input id="f-piloting" inputmode="numeric" max="8" min="0" name="piloting" required="" type="number" value="5"/></div>
+<div><label for="f-heatSinks">Wärmetauscher</label><input id="f-heatSinks" inputmode="numeric" max="40" min="0" name="heatSinks" required="" type="number" value="10"/></div>
+<div style="align-self:end;padding-bottom:0.4rem">
+<label style="display:inline-flex;align-items:center;gap:0.5rem;text-transform:none;letter-spacing:0;font-size:0.9rem;color:var(--ink)"><input name="double" style="width:20px;height:20px;accent-color:var(--accent)" type="checkbox"/> doppelte</label>
+</div>
+</div>
+<h3 style="font-size:0.95rem;margin:1.3rem 0 0.2rem">Panzerung je Zone</h3>
+<p class="hint" id="structure-display"></p>
+<div class="form-grid">
+<div><label for="f-a_head">Kopf</label><input id="f-a_head" inputmode="numeric" max="9" min="0" name="a_head" required="" type="number"/></div>
+<div><label for="f-a_ct">Zentraltorso</label><input id="f-a_ct" inputmode="numeric" max="99" min="0" name="a_ct" required="" type="number"/></div>
+<div><label for="f-a_ctr">ZT hinten</label><input id="f-a_ctr" inputmode="numeric" max="99" min="0" name="a_ctr" required="" type="number"/></div>
+<div><label for="f-a_rt">Rechter Torso</label><input id="f-a_rt" inputmode="numeric" max="99" min="0" name="a_rt" required="" type="number"/></div>
+<div><label for="f-a_rtr">RT hinten</label><input id="f-a_rtr" inputmode="numeric" max="99" min="0" name="a_rtr" required="" type="number"/></div>
+<div><label for="f-a_lt">Linker Torso</label><input id="f-a_lt" inputmode="numeric" max="99" min="0" name="a_lt" required="" type="number"/></div>
+<div><label for="f-a_ltr">LT hinten</label><input id="f-a_ltr" inputmode="numeric" max="99" min="0" name="a_ltr" required="" type="number"/></div>
+<div><label for="f-a_ra">Rechter Arm</label><input id="f-a_ra" inputmode="numeric" max="99" min="0" name="a_ra" required="" type="number"/></div>
+<div><label for="f-a_la">Linker Arm</label><input id="f-a_la" inputmode="numeric" max="99" min="0" name="a_la" required="" type="number"/></div>
+<div><label for="f-a_rl">Rechtes Bein</label><input id="f-a_rl" inputmode="numeric" max="99" min="0" name="a_rl" required="" type="number"/></div>
+<div><label for="f-a_ll">Linkes Bein</label><input id="f-a_ll" inputmode="numeric" max="99" min="0" name="a_ll" required="" type="number"/></div>
+</div>
+<h3 style="font-size:0.95rem;margin:1.3rem 0 0.4rem">Waffen &amp; Munition</h3>
+<div id="weapon-rows"></div>
+<p><button class="btn btn-small" id="weapon-add-btn" type="button">+ Waffe</button></p>
+<h3 style="font-size:0.95rem;margin:1.3rem 0 0.2rem">Fähigkeiten &amp; Quirks</h3>
+<p class="hint">Alles, was dauerhaft an diesem ’Mech hängt und die Zielzahl verschiebt: Pilotenfähigkeiten, Quirks, Hausregeln. Im Gefecht sind sie einzeln zuschaltbar.</p>
+<div id="mod-rows"></div>
+<p><button class="btn btn-small" id="mod-add-btn" type="button">+ Modifikator</button></p>
+<h3 style="font-size:0.95rem;margin:1.3rem 0 0.2rem">Kritische Trefferzonen (Slots)</h3>
+<p class="hint">Vorbelegt mit den Standard-Slots. Waffen und Ausrüstung vom Record Sheet in die freien Slots eintragen – Mehrslot-Waffen in jeden belegten Slot. Leer = beim Krit neu würfeln.</p>
+<div class="slot-editor" id="slot-editor"></div>
+<div class="form-grid" style="margin-top:0.8rem">
+<div class="wide">
+<label for="f-notes">Notizen</label>
+<textarea id="f-notes" name="notes" placeholder="Bemalung, Umbauten, Eigenheiten …" rows="2"></textarea>
+</div>
+<div class="wide">
+<label for="f-photo">Foto des Modells (optional)</label>
+<input accept="image/*" id="f-photo" name="photo" type="file"/>
+<img alt="Foto-Vorschau" class="photo-preview" hidden="" id="f-photo-preview"/>
+</div>
+</div>
+<p class="cta" style="margin-top:1.1rem"><button class="btn btn-primary" type="submit">Speichern</button> <button class="btn" id="cancel-btn" type="button">Abbrechen</button> <button class="btn btn-small btn-danger" id="photo-remove-btn" type="button">Foto entfernen</button></p>
+</form>
+</div>
+<p class="muted" hidden="" id="hangar-empty">Noch keine ’Mechs im Hangar. Leg mit „+ Neuer ’Mech“ den ersten an – einfach vom Record Sheet abschreiben (<a href="https://flechs.net" rel="noopener">Flechs Sheets</a> hilft beim Nachschlagen).</p>
+<div id="mech-list"></div>
+</main>
+<footer class="site-foot">
+<div class="wrap">
+<p class="rules-version">Hangar-Daten liegen nur auf diesem Gerät (localStorage/IndexedDB). Sichern per Datei-Export – auch vor Browser-Putzaktionen.</p>
+<p>{{site.name}} · <a href="../imprint.html">Impressum</a> · <a href="../privacy.html">Datenschutz</a><br/> <span class="small">Mech Companion von Dennis Bormann · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a><br/>MechWarrior, BattleMech, ’Mech und BattleTech sind eingetragene Marken von The Topps Company, Inc. Catalyst Game Labs ist Lizenznehmer. Inoffizielle, private Fanseite.</span></p>
+</div>
+</footer>
+<nav aria-label="Bereichsnavigation" class="bottom-nav">
+<a href="../index.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4 11 L12 4 L20 11 V20 H14 V15 H10 V20 H4 Z"></path></svg>
+        Start
+    </a>
+<a aria-current="page" href="hangar.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M3 20 V10 L12 4 L21 10 V20"></path><path d="M8 20 V13 H16 V20" stroke-width="1.4"></path></svg>
+        Hangar
+    </a>
+<a href="battle.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="6"></circle><path d="M12 2 V6 M12 18 V22 M2 12 H6 M18 12 H22" stroke-width="1.4"></path></svg>
+        Gefecht
+    </a>
+<a href="rules.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 3 H18 V21 H6 Z"></path><path d="M9 7 H15 M9 11 H15 M9 15 H13" stroke-width="1.4"></path></svg>
+        Regeln
+    </a>
+<a href="hit-locations.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 3 L17 6 V12 C17 16 15 19 12 21 C9 19 7 16 7 12 V6 Z"></path><path d="M12 3 V21 M7 12 H17" stroke-width="1.2"></path></svg>
+        Trefferzonen
+    </a>
+</nav>
+<script src="../../js/app.js"></script>
+<script src="../../js/migrate.js"></script>
+<script src="../../js/storage.js"></script>
+<script src="../../js/vendor/qrcode.js"></script>
+<script src="../../js/share.js"></script>
+<script src="../../js/modifiers.js"></script>
+<script src="../../js/campaign.js"></script>
+<script src="../../js/classic-hangar.js"></script>
+</body>
+</html>

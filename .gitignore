@@ -1,0 +1,25 @@
+# Zugangsdaten und alles Personalisierte bleiben außerhalb des Repos
+.env
+site/
+dist/
+dist-generic/
+
+# Rohdaten der Konverter (werden nicht versioniert, siehe tools/README.md)
+mm-data/
+mekbay-units.json
+mekbay-equipment.json
+
+# System und Editor
+.DS_Store
+Thumbs.db
+.claude/settings.local.json
+.vscode/
+.idea/
+
+# Generierte Berichte (der Generator schreibt sie bei jedem Lauf neu)
+tools/i18n/*/_missing.json
+
+# Arbeitsanweisungen und Werkzeugkonfiguration für den Assistenten,
+# nicht Teil des Projekts
+CLAUDE.md
+.claude/

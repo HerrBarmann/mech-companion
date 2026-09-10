@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="{{site.defaultLang}}" name="site-default-lang"/>
+<meta content="{{site.name}}" name="site-name"/>
+<title>Karten drucken – Alpha Strike · Mechs</title>
+<meta content="Unit Cards der eigenen Alpha-Strike-Einheiten als Druckbogen: auswählen, drucken oder als PDF sichern." name="description"/>
+<meta content="#14161A" name="theme-color"/>
+<link href="../../img/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../../img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="../manifest.webmanifest" rel="manifest"/>
+<link href="../../css/tokens.css" rel="stylesheet"/>
+<link href="../../css/components.css" rel="stylesheet"/>
+<link href="../../css/app.css" rel="stylesheet"/>
+<link href="../../css/tokens.local.css" rel="stylesheet"/>
+<link href="../../css/style.local.css" rel="stylesheet"/>
+<link href="../../css/print.css" rel="stylesheet"/>
+<script>try{if(localStorage.getItem("mechs-theme")==="light")document.documentElement.dataset.theme="light";}catch(e){}</script>
+
+<script src="../../js/i18n-de.js"></script>
+<link href="../../alpha-strike/unit-cards.html" hreflang="en" rel="alternate"/>
+<script src="../../js/i18n.js"></script>
+</head>
+<body class="hat-bottom-nav">
+<header class="site-head">
+<div class="wrap">
+<a class="brand" href="../index.html">
+<img alt="" height="34" src="../../img/logo-badge.svg" width="34"/>
+<span class="brand-name"><span class="brand-tld">{{site.brand.prefix}}</span>{{site.brand.core}}<span class="brand-tld">{{site.brand.suffix}}</span></span>
+</a>
+<div class="header-buttons">
+<button aria-label="Tisch-Modus: Display wachhalten" aria-pressed="false" class="btn btn-small btn-icon" hidden="" id="table-btn" title="Tisch-Modus: Display wachhalten" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="10" rx="1.5" width="14" x="5" y="10.5"></rect><path class="shackle-open" d="M8.5 10.5V7.5a3.5 3.5 0 0 1 6.6-1.6"></path><path class="shackle-shut" d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"></path></svg></button>
+<a aria-label="English" class="btn btn-small btn-icon" data-lang="en" href="../../alpha-strike/unit-cards.html" hreflang="en" id="lang-btn" lang="en" title="English">EN</a>
+<button aria-label="Hell/Dunkel umschalten" class="btn btn-small btn-icon" id="theme-btn" title="Hell/Dunkel" type="button">◐</button>
+</div>
+</div>
+</header>
+<main class="wrap">
+<noscript><p class="flash flash-err">Diese Seite braucht JavaScript – die Karten werden aus den Hangar-Daten im Browser aufgebaut.</p></noscript>
+<div class="hero">
+<p class="eyebrow">Alpha Strike</p>
+<h1>Karten drucken</h1>
+<p class="sub short"><b>Auswählen → drucken.</b> Vier Unit Cards je A4-Seite, zum Abstreichen mit Stift. Im Druckdialog „Als PDF sichern“ wählen, dann liegt der Satz auf dem Gerät.</p>
+</div>
+<div class="card print-selection" id="selection-card">
+<div class="pip-label"><span>Einheiten</span><span id="selection-status"></span></div>
+<p class="muted small" hidden="" id="selection-empty">Der Hangar ist leer – <a href="hangar.html">erst Einheiten anlegen</a>.</p>
+<div id="selection-list"></div>
+<p class="cta print-controls"><button class="btn btn-primary" id="print-btn" type="button">Drucken</button> <button class="btn btn-small" id="all-btn" type="button">Alle</button> <button class="btn btn-small" id="none-btn" type="button">Keine</button> <a class="btn btn-small" href="hangar.html">Zurück zum Hangar</a></p>
+<p class="print-note">Die Bögen liegen bewusst auf weißem Papier – so sieht die Vorschau aus wie der Ausdruck. Kopf- und Fußzeilen des Browsers lassen sich im Druckdialog abschalten.</p>
+</div>
+<div id="sheet"></div>
+</main>
+<footer class="site-foot">
+<div class="wrap">
+<p class="rules-version">Kartenwerte: Alpha Strike Commander’s Edition · Stand August 2026.</p>
+<p>{{site.name}} · <a href="../imprint.html">Impressum</a> · <a href="../privacy.html">Datenschutz</a><br/> <span class="small">Mech Companion von Dennis Bormann · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a><br/>MechWarrior, BattleMech, ’Mech und BattleTech sind eingetragene Marken von The Topps Company, Inc. Catalyst Game Labs ist Lizenznehmer. Inoffizielle, private Fanseite.</span></p>
+</div>
+</footer>
+<nav aria-label="Bereichsnavigation" class="bottom-nav">
+<a href="../index.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4 11 L12 4 L20 11 V20 H14 V15 H10 V20 H4 Z"></path></svg>
+        Start
+    </a>
+<a aria-current="page" href="hangar.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M3 20 V10 L12 4 L21 10 V20"></path><path d="M8 20 V13 H16 V20" stroke-width="1.4"></path></svg>
+        Hangar
+    </a>
+<a href="battle.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="6"></circle><path d="M12 2 V6 M12 18 V22 M2 12 H6 M18 12 H22" stroke-width="1.4"></path></svg>
+        Gefecht
+    </a>
+<a href="rules.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 3 H18 V21 H6 Z"></path><path d="M9 7 H15 M9 11 H15 M9 15 H13" stroke-width="1.4"></path></svg>
+        Regeln
+    </a>
+</nav>
+<script src="../../js/app.js"></script>
+<script src="../../js/migrate.js"></script>
+<script src="../../js/storage.js"></script>
+<script src="../../js/as-unit-cards.js"></script>
+</body>
+</html>

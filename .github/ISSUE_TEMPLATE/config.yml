@@ -1,0 +1,4 @@
+# Keep the plain "open a blank issue" way as well - not every report fits a
+# form. (No contact_links here: those need absolute URLs, and the repository
+# address is not settled yet.)
+blank_issues_enabled: true

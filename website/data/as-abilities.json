@@ -1,0 +1,407 @@
+{
+    "_note": "Alpha Strike special abilities (Commander's Edition) - curated short explanations for the codes that come up at the table, extend as needed (CONCEPT 3.3). # stands for a number, #/#/# for values per range band S/M/L. In doubt the rulebook wins. Entry: {key, name, text}.",
+    "version": 1,
+    "asOf": "2026-08 · Alpha Strike: Commander's Edition · every code in the unit database",
+    "abilities": [
+        {
+            "key": "ABA",
+            "name": "Anti-Penetrative Ablation Armor",
+            "text": "Ablative armor: ignores MTAS/BTAS tasers and armor-piercing ammunition."
+        },
+        {
+            "key": "AC#/#/#",
+            "name": "Autocannon",
+            "text": "Autocannon partial damage per range band; may fire special ammunition, otherwise treated as normal damage."
+        },
+        {
+            "key": "AECM",
+            "name": "Angel ECM",
+            "text": "Angel jamming field: like ECM, but counts as two ECM suites – overcomes simple countermeasures."
+        },
+        {
+            "key": "AFC",
+            "name": "Advanced Fire Control",
+            "text": "Advanced fire control: no attack penalties for IndustrialMechs/support vehicles due to basic fire control."
+        },
+        {
+            "key": "AM",
+            "name": "Anti-’Mech",
+            "text": "Infantry may attack ’Mechs in close combat (swarm/leg attacks)."
+        },
+        {
+            "key": "AMS",
+            "name": "Anti-Missile System",
+            "text": "−1 damage (min. 0) against attacks with an IF, LRM or SRM component from the front arc."
+        },
+        {
+            "key": "ARM",
+            "name": "Armored Components",
+            "text": "Armored components: the first critical hit against this unit is ignored."
+        },
+        {
+            "key": "ARS",
+            "name": "Armored Motive System",
+            "text": "Vehicles: motive crits are mitigated (−1 to the motive damage roll)."
+        },
+        {
+            "key": "ART…-#",
+            "name": "Artillery",
+            "text": "Artillery strikes (area attacks, see rulebook); code = type, number = tubes: AIS/AC = Arrow IV (IS/Clan), S = Sniper, T = Thumper, LT = Long Tom, trailing C = cannon version (ARTSC, ARTTC, ARTLTC)."
+        },
+        {
+            "key": "BAR",
+            "name": "Barrier Armor Rating",
+            "text": "Weak armor (industrial/primitive): armor damage counts as structure damage – roll for a crit on every hit."
+        },
+        {
+            "key": "BFC",
+            "name": "Basic Fire Control",
+            "text": "Basic fire control: +1 to attacks by this IndustrialMech/vehicle (already included if the card is current)."
+        },
+        {
+            "key": "BH",
+            "name": "Bloodhound Active Probe",
+            "text": "Bloodhound probe: 26″ range, unaffected by ECM."
+        },
+        {
+            "key": "BHJ / BHJII / BHJIII",
+            "name": "BattleMech HarJel",
+            "text": "Sealing system: hull breaches under water/in vacuum are ignored. HarJel II/III additionally regenerate 2 or 3 armor per turn."
+        },
+        {
+            "key": "BRA",
+            "name": "Ballistic-Reinforced Armor",
+            "text": "Ballistic-reinforced armor: half damage from AC, IATM, IF, LRM and SRM special attacks."
+        },
+        {
+            "key": "BT",
+            "name": "Booby Trap",
+            "text": "Booby trap: can self-detonate – damage equal to half its point value to everything within 1″."
+        },
+        {
+            "key": "C3M / C3S / C3BSM / C3BSS / C3EM / C3I",
+            "name": "C3 network",
+            "text": "Within the same C3 network: targets at short range of a network member with line of sight count as one range bracket closer for all members. Master (M) links, slaves (S) benefit; C3I is the decentralised Clan/ComStar counterpart."
+        },
+        {
+            "key": "CASE",
+            "name": "Cellular Ammunition Storage",
+            "text": "Ammo hit: 1 extra damage instead of destruction – the ’Mech survives the explosion."
+        },
+        {
+            "key": "CASEII",
+            "name": "CASE II",
+            "text": "Ammo hits are ignored completely (no extra damage)."
+        },
+        {
+            "key": "CR",
+            "name": "Critical Resistant",
+            "text": "Hard to cripple: all crit rolls against this unit −2."
+        },
+        {
+            "key": "CT# / CK#",
+            "name": "Cargo Transport",
+            "text": "Cargo transport: can carry # tons (CT) or kilotons (CK) of cargo, or units with the CAR ability."
+        },
+        {
+            "key": "DCC#",
+            "name": "Drone Carrier Control",
+            "text": "Drone control station: can control up to # drones (DRO) at once."
+        },
+        {
+            "key": "DJ",
+            "name": "RISC Viral Jammer (Decoy)",
+            "text": "Decoy jammer: disrupts enemy electronics (see rulebook)."
+        },
+        {
+            "key": "DN",
+            "name": "Direct Neural Control",
+            "text": "Direct neural interface: Skill −1; a fire control crit additionally stuns the crew."
+        },
+        {
+            "key": "DRO",
+            "name": "Drone",
+            "text": "Unmanned drone: Skill +1, needs a control station (DCC); shuts down inside an ECM field."
+        },
+        {
+            "key": "ECM",
+            "name": "Electronic Countermeasures",
+            "text": "6″ jamming field: enemy C3 networks, drones and PRB/BH advantages are suppressed inside it."
+        },
+        {
+            "key": "ECS",
+            "name": "RISC Emergency Coolant System",
+            "text": "Emergency coolant: can shed extra heat, but risks self-damage (see rulebook)."
+        },
+        {
+            "key": "EE",
+            "name": "Elementary Engine",
+            "text": "Non-fusion engine (combustion/battery): engine hits can explode."
+        },
+        {
+            "key": "ENE",
+            "name": "Energy",
+            "text": "All-energy weaponry: no ammunition, ammo crits have no effect."
+        },
+        {
+            "key": "ENG",
+            "name": "Engineering",
+            "text": "Engineering equipment: can clear woods and work terrain (like SAW)."
+        },
+        {
+            "key": "ES",
+            "name": "Ejection Seat",
+            "text": "Ejection seat: on an ammo crit the pilot ejects automatically and survives."
+        },
+        {
+            "key": "FC",
+            "name": "Fuel Cell Engine",
+            "text": "Fuel cell engine: like EE – no fusion reactor, engine hits can explode."
+        },
+        {
+            "key": "FLK#/#/#",
+            "name": "Flak",
+            "text": "Anti-aircraft: against airborne targets the FLK damage applies and the attack gets −2."
+        },
+        {
+            "key": "FR",
+            "name": "Fire Resistant",
+            "text": "Fire-resistant armor: immune to HT extra heat and fire/inferno."
+        },
+        {
+            "key": "HPG",
+            "name": "Hyperpulse Generator",
+            "text": "Mobile HPG transmitter: strategic communication, special rules – no direct combat effect in battle."
+        },
+        {
+            "key": "HT#/#/#",
+            "name": "Heat",
+            "text": "On hits, inflicts extra heat on the target equal to the HT value for the range (max. 2 per turn)."
+        },
+        {
+            "key": "I-TSM",
+            "name": "Industrial TSM",
+            "text": "Industrial myomer: +1 physical damage, but no sprinting."
+        },
+        {
+            "key": "IATM#/#/#",
+            "name": "Improved ATM",
+            "text": "Clan iATM: missile partial damage per range band, may use special ammunition (see rulebook)."
+        },
+        {
+            "key": "IF#",
+            "name": "Indirect Fire",
+            "text": "Indirect fire without line of sight using the IF damage value (long range); needs a spotter, attack +1."
+        },
+        {
+            "key": "INARC#",
+            "name": "Improved NARC Beacon",
+            "text": "Improved NARC launcher: like SNARC, can additionally fire jamming/Nemesis pods."
+        },
+        {
+            "key": "IRA",
+            "name": "Impact-Resistant Armor",
+            "text": "Impact-resistant armor: melee/physical damage −1 (min. 1), crit rolls against this unit +1 (see rulebook)."
+        },
+        {
+            "key": "IT#",
+            "name": "Infantry Transport",
+            "text": "Can carry # points of infantry."
+        },
+        {
+            "key": "JMPS#",
+            "name": "Jumping (strong)",
+            "text": "Above-average jump jets: +# to own TMM when jumping (instead of a flat +1)."
+        },
+        {
+            "key": "JMPW#",
+            "name": "Jumping (weak)",
+            "text": "Weak jump jets: −# to the jump TMM bonus."
+        },
+        {
+            "key": "LG / VLG / SLG",
+            "name": "Large / Very Large / Super Large",
+            "text": "Oversized unit: easier to hit (−1 per step to enemy attacks) and special rules for transport/terrain."
+        },
+        {
+            "key": "LPRB",
+            "name": "Light Active Probe",
+            "text": "Light sensor probe: detects hidden units within 6″ (instead of 3″ visibility)."
+        },
+        {
+            "key": "LRM#/#/#",
+            "name": "Long Range Missiles",
+            "text": "LRM partial damage per band – relevant for AMS, special ammunition and indirect fire."
+        },
+        {
+            "key": "LTAG",
+            "name": "Light TAG",
+            "text": "Light laser designator: like TAG, but only 6″ range."
+        },
+        {
+            "key": "MAS / LMAS",
+            "name": "Mimetic Armor System",
+            "text": "Mimetic camouflage: if the unit did not move, +3 to enemy to-hit numbers (LMAS: +2)."
+        },
+        {
+            "key": "MDS#",
+            "name": "Mine Dispenser",
+            "text": "Mine layer: can lay minefields as a special attack."
+        },
+        {
+            "key": "MEL",
+            "name": "Melee",
+            "text": "Melee weapon (sword, hatchet …): physical attack with 2″ reach and Size +1 damage."
+        },
+        {
+            "key": "MHQ#",
+            "name": "Mobile Headquarters",
+            "text": "Mobile headquarters: provides # points of command range for command special rules."
+        },
+        {
+            "key": "MTAS#",
+            "name": "’Mech Taser",
+            "text": "’Mech taser: special attack that can disable/shut down units it hits."
+        },
+        {
+            "key": "NOVA",
+            "name": "Nova CEWS",
+            "text": "Nova combined system: like C3i (max. 3 units) plus ECM plus probe – and itself immune to ECM."
+        },
+        {
+            "key": "OMNI",
+            "name": "OmniMech",
+            "text": "Omni unit: can carry battle armor as riders and is freely reconfigurable in campaign play."
+        },
+        {
+            "key": "OVL",
+            "name": "Overheat Long",
+            "text": "Overheat also applies at long range (otherwise only short/medium)."
+        },
+        {
+            "key": "PRB",
+            "name": "Active Probe",
+            "text": "Active probe: detects hidden units within 12″."
+        },
+        {
+            "key": "RAMS",
+            "name": "RISC Advanced Point Defense",
+            "text": "Missile defense: reduces damage from MSL/LRM/SRM attacks and also protects nearby units."
+        },
+        {
+            "key": "RCA",
+            "name": "Reactive Armor",
+            "text": "Reactive armor: reduced damage from ART, BOMB, MSL, LRM, SRM, IF and FLK attacks."
+        },
+        {
+            "key": "RCN",
+            "name": "Recon",
+            "text": "Scout: advantages under spotting and initiative special rules."
+        },
+        {
+            "key": "REAR#/#/#",
+            "name": "Rear Weapons",
+            "text": "Rear weapons: attack into the rear arc with the REAR values, to-hit +1."
+        },
+        {
+            "key": "REL",
+            "name": "Re-Engineered Lasers",
+            "text": "Re-engineered lasers: ignore RFA reflective armor and reduce the target’s CR advantage to −1."
+        },
+        {
+            "key": "RFA",
+            "name": "Reflective Armor",
+            "text": "Laser-reflective armor: reduces damage from energy attacks; REL bypasses it (see rulebook)."
+        },
+        {
+            "key": "RHS",
+            "name": "Radical Heat Sink",
+            "text": "Radical heat sink: can attempt to shed extra heat – with a risk of failure (see rulebook)."
+        },
+        {
+            "key": "RSD#",
+            "name": "Remote Sensor Dispenser",
+            "text": "Can deploy # remote sensors (spotting without own line of sight)."
+        },
+        {
+            "key": "SAW",
+            "name": "Saw",
+            "text": "Industrial saw: can clear woods."
+        },
+        {
+            "key": "SEAL",
+            "name": "Environmental Sealing",
+            "text": "Environmentally sealed: underwater/vacuum without special damage."
+        },
+        {
+            "key": "SHLD",
+            "name": "BattleMech Shield",
+            "text": "Shield: −1 damage taken, but +1 to own weapon attacks; does not work against area damage, heat or IF."
+        },
+        {
+            "key": "SNARC# / CNARC#",
+            "name": "NARC Missile Beacon",
+            "text": "NARC launcher (medium range): a marked target takes +1 damage from units with IF, LRM or SRM until the end of the game. CNARC = Compact (short range)."
+        },
+        {
+            "key": "SOA",
+            "name": "Space Operations Adaptation",
+            "text": "Space-capable: can operate in vacuum/space."
+        },
+        {
+            "key": "SRCH",
+            "name": "Searchlight",
+            "text": "Searchlight: negates night-fighting modifiers against illuminated targets (makes itself visible)."
+        },
+        {
+            "key": "SRM#/#/#",
+            "name": "Short Range Missiles",
+            "text": "SRM partial damage per band – relevant for AMS and special ammunition."
+        },
+        {
+            "key": "STL",
+            "name": "Stealth",
+            "text": "Stealth system: attacks against this unit +1 at medium, +2 at long range."
+        },
+        {
+            "key": "SUBW# / SUBS#",
+            "name": "Submersible Movement",
+            "text": "Submersible drive: can move under water; the value modifies TMM in water (W = weak, S = strong)."
+        },
+        {
+            "key": "TAG",
+            "name": "Target Acquisition Gear",
+            "text": "Laser designator: marks targets for artillery and homing ammunition (no damage of its own)."
+        },
+        {
+            "key": "TOR#/#/#",
+            "name": "Torpedo",
+            "text": "Torpedo launcher: damage per range band – only against targets in or under water."
+        },
+        {
+            "key": "TSEMP# / TSEMP-O#",
+            "name": "Tight-Stream EMP",
+            "text": "EMP cannon: special attack that can disrupt or completely shut down the target (-O = one-shot, see rulebook)."
+        },
+        {
+            "key": "TSM",
+            "name": "Triple-Strength Myomer",
+            "text": "At heat level 1+: +2″ movement and +1 physical damage instead of the usual movement penalties from that level."
+        },
+        {
+            "key": "TUR(...)",
+            "name": "Turret",
+            "text": "Turret with its own weapon values in brackets: may fire into any arc."
+        },
+        {
+            "key": "UMU",
+            "name": "Underwater Maneuvering Unit",
+            "text": "Underwater drive: moves under water using its jump movement value."
+        },
+        {
+            "key": "WAT",
+            "name": "Watchdog",
+            "text": "Combination of LPRB and ECM in one system."
+        }
+    ]
+}

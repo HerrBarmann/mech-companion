@@ -1,0 +1,32 @@
+name: Language pack
+description: Offer a new language, or fix a translation
+labels: ["i18n"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A pack is five steps and no code — see
+        [docs/I18N.md](../blob/main/docs/I18N.md). English game terms usually
+        stay as they are: the game material uses them, and so do the players.
+  - type: input
+    id: language
+    attributes:
+      label: Language
+      placeholder: "fr — Français"
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is this about
+      options:
+        - A new pack (I would like to work on it)
+        - A wrong or awkward translation in an existing pack
+        - A question about how packs work
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: Detail
+      description: "For a correction: the English source text, what it says now, what it should say."

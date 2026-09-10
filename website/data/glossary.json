@@ -1,0 +1,766 @@
+{
+    "_note": "Glossary English <-> German (CONCEPT 3.5). Record sheets and unit cards are English, so the glossary translates both ways. Entry: {en, de, category, note?}; the category ids are the keys of 'categories'.",
+    "version": 1,
+    "asOf": "2026-08 · Total Warfare / BattleMech Manual · Alpha Strike: Commander's Edition",
+    "categories": {
+        "record-sheet": "Record sheet",
+        "movement": "Movement",
+        "combat": "Combat",
+        "heat": "Heat",
+        "pilot": "Pilot",
+        "alpha-strike": "Alpha Strike",
+        "technology": "Technology & equipment",
+        "formations": "Formations",
+        "universe": "Universe"
+    },
+    "entries": [
+        {
+            "en": "Record Sheet",
+            "de": "Datenbogen",
+            "category": "record-sheet",
+            "note": "The Classic sheet with armor, crit slots, weapons – here: the digital record sheet in battle."
+        },
+        {
+            "en": "Armor",
+            "de": "Panzerung",
+            "category": "record-sheet"
+        },
+        {
+            "en": "Internal Structure",
+            "de": "Interne Struktur",
+            "category": "record-sheet",
+            "note": "What is left after the armor – damage here triggers crit rolls."
+        },
+        {
+            "en": "Critical Slot",
+            "de": "Krit-Feld / Slot",
+            "category": "record-sheet",
+            "note": "The numbered slots per location; D6 rolls determine the slot hit."
+        },
+        {
+            "en": "Critical Hit",
+            "de": "Kritischer Treffer (Krit)",
+            "category": "combat"
+        },
+        {
+            "en": "Hit Location",
+            "de": "Trefferzone",
+            "category": "combat",
+            "note": "2D6 roll on the hit location table – see the hit location helper."
+        },
+        {
+            "en": "Head",
+            "de": "Kopf",
+            "category": "record-sheet"
+        },
+        {
+            "en": "Center Torso (CT)",
+            "de": "Zentraltorso (ZT)",
+            "category": "record-sheet"
+        },
+        {
+            "en": "Right/Left Torso (RT/LT)",
+            "de": "Rechter/Linker Torso",
+            "category": "record-sheet"
+        },
+        {
+            "en": "Right/Left Arm (RA/LA)",
+            "de": "Rechter/Linker Arm",
+            "category": "record-sheet"
+        },
+        {
+            "en": "Right/Left Leg (RL/LL)",
+            "de": "Rechtes/Linkes Bein",
+            "category": "record-sheet"
+        },
+        {
+            "en": "Rear Armor",
+            "de": "Heckpanzerung",
+            "category": "record-sheet",
+            "note": "Only the three torso locations have rear values."
+        },
+        {
+            "en": "Engine",
+            "de": "Triebwerk / Reaktor",
+            "category": "record-sheet",
+            "note": "Three hits = destroyed; every hit +5 heat per turn."
+        },
+        {
+            "en": "Gyro",
+            "de": "Gyroskop",
+            "category": "record-sheet",
+            "note": "Hits force piloting rolls; two hits = unable to stand."
+        },
+        {
+            "en": "Sensors",
+            "de": "Sensoren",
+            "category": "record-sheet",
+            "note": "First hit +2 to attacks, second: no more weapon attacks."
+        },
+        {
+            "en": "Cockpit",
+            "de": "Cockpit",
+            "category": "record-sheet",
+            "note": "Hit = MechWarrior dead, ’Mech out of action."
+        },
+        {
+            "en": "Life Support",
+            "de": "Lebenserhaltung",
+            "category": "record-sheet"
+        },
+        {
+            "en": "Actuator",
+            "de": "Aktuator",
+            "category": "record-sheet",
+            "note": "Arm/leg joint motors; hits worsen movement or physical attacks."
+        },
+        {
+            "en": "Shoulder / Hip",
+            "de": "Schulter / Hüfte",
+            "category": "record-sheet"
+        },
+        {
+            "en": "Heat Sink",
+            "de": "Wärmetauscher",
+            "category": "heat",
+            "note": "Dissipates 1 heat per turn, a double heat sink 2."
+        },
+        {
+            "en": "Double Heat Sink (DHS)",
+            "de": "Doppelwärmetauscher",
+            "category": "heat"
+        },
+        {
+            "en": "Ammunition (Ammo)",
+            "de": "Munition",
+            "category": "record-sheet",
+            "note": "Crit on ammo = explosion (CASE limits the damage)."
+        },
+        {
+            "en": "Ammo Explosion",
+            "de": "Munitionsexplosion",
+            "category": "combat"
+        },
+        {
+            "en": "Jump Jets",
+            "de": "Sprungdüsen",
+            "category": "movement"
+        },
+        {
+            "en": "Movement Points (MP)",
+            "de": "Bewegungspunkte (BP)",
+            "category": "movement"
+        },
+        {
+            "en": "Walk / Run / Jump",
+            "de": "Gehen / Laufen / Springen",
+            "category": "movement",
+            "note": "Running = walking × 1.5 (rounded up); attack modifier +1/+2/+3."
+        },
+        {
+            "en": "Sprint",
+            "de": "Sprinten",
+            "category": "movement",
+            "note": "Alpha Strike: MV × 1.5, but no attack that turn."
+        },
+        {
+            "en": "Facing",
+            "de": "Ausrichtung",
+            "category": "movement"
+        },
+        {
+            "en": "Torso Twist",
+            "de": "Torsodrehung",
+            "category": "movement",
+            "note": "At the end of movement: rotate the firing arc by one hexside."
+        },
+        {
+            "en": "Prone",
+            "de": "Liegend",
+            "category": "movement",
+            "note": "+2 to own attacks; nearby shooters hit more easily, distant ones less."
+        },
+        {
+            "en": "Standing Still",
+            "de": "Stillstand",
+            "category": "movement",
+            "note": "No movement modifier (AS: −1 to own attacks)."
+        },
+        {
+            "en": "Hex",
+            "de": "Hexfeld",
+            "category": "movement",
+            "note": "1 hex = 30 metres; in Alpha Strike, 2 inches roughly equal one hex."
+        },
+        {
+            "en": "Terrain",
+            "de": "Gelände",
+            "category": "movement"
+        },
+        {
+            "en": "Woods (Light/Heavy)",
+            "de": "Wald (leicht/dicht)",
+            "category": "movement",
+            "note": "+1/+2 to attacks through it, costs extra MP."
+        },
+        {
+            "en": "Rough",
+            "de": "Unwegsames Gelände",
+            "category": "movement"
+        },
+        {
+            "en": "Rubble",
+            "de": "Trümmer",
+            "category": "movement"
+        },
+        {
+            "en": "Water / Depth",
+            "de": "Wasser / Tiefe",
+            "category": "movement",
+            "note": "Cools: −1 heat level (AS) or extra dissipation for submerged heat sinks."
+        },
+        {
+            "en": "Elevation / Level",
+            "de": "Höhenstufe",
+            "category": "movement"
+        },
+        {
+            "en": "Line of Sight (LOS)",
+            "de": "Sichtlinie",
+            "category": "combat"
+        },
+        {
+            "en": "Cover / Partial Cover",
+            "de": "Deckung / Teildeckung",
+            "category": "combat"
+        },
+        {
+            "en": "To-Hit Number / Target Number (TN)",
+            "de": "Zielzahl",
+            "category": "combat",
+            "note": "2D6 must reach the to-hit number – our calculators show the probability alongside."
+        },
+        {
+            "en": "Gunnery Skill",
+            "de": "Geschützwert (Schießen)",
+            "category": "pilot",
+            "note": "Base of every to-hit number in Classic; default 4."
+        },
+        {
+            "en": "Piloting Skill",
+            "de": "Pilotenwert (Steuern)",
+            "category": "pilot",
+            "note": "For piloting rolls (falling, charging …); default 5."
+        },
+        {
+            "en": "Piloting Skill Roll (PSR)",
+            "de": "Pilotenwurf",
+            "category": "pilot"
+        },
+        {
+            "en": "Consciousness Roll",
+            "de": "Bewusstseinswurf",
+            "category": "pilot",
+            "note": "After every pilot hit: 3+/5+/7+/10+/11+ – otherwise unconscious."
+        },
+        {
+            "en": "Pilot Hit",
+            "de": "Pilotentreffer",
+            "category": "pilot",
+            "note": "6 hits = dead; head hits and hard falls cause them."
+        },
+        {
+            "en": "Ejection",
+            "de": "Ausstieg (Schleudersitz)",
+            "category": "pilot"
+        },
+        {
+            "en": "MechWarrior",
+            "de": "MechKrieger",
+            "category": "pilot"
+        },
+        {
+            "en": "Range Bracket",
+            "de": "Reichweitenband",
+            "category": "combat",
+            "note": "Short/medium/long (+0/+2/+4); Alpha Strike: S/M/L."
+        },
+        {
+            "en": "Minimum Range",
+            "de": "Mindestreichweite",
+            "category": "combat",
+            "note": "Inside it: +1 per hex too close (LRM, PPC, AC …)."
+        },
+        {
+            "en": "Cluster Hits Table",
+            "de": "Cluster-Tabelle",
+            "category": "combat",
+            "note": "How many missiles/pellets of a salvo hit – 2D6 on the table."
+        },
+        {
+            "en": "Indirect Fire",
+            "de": "Indirekter Beschuss",
+            "category": "combat",
+            "note": "LRMs without line of sight, needs a spotter, +1 to the attack."
+        },
+        {
+            "en": "Spotter",
+            "de": "Beobachter",
+            "category": "combat"
+        },
+        {
+            "en": "Called Shot",
+            "de": "Gezielter Schuss",
+            "category": "combat"
+        },
+        {
+            "en": "Physical Attack",
+            "de": "Physischer Angriff",
+            "category": "combat",
+            "note": "Its own phase in Classic: punch, kick, charge, DFA."
+        },
+        {
+            "en": "Punch / Kick",
+            "de": "Faustschlag / Tritt",
+            "category": "combat",
+            "note": "Punch: tonnage/10 per arm; kick: tonnage/5 – kick targets roll on the leg table."
+        },
+        {
+            "en": "Charge",
+            "de": "Rammen",
+            "category": "combat"
+        },
+        {
+            "en": "Death From Above (DFA)",
+            "de": "Todesstoß von oben",
+            "category": "combat",
+            "note": "Jump attack onto the enemy – risky for both sides."
+        },
+        {
+            "en": "Melee",
+            "de": "Nahkampf",
+            "category": "combat"
+        },
+        {
+            "en": "Front/Rear Arc",
+            "de": "Front-/Heckbogen",
+            "category": "combat",
+            "note": "Hits from behind go to the rear armor (AS: +1 damage)."
+        },
+        {
+            "en": "Heat / Heat Scale",
+            "de": "Hitze / Hitzeskala",
+            "category": "heat",
+            "note": "Classic: scale 0–30 with thresholds; Alpha Strike: levels 0–4."
+        },
+        {
+            "en": "Heat Dissipation",
+            "de": "Hitzeabfuhr",
+            "category": "heat"
+        },
+        {
+            "en": "Shutdown",
+            "de": "Abschaltung",
+            "category": "heat",
+            "note": "Classic from heat 14 (roll) or 30 (automatic); AS at level S."
+        },
+        {
+            "en": "Overheat (OV)",
+            "de": "Overheat-Wert",
+            "category": "alpha-strike",
+            "note": "AS: declare up to OV extra damage at S/M – becomes heat in the end phase."
+        },
+        {
+            "en": "Alpha Strike (Manöver)",
+            "de": "Alphaschlag",
+            "category": "heat",
+            "note": "All weapons at once – namesake of the fast-play system."
+        },
+        {
+            "en": "Unit Card",
+            "de": "Einheitenkarte",
+            "category": "alpha-strike"
+        },
+        {
+            "en": "Point Value (PV)",
+            "de": "Punktwert",
+            "category": "alpha-strike",
+            "note": "Alpha Strike point cost; Classic uses BV (Battle Value)."
+        },
+        {
+            "en": "Battle Value (BV)",
+            "de": "Gefechtswert",
+            "category": "combat",
+            "note": "Classic point cost for balancing – in the budget field when setting up a battle."
+        },
+        {
+            "en": "Size (SZ)",
+            "de": "Größenklasse",
+            "category": "alpha-strike"
+        },
+        {
+            "en": "Target Movement Modifier (TMM)",
+            "de": "Bewegungsmodifikator des Ziels",
+            "category": "alpha-strike",
+            "note": "Added to attacks AGAINST the unit."
+        },
+        {
+            "en": "Skill",
+            "de": "Pilotenwert (AS)",
+            "category": "alpha-strike",
+            "note": "One value for everything; default 4, better = more expensive."
+        },
+        {
+            "en": "Damage S/M/L",
+            "de": "Schaden kurz/mittel/weit",
+            "category": "alpha-strike"
+        },
+        {
+            "en": "0*",
+            "de": "Minimalschaden",
+            "category": "alpha-strike",
+            "note": "Attack allowed at +1 – on success exactly 1 damage."
+        },
+        {
+            "en": "Special Abilities",
+            "de": "Sonderfähigkeiten",
+            "category": "alpha-strike",
+            "note": "The codes on the card – tappable in battle, lexicon in the AS rules."
+        },
+        {
+            "en": "Structure (AS)",
+            "de": "Struktur (Blasenreihe)",
+            "category": "alpha-strike"
+        },
+        {
+            "en": "Move (MV)",
+            "de": "Bewegung in Zoll",
+            "category": "alpha-strike",
+            "note": "j = jump MV. 2″ ≈ 1 hex."
+        },
+        {
+            "en": "Autocannon (AC)",
+            "de": "Autokanone",
+            "category": "technology"
+        },
+        {
+            "en": "PPC (Particle Projection Cannon)",
+            "de": "Partikelkanone (PPK)",
+            "category": "technology"
+        },
+        {
+            "en": "Gauss Rifle",
+            "de": "Gaussgeschütz",
+            "category": "technology",
+            "note": "15 damage, hardly any heat – but the capacitor explodes on crits."
+        },
+        {
+            "en": "LRM (Long Range Missiles)",
+            "de": "Langstreckenraketen",
+            "category": "technology",
+            "note": "Minimum range 6, indirect fire possible."
+        },
+        {
+            "en": "SRM (Short Range Missiles)",
+            "de": "Kurzstreckenraketen",
+            "category": "technology",
+            "note": "2 damage per missile, each rolls its own hit location."
+        },
+        {
+            "en": "Streak",
+            "de": "Streak (zielsuchend)",
+            "category": "technology",
+            "note": "Only fires on a guaranteed hit – all missiles hit."
+        },
+        {
+            "en": "Ultra / Rotary AC",
+            "de": "Ultra-/Rotationsautokanone",
+            "category": "technology",
+            "note": "Multiple shots possible, can jam on 1s."
+        },
+        {
+            "en": "LB-X AC",
+            "de": "LB-X-Autokanone",
+            "category": "technology",
+            "note": "Cluster mode: cluster hits table, good against damaged targets."
+        },
+        {
+            "en": "Pulse Laser",
+            "de": "Pulslaser",
+            "category": "technology",
+            "note": "−2 to the to-hit number."
+        },
+        {
+            "en": "Small/Medium/Large Laser",
+            "de": "Leichter/Mittlerer/Schwerer Laser",
+            "category": "technology"
+        },
+        {
+            "en": "ER (Extended Range)",
+            "de": "Erweiterte Reichweite",
+            "category": "technology"
+        },
+        {
+            "en": "Machine Gun (MG)",
+            "de": "Maschinengewehr",
+            "category": "technology",
+            "note": "Strong against infantry; the ammo explodes violently."
+        },
+        {
+            "en": "Flamer",
+            "de": "Flammenwerfer",
+            "category": "technology",
+            "note": "Deals either damage or +2 heat to the target."
+        },
+        {
+            "en": "ECM Suite",
+            "de": "ECM-Störsystem",
+            "category": "technology",
+            "note": "Jams C3, probes and homing systems nearby."
+        },
+        {
+            "en": "Active Probe",
+            "de": "Aktivsonde",
+            "category": "technology"
+        },
+        {
+            "en": "TAG",
+            "de": "Laser-Zielmarkierer",
+            "category": "technology",
+            "note": "Designates targets for homing artillery – does no damage itself."
+        },
+        {
+            "en": "C3 Network",
+            "de": "C3-Netzwerk",
+            "category": "technology",
+            "note": "Shared targeting data: range is measured from the nearest network member."
+        },
+        {
+            "en": "CASE",
+            "de": "CASE (Munitionsschutz)",
+            "category": "technology",
+            "note": "Vents ammunition explosions outward."
+        },
+        {
+            "en": "Endo Steel",
+            "de": "Endostahl",
+            "category": "technology",
+            "note": "Lighter structure, costs crit slots."
+        },
+        {
+            "en": "Ferro-Fibrous",
+            "de": "Ferrofibröse Panzerung",
+            "category": "technology"
+        },
+        {
+            "en": "XL Engine",
+            "de": "XL-Triebwerk",
+            "category": "technology",
+            "note": "Lighter but more vulnerable: engine slots in the side torsos too."
+        },
+        {
+            "en": "MASC",
+            "de": "MASC (Beschleuniger)",
+            "category": "technology",
+            "note": "Run faster temporarily – risk of leg damage."
+        },
+        {
+            "en": "Triple Strength Myomer (TSM)",
+            "de": "Dreifachstärke-Myomer",
+            "category": "technology",
+            "note": "From heat 9: faster and double physical damage."
+        },
+        {
+            "en": "OmniMech",
+            "de": "OmniMech",
+            "category": "technology",
+            "note": "Modular weapon configurations (Prime, A, B …)."
+        },
+        {
+            "en": "BattleMech / 'Mech",
+            "de": "BattleMech / ’Mech",
+            "category": "universe"
+        },
+        {
+            "en": "IndustrialMech",
+            "de": "IndustrieMech",
+            "category": "universe"
+        },
+        {
+            "en": "Battle Armor",
+            "de": "Gefechtsrüstung",
+            "category": "universe",
+            "note": "Armored infantry; the Clan Elementals are the best known."
+        },
+        {
+            "en": "Elemental",
+            "de": "Elementar",
+            "category": "universe"
+        },
+        {
+            "en": "ProtoMech",
+            "de": "ProtoMech",
+            "category": "universe"
+        },
+        {
+            "en": "Combat Vehicle",
+            "de": "Gefechtsfahrzeug",
+            "category": "universe"
+        },
+        {
+            "en": "DropShip",
+            "de": "Landungsschiff",
+            "category": "universe"
+        },
+        {
+            "en": "JumpShip",
+            "de": "Sprungschiff",
+            "category": "universe"
+        },
+        {
+            "en": "WarShip",
+            "de": "Kriegsschiff",
+            "category": "universe"
+        },
+        {
+            "en": "Lance",
+            "de": "Lanze",
+            "category": "formations",
+            "note": "4 ’Mechs – the standard unit of the Inner Sphere."
+        },
+        {
+            "en": "Star",
+            "de": "Stern",
+            "category": "formations",
+            "note": "5 OmniMechs – the Clan counterpart to the lance."
+        },
+        {
+            "en": "Company",
+            "de": "Kompanie",
+            "category": "formations",
+            "note": "3 lances = 12 ’Mechs."
+        },
+        {
+            "en": "Binary / Trinary",
+            "de": "Binärstern / Trinärstern",
+            "category": "formations",
+            "note": "2 or 3 Stars."
+        },
+        {
+            "en": "Battalion / Regiment",
+            "de": "Bataillon / Regiment",
+            "category": "formations"
+        },
+        {
+            "en": "Cluster (Clan-Verband)",
+            "de": "Cluster",
+            "category": "formations",
+            "note": "Clan formation of several Trinaries – not the cluster hits table!"
+        },
+        {
+            "en": "Galaxy",
+            "de": "Galaxie",
+            "category": "formations"
+        },
+        {
+            "en": "Mercenary",
+            "de": "Söldner",
+            "category": "formations"
+        },
+        {
+            "en": "Inner Sphere (IS)",
+            "de": "Innere Sphäre",
+            "category": "universe",
+            "note": "The core region settled from Terra – home of the Great Houses."
+        },
+        {
+            "en": "Clans",
+            "de": "Clans",
+            "category": "universe",
+            "note": "Descendants of the Star League army, returning as invaders in 3049."
+        },
+        {
+            "en": "Periphery",
+            "de": "Peripherie",
+            "category": "universe"
+        },
+        {
+            "en": "Great Houses / Successor States",
+            "de": "Große Häuser / Nachfolgestaaten",
+            "category": "universe",
+            "note": "Davion, Steiner, Kurita, Liao, Marik."
+        },
+        {
+            "en": "Star League",
+            "de": "Sternenbund",
+            "category": "universe"
+        },
+        {
+            "en": "ComStar",
+            "de": "ComStar",
+            "category": "universe",
+            "note": "Keeper of the HPG network – and a secret power broker."
+        },
+        {
+            "en": "LosTech",
+            "de": "LosTech",
+            "category": "universe",
+            "note": "Star League technology lost in the Succession Wars."
+        },
+        {
+            "en": "Weight Class",
+            "de": "Gewichtsklasse",
+            "category": "universe",
+            "note": "Light (20–35 t), medium (40–55 t), heavy (60–75 t), assault (80–100 t)."
+        },
+        {
+            "en": "Light / Medium / Heavy / Assault",
+            "de": "Leicht / Mittel / Schwer / Sturm",
+            "category": "universe"
+        },
+        {
+            "en": "Tonnage",
+            "de": "Tonnage",
+            "category": "universe"
+        },
+        {
+            "en": "Forced Withdrawal",
+            "de": "Erzwungener Rückzug",
+            "category": "combat",
+            "note": "Crippled units must withdraw to their own edge – standard in scenarios."
+        },
+        {
+            "en": "Crippled",
+            "de": "Kampfunfähig / verkrüppelt",
+            "category": "combat"
+        },
+        {
+            "en": "Immobile",
+            "de": "Bewegungsunfähig",
+            "category": "combat",
+            "note": "Attacks against immobile targets: −4."
+        },
+        {
+            "en": "Destroyed",
+            "de": "Zerstört / außer Gefecht",
+            "category": "combat"
+        },
+        {
+            "en": "Initiative",
+            "de": "Initiative",
+            "category": "combat",
+            "note": "2D6 per side per turn; the loser moves first (advantage: reacting)."
+        },
+        {
+            "en": "Salvage",
+            "de": "Bergung / Beute",
+            "category": "universe"
+        },
+        {
+            "en": "Era",
+            "de": "Epoche / Ära",
+            "category": "universe",
+            "note": "See the era overview here in the reference section."
+        }
+    ]
+}

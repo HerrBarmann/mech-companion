@@ -1,0 +1,583 @@
+{
+    "_note": "Curated weapon values (Classic, Total Warfare) for the common weapons - joined on the MTF name, split by tech base (IS/Clan) because the values differ. damage as text (cluster weapons '1/missile' and the like), range {min, short, medium, long}, ammoPerTon = shots per ton (null = an energy weapon). Check the values against the record sheet when you play; in the hangar everything stays editable. A weapon that is not listed is taken over without values.",
+    "version": 1,
+    "asOf": "2026-08 · Total Warfare",
+    "weapons": {
+        "IS": {
+            "Small Laser": {
+                "damage": "3",
+                "heat": 1,
+                "range": {
+                    "min": 0,
+                    "short": 1,
+                    "medium": 2,
+                    "long": 3
+                },
+                "ammoPerTon": null
+            },
+            "Medium Laser": {
+                "damage": "5",
+                "heat": 3,
+                "range": {
+                    "min": 0,
+                    "short": 3,
+                    "medium": 6,
+                    "long": 9
+                },
+                "ammoPerTon": null
+            },
+            "Large Laser": {
+                "damage": "8",
+                "heat": 8,
+                "range": {
+                    "min": 0,
+                    "short": 5,
+                    "medium": 10,
+                    "long": 15
+                },
+                "ammoPerTon": null
+            },
+            "ER Small Laser": {
+                "damage": "3",
+                "heat": 2,
+                "range": {
+                    "min": 0,
+                    "short": 2,
+                    "medium": 4,
+                    "long": 5
+                },
+                "ammoPerTon": null
+            },
+            "ER Medium Laser": {
+                "damage": "5",
+                "heat": 5,
+                "range": {
+                    "min": 0,
+                    "short": 4,
+                    "medium": 8,
+                    "long": 12
+                },
+                "ammoPerTon": null
+            },
+            "ER Large Laser": {
+                "damage": "8",
+                "heat": 12,
+                "range": {
+                    "min": 0,
+                    "short": 7,
+                    "medium": 14,
+                    "long": 19
+                },
+                "ammoPerTon": null
+            },
+            "Small Pulse Laser": {
+                "damage": "3",
+                "heat": 2,
+                "range": {
+                    "min": 0,
+                    "short": 1,
+                    "medium": 2,
+                    "long": 3
+                },
+                "ammoPerTon": null
+            },
+            "Medium Pulse Laser": {
+                "damage": "6",
+                "heat": 4,
+                "range": {
+                    "min": 0,
+                    "short": 2,
+                    "medium": 4,
+                    "long": 6
+                },
+                "ammoPerTon": null
+            },
+            "Large Pulse Laser": {
+                "damage": "9",
+                "heat": 10,
+                "range": {
+                    "min": 0,
+                    "short": 3,
+                    "medium": 7,
+                    "long": 10
+                },
+                "ammoPerTon": null
+            },
+            "PPC": {
+                "damage": "10",
+                "heat": 10,
+                "range": {
+                    "min": 3,
+                    "short": 6,
+                    "medium": 12,
+                    "long": 18
+                },
+                "ammoPerTon": null
+            },
+            "ER PPC": {
+                "damage": "10",
+                "heat": 15,
+                "range": {
+                    "min": 0,
+                    "short": 7,
+                    "medium": 14,
+                    "long": 23
+                },
+                "ammoPerTon": null
+            },
+            "Flamer": {
+                "damage": "2",
+                "heat": 3,
+                "range": {
+                    "min": 0,
+                    "short": 1,
+                    "medium": 2,
+                    "long": 3
+                },
+                "ammoPerTon": null
+            },
+            "Machine Gun": {
+                "damage": "2",
+                "heat": 0,
+                "range": {
+                    "min": 0,
+                    "short": 1,
+                    "medium": 2,
+                    "long": 3
+                },
+                "ammoPerTon": 200
+            },
+            "AC/2": {
+                "damage": "2",
+                "heat": 1,
+                "range": {
+                    "min": 4,
+                    "short": 8,
+                    "medium": 16,
+                    "long": 24
+                },
+                "ammoPerTon": 45
+            },
+            "AC/5": {
+                "damage": "5",
+                "heat": 1,
+                "range": {
+                    "min": 3,
+                    "short": 6,
+                    "medium": 12,
+                    "long": 18
+                },
+                "ammoPerTon": 20
+            },
+            "AC/10": {
+                "damage": "10",
+                "heat": 3,
+                "range": {
+                    "min": 0,
+                    "short": 5,
+                    "medium": 10,
+                    "long": 15
+                },
+                "ammoPerTon": 10
+            },
+            "AC/20": {
+                "damage": "20",
+                "heat": 7,
+                "range": {
+                    "min": 0,
+                    "short": 3,
+                    "medium": 6,
+                    "long": 9
+                },
+                "ammoPerTon": 5
+            },
+            "Ultra AC/5": {
+                "damage": "5 per shot",
+                "heat": 1,
+                "range": {
+                    "min": 2,
+                    "short": 6,
+                    "medium": 13,
+                    "long": 20
+                },
+                "ammoPerTon": 20
+            },
+            "LB 10-X AC": {
+                "damage": "10 / cluster",
+                "heat": 2,
+                "range": {
+                    "min": 0,
+                    "short": 6,
+                    "medium": 12,
+                    "long": 18
+                },
+                "ammoPerTon": 10
+            },
+            "Gauss Rifle": {
+                "damage": "15",
+                "heat": 1,
+                "range": {
+                    "min": 2,
+                    "short": 7,
+                    "medium": 15,
+                    "long": 22
+                },
+                "ammoPerTon": 8
+            },
+            "LRM 5": {
+                "damage": "1/missile",
+                "heat": 2,
+                "range": {
+                    "min": 6,
+                    "short": 7,
+                    "medium": 14,
+                    "long": 21
+                },
+                "ammoPerTon": 24
+            },
+            "LRM 10": {
+                "damage": "1/missile",
+                "heat": 4,
+                "range": {
+                    "min": 6,
+                    "short": 7,
+                    "medium": 14,
+                    "long": 21
+                },
+                "ammoPerTon": 12
+            },
+            "LRM 15": {
+                "damage": "1/missile",
+                "heat": 5,
+                "range": {
+                    "min": 6,
+                    "short": 7,
+                    "medium": 14,
+                    "long": 21
+                },
+                "ammoPerTon": 8
+            },
+            "LRM 20": {
+                "damage": "1/missile",
+                "heat": 6,
+                "range": {
+                    "min": 6,
+                    "short": 7,
+                    "medium": 14,
+                    "long": 21
+                },
+                "ammoPerTon": 6
+            },
+            "SRM 2": {
+                "damage": "2/missile",
+                "heat": 2,
+                "range": {
+                    "min": 0,
+                    "short": 3,
+                    "medium": 6,
+                    "long": 9
+                },
+                "ammoPerTon": 50
+            },
+            "SRM 4": {
+                "damage": "2/missile",
+                "heat": 3,
+                "range": {
+                    "min": 0,
+                    "short": 3,
+                    "medium": 6,
+                    "long": 9
+                },
+                "ammoPerTon": 25
+            },
+            "SRM 6": {
+                "damage": "2/missile",
+                "heat": 4,
+                "range": {
+                    "min": 0,
+                    "short": 3,
+                    "medium": 6,
+                    "long": 9
+                },
+                "ammoPerTon": 15
+            },
+            "Streak SRM 2": {
+                "damage": "2/missile",
+                "heat": 2,
+                "range": {
+                    "min": 0,
+                    "short": 3,
+                    "medium": 6,
+                    "long": 9
+                },
+                "ammoPerTon": 50
+            }
+        },
+        "Clan": {
+            "ER Micro Laser": {
+                "damage": "2",
+                "heat": 1,
+                "range": {
+                    "min": 0,
+                    "short": 1,
+                    "medium": 2,
+                    "long": 4
+                },
+                "ammoPerTon": null
+            },
+            "ER Small Laser": {
+                "damage": "5",
+                "heat": 2,
+                "range": {
+                    "min": 0,
+                    "short": 2,
+                    "medium": 4,
+                    "long": 6
+                },
+                "ammoPerTon": null
+            },
+            "ER Medium Laser": {
+                "damage": "7",
+                "heat": 5,
+                "range": {
+                    "min": 0,
+                    "short": 5,
+                    "medium": 10,
+                    "long": 15
+                },
+                "ammoPerTon": null
+            },
+            "ER Large Laser": {
+                "damage": "10",
+                "heat": 12,
+                "range": {
+                    "min": 0,
+                    "short": 8,
+                    "medium": 15,
+                    "long": 25
+                },
+                "ammoPerTon": null
+            },
+            "Small Pulse Laser": {
+                "damage": "3",
+                "heat": 2,
+                "range": {
+                    "min": 0,
+                    "short": 2,
+                    "medium": 4,
+                    "long": 6
+                },
+                "ammoPerTon": null
+            },
+            "Medium Pulse Laser": {
+                "damage": "7",
+                "heat": 4,
+                "range": {
+                    "min": 0,
+                    "short": 4,
+                    "medium": 8,
+                    "long": 12
+                },
+                "ammoPerTon": null
+            },
+            "Large Pulse Laser": {
+                "damage": "10",
+                "heat": 10,
+                "range": {
+                    "min": 0,
+                    "short": 6,
+                    "medium": 14,
+                    "long": 20
+                },
+                "ammoPerTon": null
+            },
+            "ER PPC": {
+                "damage": "15",
+                "heat": 15,
+                "range": {
+                    "min": 0,
+                    "short": 7,
+                    "medium": 14,
+                    "long": 23
+                },
+                "ammoPerTon": null
+            },
+            "Flamer": {
+                "damage": "2",
+                "heat": 3,
+                "range": {
+                    "min": 0,
+                    "short": 1,
+                    "medium": 2,
+                    "long": 3
+                },
+                "ammoPerTon": null
+            },
+            "Machine Gun": {
+                "damage": "2",
+                "heat": 0,
+                "range": {
+                    "min": 0,
+                    "short": 1,
+                    "medium": 2,
+                    "long": 3
+                },
+                "ammoPerTon": 200
+            },
+            "Ultra AC/5": {
+                "damage": "5 per shot",
+                "heat": 1,
+                "range": {
+                    "min": 0,
+                    "short": 7,
+                    "medium": 14,
+                    "long": 21
+                },
+                "ammoPerTon": 20
+            },
+            "Ultra AC/10": {
+                "damage": "10 per shot",
+                "heat": 3,
+                "range": {
+                    "min": 0,
+                    "short": 6,
+                    "medium": 12,
+                    "long": 18
+                },
+                "ammoPerTon": 10
+            },
+            "Ultra AC/20": {
+                "damage": "20 per shot",
+                "heat": 7,
+                "range": {
+                    "min": 0,
+                    "short": 4,
+                    "medium": 8,
+                    "long": 12
+                },
+                "ammoPerTon": 5
+            },
+            "LB 10-X AC": {
+                "damage": "10 / cluster",
+                "heat": 2,
+                "range": {
+                    "min": 0,
+                    "short": 6,
+                    "medium": 12,
+                    "long": 18
+                },
+                "ammoPerTon": 10
+            },
+            "Gauss Rifle": {
+                "damage": "15",
+                "heat": 1,
+                "range": {
+                    "min": 2,
+                    "short": 7,
+                    "medium": 15,
+                    "long": 22
+                },
+                "ammoPerTon": 8
+            },
+            "LRM 5": {
+                "damage": "1/missile",
+                "heat": 2,
+                "range": {
+                    "min": 0,
+                    "short": 7,
+                    "medium": 14,
+                    "long": 21
+                },
+                "ammoPerTon": 24
+            },
+            "LRM 10": {
+                "damage": "1/missile",
+                "heat": 4,
+                "range": {
+                    "min": 0,
+                    "short": 7,
+                    "medium": 14,
+                    "long": 21
+                },
+                "ammoPerTon": 12
+            },
+            "LRM 15": {
+                "damage": "1/missile",
+                "heat": 5,
+                "range": {
+                    "min": 0,
+                    "short": 7,
+                    "medium": 14,
+                    "long": 21
+                },
+                "ammoPerTon": 8
+            },
+            "LRM 20": {
+                "damage": "1/missile",
+                "heat": 6,
+                "range": {
+                    "min": 0,
+                    "short": 7,
+                    "medium": 14,
+                    "long": 21
+                },
+                "ammoPerTon": 6
+            },
+            "SRM 2": {
+                "damage": "2/missile",
+                "heat": 2,
+                "range": {
+                    "min": 0,
+                    "short": 3,
+                    "medium": 6,
+                    "long": 9
+                },
+                "ammoPerTon": 50
+            },
+            "SRM 4": {
+                "damage": "2/missile",
+                "heat": 3,
+                "range": {
+                    "min": 0,
+                    "short": 3,
+                    "medium": 6,
+                    "long": 9
+                },
+                "ammoPerTon": 25
+            },
+            "SRM 6": {
+                "damage": "2/missile",
+                "heat": 4,
+                "range": {
+                    "min": 0,
+                    "short": 3,
+                    "medium": 6,
+                    "long": 9
+                },
+                "ammoPerTon": 15
+            },
+            "Streak SRM 4": {
+                "damage": "2/missile",
+                "heat": 3,
+                "range": {
+                    "min": 0,
+                    "short": 4,
+                    "medium": 8,
+                    "long": 12
+                },
+                "ammoPerTon": 25
+            },
+            "Streak SRM 6": {
+                "damage": "2/missile",
+                "heat": 4,
+                "range": {
+                    "min": 0,
+                    "short": 4,
+                    "medium": 8,
+                    "long": 12
+                },
+                "ammoPerTon": 15
+            }
+        }
+    }
+}

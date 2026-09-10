@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="{{site.defaultLang}}" name="site-default-lang"/>
+<meta content="{{site.name}}" name="site-name"/>
+<title>Classic BattleTech – Rules · Mechs</title>
+<meta content="Classic BattleTech quick reference: turn sequence, movement, GATOR, hit locations, heat and physical attacks." name="description"/>
+<meta content="#14161A" name="theme-color"/>
+<link href="../img/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="../manifest.webmanifest" rel="manifest"/>
+<link href="../css/tokens.css" rel="stylesheet"/>
+<link href="../css/components.css" rel="stylesheet"/>
+<link href="../css/app.css" rel="stylesheet"/>
+<link href="../css/tokens.local.css" rel="stylesheet"/>
+<link href="../css/style.local.css" rel="stylesheet"/>
+<script>try{if(localStorage.getItem("mechs-theme")==="light")document.documentElement.dataset.theme="light";}catch(e){}</script>
+
+<link href="../de/classic/rules.html" hreflang="de" rel="alternate"/>
+<script src="../js/i18n.js"></script>
+</head>
+<body class="hat-bottom-nav">
+<header class="site-head">
+<div class="wrap">
+<a class="brand" href="../index.html">
+<img alt="" height="34" src="../img/logo-badge.svg" width="34"/>
+<span class="brand-name"><span class="brand-tld">{{site.brand.prefix}}</span>{{site.brand.core}}<span class="brand-tld">{{site.brand.suffix}}</span></span>
+</a>
+<div class="header-buttons">
+<button aria-label="Table mode: keep the display awake" aria-pressed="false" class="btn btn-small btn-icon" hidden="" id="table-btn" title="Table mode: keep the display awake" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="10" rx="1.5" width="14" x="5" y="10.5"></rect><path class="shackle-open" d="M8.5 10.5V7.5a3.5 3.5 0 0 1 6.6-1.6"></path><path class="shackle-shut" d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"></path></svg></button>
+<a aria-label="Deutsch" class="btn btn-small btn-icon" data-lang="de" href="../de/classic/rules.html" hreflang="de" id="lang-btn" lang="de" title="Deutsch">DE</a>
+<button aria-label="Toggle light/dark" class="btn btn-small btn-icon" id="theme-btn" title="Light/Dark" type="button">◐</button>
+</div>
+</div>
+</header>
+<main class="wrap">
+<noscript><p class="flash flash-err">This page needs JavaScript – the hangar, battle, dice and search are built with it.</p></noscript>
+<div class="hero">
+<p class="eyebrow">Hex-map game · Quick reference</p>
+<h1>Classic BattleTech</h1>
+<p class="sub short"><b>Tap a section to expand it</b> – or search below; the jump bar takes you straight to the tables and the heat scale.</p>
+</div>
+<nav aria-label="Sections" class="jump-bar">
+<a href="#gator">GATOR</a>
+<a href="#cluster">Cluster</a>
+<a href="#damage">Hit Locations</a>
+<a href="#heat">Heat</a>
+<a href="#piloting">Piloting</a>
+<a href="#movement">movement</a>
+<a href="#physical">Melee</a>
+<a href="#turn-sequence">Round</a>
+<a href="#mistakes">Mistakes</a>
+</nav>
+<div class="filter-row">
+<label for="rules-filter">Search the rules</label>
+<input id="rules-filter" placeholder="e.g. ammo explosion, partial cover, fall …" type="search"/>
+<p class="no-match" hidden="" id="no-match">No section matches – try another keyword.</p>
+</div>
+<details class="card section" data-keywords="zielzahl to-hit angriffswurf treffen schuss modifikator attack" id="gator" open="">
+<summary>Weapon attack <span class="topic-tag">mnemonic: GATOR</span></summary>
+<div class="content">
+<p class="formula-note">Build the to-hit number, then roll 2D6. Result ≥ to-hit number = hit. A to-hit number above 12 means: impossible, don’t even roll.</p>
+<div class="formula">
+<div class="term"><span class="box">G</span><span class="v">Gunnery</span><span class="d">the pilot’s marksmanship, usually 4</span></div>
+<div class="op">+</div>
+<div class="term"><span class="box">A</span><span class="v">Attacker</span><span class="d">own movement</span></div>
+<div class="op">+</div>
+<div class="term"><span class="box">T</span><span class="v">Target</span><span class="d">the target’s movement</span></div>
+<div class="op">+</div>
+<div class="term"><span class="box">O</span><span class="v">Other</span><span class="d">terrain, heat, cover</span></div>
+<div class="op">+</div>
+<div class="term"><span class="box">R</span><span class="v">Range</span><span class="d">range bracket</span></div>
+</div>
+<h3>A · Own movement</h3>
+<div class="table-scroll">
+<table>
+<tr><td>Stood still</td><td class="num">+0</td></tr>
+<tr><td>Walked</td><td class="num">+1</td></tr>
+<tr><td>Ran</td><td class="num">+2</td></tr>
+<tr><td>Jumped</td><td class="num">+3</td></tr>
+<tr><td>Prone</td><td class="num">+2</td></tr>
+</table>
+</div>
+<h3>T · Target movement</h3>
+<div class="table-scroll">
+<table>
+<thead><tr><th>hexes moved</th><th></th></tr></thead>
+<tr><td>0–2</td><td class="num">+0</td></tr>
+<tr><td>3–4</td><td class="num">+1</td></tr>
+<tr><td>5–6</td><td class="num">+2</td></tr>
+<tr><td>7–9</td><td class="num">+3</td></tr>
+<tr><td>10–17</td><td class="num">+4</td></tr>
+<tr><td>18–24</td><td class="num">+5</td></tr>
+<tr><td>25+</td><td class="num">+6</td></tr>
+<tr><td>Target jumped</td><td class="num">+1 additionally</td></tr>
+</table>
+</div>
+<h3>R · Range</h3>
+<div class="table-scroll">
+<table>
+<tr><td>Short</td><td class="num">+0</td></tr>
+<tr><td>Medium</td><td class="num">+2</td></tr>
+<tr><td>Long</td><td class="num">+4</td></tr>
+<tr><td>Inside minimum range</td><td class="num">+1 per hex</td></tr>
+</table>
+</div>
+<ul class="tight">
+<li>Minimum range: modifier = minimum range − distance + 1.</li>
+<li>Every weapon has its own range brackets – check the record sheet.</li>
+</ul>
+<h3>O · Terrain &amp; other</h3>
+<div class="table-scroll">
+<table>
+<tr><td>Light woods (per hex)</td><td class="num">+1</td></tr>
+<tr><td>Heavy woods (per hex)</td><td class="num">+2</td></tr>
+<tr><td>Partial cover</td><td class="num">+1</td></tr>
+<tr><td>Secondary target, front arc</td><td class="num">+1</td></tr>
+<tr><td>Secondary target, side/rear</td><td class="num">+2</td></tr>
+<tr><td>Heat</td><td class="num">see heat scale</td></tr>
+</table>
+</div>
+<ul class="tight">
+<li>Line of sight through woods: light woods count 1, heavy 2 – at a total of 3 in between it is blocked (so 1 light + 1 heavy as well).</li>
+</ul>
+</div>
+</details>
+<details class="card section" data-keywords="cluster hits missile rakete lrm srm streak salve gruppen" id="cluster">
+<summary>Cluster hits <span class="topic-tag">LRM &amp; SRM</span></summary>
+<div class="content">
+<p class="formula-note">Missile weapon hits → 2D6 on the column for the weapon size: that many missiles strike.</p>
+<div class="table-scroll">
+<table>
+<thead><tr><th>2D6</th><th>2</th><th>4</th><th>5</th><th>6</th><th>10</th><th>15</th><th>20</th></tr></thead>
+<tr><td class="num">2</td><td>1</td><td>1</td><td>1</td><td>2</td><td>3</td><td>5</td><td>6</td></tr>
+<tr><td class="num">3</td><td>1</td><td>2</td><td>2</td><td>2</td><td>3</td><td>5</td><td>6</td></tr>
+<tr><td class="num">4</td><td>1</td><td>2</td><td>2</td><td>3</td><td>4</td><td>6</td><td>9</td></tr>
+<tr><td class="num">5</td><td>1</td><td>2</td><td>3</td><td>3</td><td>6</td><td>9</td><td>12</td></tr>
+<tr><td class="num">6</td><td>1</td><td>2</td><td>3</td><td>4</td><td>6</td><td>9</td><td>12</td></tr>
+<tr><td class="num">7</td><td>1</td><td>3</td><td>3</td><td>4</td><td>6</td><td>9</td><td>12</td></tr>
+<tr><td class="num">8</td><td>2</td><td>3</td><td>3</td><td>4</td><td>6</td><td>9</td><td>12</td></tr>
+<tr><td class="num">9</td><td>2</td><td>3</td><td>4</td><td>5</td><td>8</td><td>12</td><td>16</td></tr>
+<tr><td class="num">10</td><td>2</td><td>3</td><td>4</td><td>5</td><td>8</td><td>12</td><td>16</td></tr>
+<tr><td class="num">11</td><td>2</td><td>4</td><td>5</td><td>6</td><td>10</td><td>15</td><td>20</td></tr>
+<tr><td class="num">12</td><td>2</td><td>4</td><td>5</td><td>6</td><td>10</td><td>15</td><td>20</td></tr>
+</table>
+</div>
+<ul class="tight">
+<li><strong>LRM:</strong> group the hits in fives, roll one hit location per group (12 hits = 5 + 5 + 2).</li>
+<li><strong>SRM:</strong> every missile hits separately (2 damage) – one hit location per missile.</li>
+<li><strong>Streak SRM:</strong> either all hit or none – no cluster roll.</li>
+<li>Artemis IV: +2 on the cluster roll (not on the attack).</li>
+</ul>
+</div>
+</details>
+<details class="card section" data-keywords="hit location trefferzone krit critical kopf head panzerung armor struktur" id="damage">
+<summary>Damage &amp; hit locations <span class="topic-tag">2D6 per hit</span></summary>
+<div class="content">
+<h3>Hit location from the front</h3>
+<div class="table-scroll">
+<table>
+<tr><td class="num">2</td><td>Center torso <code>+ crit</code></td></tr>
+<tr><td class="num">3 · 4</td><td>right arm</td></tr>
+<tr><td class="num">5</td><td>right leg</td></tr>
+<tr><td class="num">6</td><td>right torso</td></tr>
+<tr><td class="num">7</td><td>Center torso</td></tr>
+<tr><td class="num">8</td><td>left torso</td></tr>
+<tr><td class="num">9</td><td>left leg</td></tr>
+<tr><td class="num">10 · 11</td><td>left arm</td></tr>
+<tr><td class="num">12</td><td>Head</td></tr>
+</table>
+</div>
+<ul class="tight">
+<li>Attacks from the side or rear use their own tables on the record sheet.</li>
+</ul>
+<h3>From hit to wreck</h3>
+<ul class="tight">
+<li>Damage goes to the location’s <strong>armor</strong> first, the excess to the <strong>internal structure</strong>.</li>
+<li>As soon as structure is hit: roll for a <strong>critical hit</strong>.</li>
+<li>A location’s structure at 0 → location destroyed. A destroyed torso takes the arm with it.</li>
+<li>Center torso, head or both legs gone → the ’Mech is finished.</li>
+</ul>
+<h3>Critical hit (2D6)</h3>
+<div class="table-scroll">
+<table>
+<tr><td class="num">2–7</td><td>no crit</td></tr>
+<tr><td class="num">8–9</td><td>1 crit</td></tr>
+<tr><td class="num">10–11</td><td>2 crits</td></tr>
+<tr><td class="num">12</td><td>3 crits · head/limb: blown off</td></tr>
+</table>
+</div>
+</div>
+</details>
+<details class="card section" data-keywords="heat overheating abschaltung shutdown waermetauscher heat sink ammo munitionsexplosion" id="heat">
+<summary>Heat <span class="topic-tag">scale 0 – 30</span></summary>
+<div class="content">
+<div class="hazard hazard-warn hazard-edge"></div>
+<h3>Thresholds going up</h3>
+<div class="table-scroll">
+<table>
+<tr><td class="num">5</td><td>−1 movement point</td></tr>
+<tr><td class="num">8</td><td>+1 to all attacks</td></tr>
+<tr><td class="num">10</td><td>−2 MP</td></tr>
+<tr><td class="num">13</td><td>+2 to attacks</td></tr>
+<tr><td class="num">14</td><td>Shutdown, avoid on 4+</td></tr>
+<tr><td class="num">15</td><td>−3 MP</td></tr>
+<tr><td class="num">17</td><td>+3 to attacks</td></tr>
+<tr><td class="num">18</td><td>Shutdown, avoid on 6+</td></tr>
+<tr><td class="num">19</td><td>Ammo explosion, avoid on 4+</td></tr>
+<tr><td class="num">20</td><td>−4 MP</td></tr>
+<tr><td class="num">22</td><td>Shutdown, avoid on 8+</td></tr>
+<tr><td class="num">23</td><td>Ammo explosion, avoid on 6+</td></tr>
+<tr><td class="num">24</td><td>+4 to attacks</td></tr>
+<tr><td class="num">25</td><td>−5 MP</td></tr>
+<tr><td class="num">26</td><td>Shutdown, avoid on 10+</td></tr>
+<tr><td class="num">28</td><td>Ammo explosion, avoid on 8+</td></tr>
+<tr><td class="num">30</td><td>Shutdown, no roll</td></tr>
+</table>
+</div>
+<h3>How to calculate</h3>
+<ul class="tight">
+<li>Add the heat from movement + the heat of all weapons fired.</li>
+<li>Subtract heat sinks (default 10; legs standing in water cool additionally).</li>
+<li>Mark the result on the scale – the value stays until the next end phase.</li>
+</ul>
+</div>
+</details>
+<details class="card section" data-keywords="psr piloting skill roll sturz fallen fall prone aufstehen hinlegen umfallen liegen" id="piloting">
+<summary>Piloting rolls &amp; falls <span class="topic-tag">2D6 ≥ Piloting + mod.</span></summary>
+<div class="content">
+<h3>When to roll?</h3>
+<ul class="tight">
+<li>Took 20+ damage in one phase (+1 on the roll)</li>
+<li>Gyro, hip, leg or foot actuator hit (immediately on the hit)</li>
+<li>Kicked, charged or hit by a Death From Above</li>
+<li>Charged or performed a DFA yourself (the attacker rolls too)</li>
+<li>Running with a damaged hip/gyro · jumping with a damaged leg actuator or gyro</li>
+<li>Standing up from prone</li>
+</ul>
+<h3>Permanent modifiers</h3>
+<div class="table-scroll">
+<table>
+<tr><td>Gyro hit</td><td class="num">+3</td></tr>
+<tr><td>Gyro destroyed</td><td class="num">falls automatically</td></tr>
+<tr><td>Hip destroyed</td><td class="num">+2</td></tr>
+<tr><td>Leg/foot actuator destroyed (each)</td><td class="num">+1</td></tr>
+<tr><td>Leg destroyed</td><td class="num">+5</td></tr>
+</table>
+</div>
+<h3>Falling</h3>
+<ul class="tight">
+<li>Damage: <strong>tonnage ÷ 10 (round up) × (fall height + 1)</strong> – on level ground that is 1×. Spread over locations in groups of 5.</li>
+<li>Facing after the fall: 1D6 – the new position then determines the hit table (front/side/rear).</li>
+<li>Pilot: separate piloting roll, otherwise <strong>1 pilot hit</strong>.</li>
+<li>Prone: +1 to own attacks; torso and head weapons fire normally, only one arm may fire (the other props the ’Mech up); prone target: −2 from an adjacent hex, +1 from a distance.</li>
+<li>Standing up: 2 MP + piloting roll (failure: stay down, MP lost).</li>
+</ul>
+</div>
+</details>
+<details class="card section" data-keywords="movement gehen laufen springen jump run walk mp gelaende terrain torso twist drehung" id="movement">
+<summary>Movement <span class="topic-tag">movement points = MP</span></summary>
+<div class="content">
+<h3>Three modes</h3>
+<div class="table-scroll">
+<table>
+<tr><td>Walk</td><td class="num">MP per sheet · +1 heat</td></tr>
+<tr><td>Run</td><td class="num">Walk × 1.5 ↑ · +2 heat</td></tr>
+<tr><td>Jump</td><td class="num">Jump MP · 1 heat/hex, min. 3</td></tr>
+<tr><td>Standing still</td><td class="num">0 heat</td></tr>
+</table>
+</div>
+<ul class="tight">
+<li>Walking backwards is allowed and costs the same as walking.</li>
+<li>Jumping ignores terrain costs in between and may cross obstacles.</li>
+<li>Torso twist: once per turn in the weapon phase, rotates the firing arc by one hexside – costs no MP.</li>
+</ul>
+<h3>Movement costs per hex</h3>
+<div class="table-scroll">
+<table>
+<tr><td>Clear terrain</td><td class="num">1 MP</td></tr>
+<tr><td>Rough terrain / light woods</td><td class="num">2 MP</td></tr>
+<tr><td>Heavy woods</td><td class="num">3 MP</td></tr>
+<tr><td>Water, depth 1</td><td class="num">2 MP</td></tr>
+<tr><td>Water, depth 2+</td><td class="num">4 MP</td></tr>
+<tr><td>Elevation change</td><td class="num">+1 MP per level</td></tr>
+<tr><td>Facing change</td><td class="num">1 MP per hexside</td></tr>
+</table>
+</div>
+</div>
+</details>
+<details class="card section" data-keywords="melee nahkampf schlag punch tritt kick charge dfa rammen" id="physical">
+<summary>Physical attacks <span class="topic-tag">to-hit = Piloting</span></summary>
+<div class="content">
+<div class="table-scroll">
+<table>
+<thead><tr><th>Attack</th><th>Mod</th><th>Damage</th></tr></thead>
+<tr><td>Punch</td><td class="num">+0</td><td class="num">Tonnage ÷ 10 ↑</td></tr>
+<tr><td>Kick</td><td class="num">−2</td><td class="num">Tonnage ÷ 5 ↑</td></tr>
+<tr><td>Charge</td><td class="num">+0</td><td class="num">(T ÷ 10) × hexes</td></tr>
+<tr><td>Death From Above</td><td class="num">+0</td><td class="num">(T ÷ 10) × 3</td></tr>
+</table>
+</div>
+<ul class="tight">
+<li>The usual movement and terrain modifiers apply on top.</li>
+<li>Charges and DFAs also damage the attacker and force piloting rolls.</li>
+</ul>
+</div>
+</details>
+<details class="card section" data-keywords="phasen initiative reihenfolge runde turn ablauf" id="turn-sequence">
+<summary>Turn sequence <span class="topic-tag">every turn from the top</span></summary>
+<div class="content">
+<ol class="phases">
+<li>
+<span class="no">1</span>
+<span class="ph">Initiative</span>
+<p>Both sides roll 2D6, reroll on a tie. The higher roll wins – and therefore acts <em>last</em>. That is the advantage: you see what the opponent does first.</p>
+</li>
+<li>
+<span class="no">2</span>
+<span class="ph">movement</span>
+<p>The initiative loser moves one ’Mech, then the winner, alternating until all have moved. Mark the movement mode (walk / run / jump) with a token.</p>
+</li>
+<li>
+<span class="no">3</span>
+<span class="ph">Weapon attacks</span>
+<p>The initiative loser declares all targets first. All attacks count as simultaneous: damage is resolved only after the declarations, so a destroyed ’Mech still shoots back.</p>
+</li>
+<li>
+<span class="no">4</span>
+<span class="ph">Melee <em>(physical attacks)</em></span>
+<p>Punch, kick, charge, Death From Above. Only against ’Mechs in the same or an adjacent hex.</p>
+</li>
+<li>
+<span class="no">5</span>
+<span class="ph">Heat</span>
+<p>Add heat from movement and weapons fired, subtract heat sinks, read the effects off the heat scale.</p>
+</li>
+<li>
+<span class="no">6</span>
+<span class="ph">End phase</span>
+<p>Piloting rolls for falls, consciousness checks, burning woods, prepare to stand up. Then the next turn begins.</p>
+</li>
+</ol>
+</div>
+</details>
+<details class="card section" data-keywords="tipps anfaenger einsteiger fehler" id="mistakes">
+<summary>Five beginner mistakes <span class="topic-tag">learned the hard way</span></summary>
+<div class="content">
+<div class="callout" style="margin:0">
+<ul style="margin:0;padding-left:1.1rem">
+<li>Forgetting facing changes during movement – they cost 1 MP each.</li>
+<li>Firing every weapon because you can. Heat is the real enemy.</li>
+<li>Standing still in the open: movement is the cheapest armor bonus.</li>
+<li>Ignoring woods. +2 per hex tips every duel.</li>
+<li>Showing your rear – that is where the armor is thinnest.</li>
+</ul>
+</div>
+</div>
+</details>
+</main>
+<button aria-label="Back to top" class="to-top" type="button">↑</button>
+<footer class="site-foot">
+<div class="wrap">
+<p class="rules-version">Rules baseline: Total Warfare / BattleMech Manual · August 2026. The new BattleTech Core Rulebook (16 Sep 2026) replaces Total Warfare – the core mechanics stay, around 170 rules change in detail. Changes: <a href="../knowledge/index.html#rules-version">Reference › Rules baseline</a>.</p>
+<p>{{site.name}} · <a href="../imprint.html">Legal notice</a> · <a href="../privacy.html">Privacy</a><br/> <span class="small">Mech Companion by Dennis Bormann · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a><br/>MechWarrior, BattleMech, ’Mech and BattleTech are registered trademarks of The Topps Company, Inc. Catalyst Game Labs is the licensee. Unofficial, private fan site.</span></p>
+</div>
+</footer>
+<nav aria-label="Section navigation" class="bottom-nav">
+<a href="../index.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4 11 L12 4 L20 11 V20 H14 V15 H10 V20 H4 Z"></path></svg>
+        Home
+    </a>
+<a href="hangar.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M3 20 V10 L12 4 L21 10 V20"></path><path d="M8 20 V13 H16 V20" stroke-width="1.4"></path></svg>
+        Hangar
+    </a>
+<a href="battle.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="6"></circle><path d="M12 2 V6 M12 18 V22 M2 12 H6 M18 12 H22" stroke-width="1.4"></path></svg>
+        Battle
+    </a>
+<a aria-current="page" href="rules.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 3 H18 V21 H6 Z"></path><path d="M9 7 H15 M9 11 H15 M9 15 H13" stroke-width="1.4"></path></svg>
+        Rules
+    </a>
+<a href="hit-locations.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 3 L17 6 V12 C17 16 15 19 12 21 C9 19 7 16 7 12 V6 Z"></path><path d="M12 3 V21 M7 12 H17" stroke-width="1.2"></path></svg>
+        Hit Locations
+    </a>
+</nav>
+<script src="../js/app.js"></script>
+<script src="../js/rules.js"></script>
+</body>
+</html>

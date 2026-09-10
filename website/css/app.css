@@ -1,0 +1,762 @@
+/* ===========================================================================
+   App-Layout — alles, was NICHT ins portable Design-System
+   gehört: Kopfzeile, Sprungleiste, Regel-Abschnitte, Fraktionskarten,
+   Bemalschritte, Druck. Braucht tokens.css und components.css.
+   =========================================================================== */
+
+/* --- Kopfzeile ------------------------------------------------------------ */
+.site-head { padding: 0.9rem 0; }
+.site-head .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 0.8rem;
+}
+.header-buttons { display: flex; gap: 0.5rem; flex: none; }
+.btn-icon { min-width: 44px; padding: 0.5rem 0.6rem; }
+#table-btn[hidden] { display: none; }
+/* Tisch-Modus: ein Schloss statt eines Wortes. Offen = der Bildschirm darf
+   schlafen, geschlossen = er bleibt wach (Wake Lock). */
+#table-btn svg { width: 18px; height: 18px; display: block; }
+#table-btn .shackle-shut { display: none; }
+#table-btn[aria-pressed="true"] {
+    background: var(--accent-tint);
+    border-color: var(--accent);
+    color: var(--accent-deep);
+}
+#table-btn[aria-pressed="true"] .shackle-open { display: none; }
+#table-btn[aria-pressed="true"] .shackle-shut { display: inline; }
+@media (max-width: 480px) {
+    .brand { font-size: 1.02rem; gap: 0.45rem; }
+    .brand img { width: 28px; height: 28px; }
+}
+/* Mit zwei Kopfknöpfen wird es auf 375 px eng: Marke und Knöpfe rücken
+   zusammen, damit der Cursor der Wortmarke nicht in die zweite Zeile fällt. */
+@media (max-width: 420px) {
+    .brand { font-size: 0.95rem; gap: 0.4rem; }
+    .site-head .wrap { gap: 0.5rem; }
+    .header-buttons { gap: 0.35rem; }
+    .btn-icon { padding: 0.5rem 0.45rem; }
+}
+
+/* --- Start-Kacheln -------------------------------------------------------- */
+.tile {
+    display: block; padding: 1.1rem 1.2rem;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius);
+    color: var(--ink); text-decoration: none;
+}
+.tile:hover { border-color: var(--accent); text-decoration: none; }
+.tile strong { display: block; margin-bottom: 0.2rem; }
+.tile span { color: var(--muted); font-size: 0.88rem; }
+
+/* --- Unterreiter (Bemalen-Bereiche u. ae.) ---------------------------------
+   Scrollt bei vielen Punkten IN SICH statt die Seite zu verbreitern -
+   seit maximum-scale=1 kaschiert iOS ueberbreite Zeilen nicht mehr. */
+.tab-row {
+    display: flex; gap: 0.5rem; margin-top: 1.1rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-left: -1.2rem; margin-right: -1.2rem;
+    padding-left: 1.2rem; padding-right: 1.2rem;
+}
+.tab-row::-webkit-scrollbar { display: none; }
+.tab-row a {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 44px; padding: 0.4rem 1rem;
+    flex: 0 0 auto; white-space: nowrap;
+    border: 1px solid var(--line); border-radius: var(--radius);
+    background: var(--surface);
+    font-size: 0.85rem; font-weight: 600;
+    color: var(--muted); text-decoration: none;
+}
+@media (max-width: 430px) {
+    .tab-row a { padding: 0.4rem 0.7rem; font-size: 0.8rem; }
+}
+.tab-row a:hover { color: var(--ink); text-decoration: none; }
+.tab-row a[aria-current="page"] {
+    border-color: var(--accent);
+    background: var(--accent-tint);
+    color: var(--accent-deep);
+}
+
+/* --- Sprungleiste (Regelseiten) ------------------------------------------- */
+.jump-bar {
+    position: sticky; top: 0; z-index: 40;
+    display: flex; gap: 0.45rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    padding: 0.55rem 1.2rem;
+    margin: 0 -1.2rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    scrollbar-width: none;
+}
+.jump-bar::-webkit-scrollbar { display: none; }
+.jump-bar a {
+    flex: none;
+    display: inline-flex; align-items: center;
+    min-height: 40px; padding: 0.3rem 0.7rem;
+    border: 1px solid var(--line); border-radius: var(--radius);
+    font-size: 0.75rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.03em;
+    color: var(--muted); text-decoration: none;
+}
+.jump-bar a:hover { color: var(--ink); border-color: var(--muted); text-decoration: none; }
+
+/* --- Regel-Abschnitte: aufklappbare Karten -------------------------------- */
+details.card { padding: 0; }
+details.card summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: baseline; gap: 0.6rem;
+    padding: 1rem 1.2rem; min-height: 44px;
+    font-weight: 700; font-size: 1rem;
+}
+details.card summary::-webkit-details-marker { display: none; }
+details.card summary::before {
+    content: "+"; color: var(--accent-deep); width: 1em; flex: none;
+}
+details.card[open] summary::before { content: "\2212"; }
+details.card summary .topic-tag {
+    margin-left: auto; flex: none;
+    font-size: 0.66rem; font-weight: 600; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.08em;
+}
+details.card > .content { padding: 0 1.2rem 1.2rem; }
+details.card h3 { font-size: 0.95rem; margin: 1.1rem 0 0.4rem; }
+details.card h3:first-child { margin-top: 0; }
+
+/* --- Phasen-Schiene (Rundenablauf) ---------------------------------------- */
+.phases { list-style: none; margin: 0; padding: 0; }
+.phases li { position: relative; padding: 0 0 1.1rem 3.2rem; }
+.phases li::before {
+    content: ""; position: absolute; left: 1.1rem; top: 2.5rem; bottom: 0.2rem;
+    width: 1px; background: var(--line);
+}
+.phases li:last-child { padding-bottom: 0; }
+.phases li:last-child::before { display: none; }
+.phases .no {
+    position: absolute; left: 0; top: 0;
+    width: 2.2rem; height: 2.2rem;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-weight: 700;
+    background: var(--surface); border: 1px solid var(--accent);
+    color: var(--accent-deep); border-radius: 2px;
+}
+.phases .ph { font-family: var(--mono); font-weight: 700; }
+.phases .ph em { font-style: normal; color: var(--muted); font-weight: 400; }
+.phases p { margin: 0.15rem 0 0; color: var(--muted); font-size: 0.92rem; }
+
+/* --- Merkwort-Formel (GATOR / SATOR) -------------------------------------- */
+.formula { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: stretch; margin: 0.8rem 0; }
+.formula .term {
+    flex: 1 1 100px; min-width: 96px;
+    border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 0.5rem 0.6rem; background: var(--paper);
+}
+.formula .box {
+    font-family: var(--mono); font-weight: 700; font-size: 1.4rem;
+    color: var(--accent-deep); display: block; line-height: 1;
+}
+.formula .v {
+    font-family: var(--mono); font-size: 0.7rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    display: block; margin-top: 0.3rem;
+}
+.formula .d { font-size: 0.78rem; color: var(--muted); display: block; margin-top: 0.15rem; line-height: 1.35; }
+.formula .op { align-self: center; font-family: var(--mono); color: var(--muted); }
+.formula-note {
+    font-size: 0.85rem; color: var(--muted);
+    border-left: 3px solid var(--accent); padding-left: 0.7rem; margin: 0.8rem 0;
+}
+
+/* --- Hitze-Karten: Warnstreifen als Oberkante ----------------------------- */
+.hazard-edge {
+    height: 8px; margin: -1.4rem -1.4rem 1rem;
+    border: 0; border-bottom: 1px solid var(--accent); border-radius: 0;
+}
+details.card .hazard-edge { margin: 0 0 1rem; }
+
+/* --- Callout -------------------------------------------------------------- */
+.callout {
+    border-left: 4px solid var(--accent); background: var(--surface);
+    padding: 0.9rem 1.1rem; margin: 1.2rem 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+.callout strong { text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.85rem; }
+.callout ul { margin: 0.4rem 0 0; padding-left: 1.1rem; }
+.callout li { margin-bottom: 0.25rem; }
+
+/* --- Unit-Card-Legende ---------------------------------------------------- */
+.legend {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; background: var(--surface);
+}
+.legend > div { padding: 0.7rem 0.8rem; border: 0 solid var(--line); border-right-width: 1px; border-bottom-width: 1px; }
+.legend b { font-family: var(--mono); color: var(--accent-deep); display: block; }
+.legend span { font-size: 0.85rem; color: var(--muted); display: block; margin-top: 0.1rem; line-height: 1.4; }
+
+/* --- Kompakte Listen in Karten -------------------------------------------- */
+ul.tight { margin: 0.4rem 0 0; padding-left: 1.1rem; }
+ul.tight li { margin-bottom: 0.3rem; }
+td.num { text-align: right; white-space: nowrap; font-family: var(--mono); font-weight: 600; padding-right: 0; }
+
+/* --- Filter / Suche ------------------------------------------------------- */
+.filter-row { margin: 1rem 0 1.4rem; }
+.filter-row input[type="search"] { font-size: 1rem; }
+.no-match { color: var(--muted); font-size: 0.9rem; }
+
+/* --- Fraktionsbrowser ----------------------------------------------------- */
+.f-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr)); gap: 1rem; }
+.f-card { margin-bottom: 0; }
+.f-header { display: flex; justify-content: space-between; gap: 0.8rem; align-items: flex-start; }
+.f-code {
+    font-family: var(--mono); font-size: 0.7rem; font-weight: 700;
+    background: var(--ink); color: var(--paper);
+    padding: 0.12rem 0.45rem; border-radius: 2px;
+    display: inline-block; margin-bottom: 0.35rem;
+    letter-spacing: 0.06em;
+}
+.f-header h3 { margin: 0; font-size: 1.05rem; line-height: 1.25; }
+.f-house { margin: 0.1rem 0 0; color: var(--muted); font-size: 0.85rem; font-style: italic; }
+.f-colors { display: flex; gap: 0.35rem; flex: none; }
+.f-color { width: 26px; height: 26px; border-radius: 2px; border: 1px solid var(--line); }
+.f-legend { list-style: none; margin: 0.9rem 0; padding: 0.55rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.f-legend li { display: flex; align-items: center; gap: 0.5rem; padding: 0.18rem 0; font-size: 0.85rem; }
+.f-legend .f-color { width: 14px; height: 14px; }
+.f-legend .role {
+    font-family: var(--mono); font-size: 0.66rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--muted); width: 3.6rem; flex: none;
+}
+.f-legend .hex { margin-left: auto; font-family: var(--mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.03em; }
+.f-card .f-text { margin: 0 0 0.6rem; font-size: 0.92rem; }
+.f-card details { border-top: 1px solid var(--line); margin-top: 0.8rem; padding-top: 0.6rem; }
+.f-card details summary {
+    list-style: none; cursor: pointer; min-height: 44px;
+    display: flex; align-items: center; gap: 0.5rem;
+    font-family: var(--mono); font-size: 0.75rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.07em; color: var(--accent-deep);
+}
+.f-card details summary::-webkit-details-marker { display: none; }
+.f-card details summary::before { content: "+"; }
+.f-card details[open] summary::before { content: "\2212"; }
+.f-meta { margin: 0.5rem 0 0; font-size: 0.85rem; }
+.f-meta .tag-row {
+    display: block; font-family: var(--mono); font-size: 0.66rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-deep);
+    margin-bottom: 0.15rem;
+}
+.f-warn { margin: 0.7rem 0 0; font-size: 0.85rem; border-left: 3px solid var(--accent); padding-left: 0.7rem; color: var(--muted); }
+.f-short { background: var(--paper); }
+.f-short .f-text { color: var(--muted); }
+
+/* --- Bemalanleitung ------------------------------------------------------- */
+.steps { list-style: none; margin: 0; padding: 0; }
+.steps li { display: flex; gap: 1rem; padding: 1.1rem 0; border-top: 1px solid var(--line); }
+.steps li:first-child { border-top: 0; }
+.steps .step-num {
+    font-family: var(--mono); font-weight: 700; font-size: 1.5rem;
+    color: var(--accent-deep); width: 2.6rem; flex: none; line-height: 1.2;
+}
+.steps h3 { margin: 0 0 0.3rem; font-size: 1rem; }
+.steps p { margin: 0 0 0.5rem; font-size: 0.93rem; }
+.steps .tip { border-left: 3px solid var(--line); padding-left: 0.7rem; color: var(--muted); font-size: 0.86rem; margin: 0.5rem 0 0; }
+.steps .check { flex: none; align-self: flex-start; margin-top: 0.3rem; }
+.steps .check input { width: 22px; height: 22px; accent-color: var(--accent); cursor: pointer; }
+.steps li.done h3, .steps li.done p { color: var(--muted); }
+.steps li.done .step-num { color: var(--muted); text-decoration: line-through; }
+
+/* --- „Nach oben" ---------------------------------------------------------- */
+.to-top {
+    position: fixed; right: 0.9rem;
+    bottom: calc(72px + env(safe-area-inset-bottom));
+    z-index: 45;
+    width: 44px; height: 44px;
+    display: none; align-items: center; justify-content: center;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius);
+    color: var(--ink); font-family: var(--mono); font-size: 1.1rem;
+    cursor: pointer;
+}
+.to-top.visible { display: flex; }
+
+/* --- Update-Hinweis (neue Service-Worker-Version) ------------------------- */
+.update-notice {
+    position: fixed; left: 50%; transform: translateX(-50%);
+    bottom: calc(76px + env(safe-area-inset-bottom));
+    z-index: 60;
+    display: flex; gap: 0.7rem; align-items: center;
+    margin: 0; white-space: nowrap;
+}
+
+/* --- Fußzeile ------------------------------------------------------------- */
+.site-foot { color: var(--muted); font-size: 0.85rem; }
+.site-foot a { color: var(--muted); text-decoration: underline; }
+.rules-version { font-size: 0.8rem; }
+
+/* --- Druck: jede Regelseite ein brauchbares Handout ----------------------- */
+@media print {
+    body { background: #fff; color: #000; }
+    .bottom-nav, .header-buttons, .jump-bar, .to-top, .filter-row,
+    .update-notice { display: none !important; }
+    .stage { border-bottom: 0; }
+    details.card { break-inside: avoid; }
+    details.card summary::before { display: none; }
+    .card, .callout, .legend { border-color: #999; background: #fff; }
+    a { color: inherit; text-decoration: none; }
+}
+
+/* --- Hangar --------------------------------------------------------------- */
+.mech-row { display: flex; gap: 0.9rem; align-items: flex-start; }
+.mech-row .photo-thumb {
+    width: 64px; height: 64px; flex: none;
+    object-fit: cover; border-radius: var(--radius);
+    border: 1px solid var(--line); background: var(--paper);
+}
+.mech-row .photo-empty {
+    width: 64px; height: 64px; flex: none;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px dashed var(--line); border-radius: var(--radius);
+    color: var(--muted); font-family: var(--mono); font-size: 0.65rem;
+}
+.mech-row h3 { margin: 0 0 0.15rem; font-size: 1rem; }
+.mech-stats { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); margin: 0; }
+.mech-row .cta { margin-top: 0.6rem; }
+
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr)); gap: 0 1rem; }
+.form-grid .wide { grid-column: 1 / -1; }
+.photo-preview { max-width: 160px; max-height: 160px; border-radius: var(--radius); border: 1px solid var(--line); display: block; margin-top: 0.5rem; }
+
+/* --- Datenbogen ------------------------------------------------------------ */
+.unit-panel { position: relative; }
+.unit-header { display: flex; align-items: flex-start; gap: 0.8rem; }
+.unit-header .photo-thumb {
+    width: 52px; height: 52px; flex: none;
+    object-fit: cover; border-radius: var(--radius); border: 1px solid var(--line);
+}
+.unit-header h3 { margin: 0; font-size: 1.05rem; flex: 1; }
+.unit-header .pv { font-family: var(--mono); color: var(--muted); font-size: 0.8rem; }
+
+.stats-band {
+    display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem;
+    margin: 0.7rem 0; padding: 0.55rem 0;
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    font-variant-numeric: tabular-nums;
+}
+.stats-band .stat { font-family: var(--mono); font-size: 0.82rem; color: var(--muted); }
+.stats-band .stat b { color: var(--ink); font-weight: 700; }
+.stats-band .stat.impaired b { color: var(--accent-deep); }
+
+.pip-row { margin: 0.6rem 0 0.2rem; }
+.pip-row .pip-label {
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted);
+    display: flex; justify-content: space-between; margin-bottom: 0.3rem;
+}
+.pips { display: flex; flex-wrap: wrap; gap: 6px; }
+.pip {
+    width: 44px; height: 44px; padding: 0;
+    border: 1px solid var(--muted); border-radius: 2px;
+    background: transparent; color: transparent;
+    font-family: var(--mono); font-size: 1.1rem; font-weight: 700;
+    cursor: pointer;
+}
+.pip.gone { background: var(--surface); border-color: var(--line); color: var(--muted); }
+.pips-structure .pip { border-color: var(--accent); }
+.pips-structure .pip.gone { background: var(--accent-tint); border-color: var(--line); color: var(--accent-deep); }
+
+.heat-effect { font-family: var(--mono); font-size: 0.8rem; color: var(--accent-deep); margin: 0.4rem 0 0; min-height: 1.2em; }
+
+.crit-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+.crit-row .chip[data-count]:not([data-count="0"]) {
+    border-color: var(--accent); background: var(--accent-tint);
+    color: var(--accent-deep); font-weight: 700;
+}
+
+.unit-panel.destroyed { border-color: var(--line); }
+.unit-panel.destroyed > *:not(.unit-header) { opacity: 0.35; }
+.unit-panel.destroyed .unit-header h3 { text-decoration: line-through; color: var(--muted); }
+.destroyed-banner {
+    font-family: var(--mono); font-size: 0.8rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-deep);
+}
+
+.selection-row { display: flex; align-items: center; gap: 0.7rem; padding: 0.5rem 0; border-bottom: 1px solid var(--line); min-height: 44px; }
+.selection-row:last-child { border-bottom: 0; }
+.selection-row input[type="checkbox"] { width: 22px; height: 22px; accent-color: var(--accent); flex: none; }
+.selection-row label { margin: 0; text-transform: none; letter-spacing: 0; font-size: 0.95rem; color: var(--ink); flex: 1; cursor: pointer; }
+.selection-row .mech-stats { flex: none; }
+
+/* --- Classic-Datenbogen: Zonen, Stepper, Waffen ---------------------------- */
+.stepper { display: inline-flex; align-items: center; gap: 0.15rem; }
+.stepper button {
+    width: 40px; height: 40px; padding: 0; flex: none;
+    border: 1px solid var(--line); border-radius: 2px;
+    background: var(--surface); color: var(--ink);
+    font-family: var(--mono); font-size: 1.05rem; font-weight: 700;
+    cursor: pointer;
+}
+.stepper button:hover { border-color: var(--muted); }
+.stepper button:disabled { opacity: 0.35; cursor: default; }
+.stepper .value {
+    min-width: 2.4rem; text-align: center;
+    font-family: var(--mono); font-weight: 700; font-variant-numeric: tabular-nums;
+}
+.stepper .value small { color: var(--muted); font-weight: 400; }
+
+.zones-table { width: 100%; border-collapse: collapse; }
+.zones-table th { padding: 0.3rem 0.3rem; }
+.zones-table td { padding: 0.25rem 0.3rem; border-bottom: 1px solid var(--line); }
+.zones-table tr:last-child td { border-bottom: 0; }
+.zones-table .zone-name { font-family: var(--mono); font-size: 0.8rem; font-weight: 600; white-space: nowrap; }
+.zones-table .rear { color: var(--muted); font-weight: 400; }
+.zones-table tr.zone-gone .zone-name { color: var(--accent-deep); text-decoration: line-through; }
+.zones-table tr.zone-gone td { background: var(--accent-tint); }
+
+.weapon-row {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.8rem;
+    padding: 0.5rem 0; border-bottom: 1px solid var(--line);
+}
+.weapon-row:last-child { border-bottom: 0; }
+.weapon-row .w-name { font-family: var(--mono); font-weight: 700; }
+.weapon-row .w-info { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
+.weapon-row.weapon-gone .w-name, .weapon-row.weapon-gone .w-info { color: var(--muted); text-decoration: line-through; }
+.weapon-row .stepper { margin-left: auto; }
+
+.heat-display { display: flex; align-items: center; gap: 0.9rem; margin-top: 0.4rem; }
+.heat-display .stepper .value { font-size: 1.4rem; min-width: 2.8rem; }
+
+/* Editor: Waffenzeilen im Hangar-Formular – umbruchfähig statt Spalten
+   auszublenden, damit auf dem Handy alle Felder erreichbar bleiben. */
+.weapon-edit-row {
+    display: flex; flex-wrap: wrap; gap: 0.35rem;
+    align-items: flex-end;
+    padding-bottom: 0.6rem; margin-bottom: 0.6rem;
+    border-bottom: 1px dashed var(--line);
+}
+.weapon-edit-row > * { flex: 1 1 6rem; min-width: 0; }
+.weapon-edit-row .weapon-field-name { flex: 2 1 10rem; }
+.weapon-edit-row .weapon-field-button { flex: 0 0 auto; }
+.weapon-edit-row label { margin-top: 0; }
+.hint { font-size: 0.78rem; color: var(--muted); }
+
+/* Krit-Erfassung im Classic-Datenbogen */
+.crit-entry { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.6rem; }
+.crit-entry select { flex: 1 1 9rem; min-width: 0; width: auto; }
+.crit-entry select[aria-label="Zone des Treffers"] { flex: 0 1 6rem; }
+.crit-entry .btn { flex: 0 0 auto; min-height: 44px; }
+
+/* Krit-Slots: Editor (Hangar) und Trefferanzeige (Datenbogen) */
+.slot-editor details, .slot-crit {
+    border: 1px solid var(--line); border-radius: var(--radius);
+    background: var(--paper); margin-bottom: 0.5rem;
+}
+.slot-editor summary, .slot-crit summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: center; gap: 0.5rem;
+    min-height: 44px; padding: 0.3rem 0.8rem;
+    font-family: var(--mono); font-size: 0.82rem; font-weight: 600;
+}
+.slot-editor summary::-webkit-details-marker, .slot-crit summary::-webkit-details-marker { display: none; }
+.slot-editor summary::before, .slot-crit summary::before { content: "+"; color: var(--accent-deep); }
+.slot-editor details[open] summary::before, .slot-crit[open] summary::before { content: "\2212"; }
+.slot-crit summary .count { margin-left: auto; color: var(--muted); font-weight: 400; font-size: 0.75rem; }
+.slot-crit summary .count.has-crits { color: var(--accent-deep); font-weight: 700; }
+.slot-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 0 1.2rem; padding: 0 0.8rem 0.8rem; }
+.slot-group h4 {
+    font-family: var(--mono); font-size: 0.68rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted);
+    margin: 0.5rem 0 0.3rem;
+}
+.slot-row { display: flex; align-items: center; gap: 0.45rem; margin-bottom: 0.3rem; }
+.slot-row .slot-no, .slot-button .slot-no {
+    font-family: var(--mono); font-size: 0.75rem; color: var(--muted);
+    width: 1.1rem; flex: none; text-align: right;
+}
+.slot-row input { flex: 1; padding: 0.35rem 0.5rem; font-size: 0.85rem; }
+.slot-button {
+    display: flex; width: 100%; align-items: center; gap: 0.45rem;
+    min-height: 42px; padding: 0.2rem 0.3rem;
+    background: transparent; border: 0; border-bottom: 1px solid var(--line);
+    color: var(--ink); font-family: var(--mono); font-size: 0.82rem;
+    text-align: left; cursor: pointer;
+}
+.slot-group .slot-button:last-child { border-bottom: 0; }
+.slot-button.hit { color: var(--accent-deep); text-decoration: line-through; background: var(--accent-tint); }
+.slot-button.slot-empty { color: var(--muted); cursor: default; font-style: italic; }
+
+/* Systemzeile wie auf dem Papierbogen: Engine/Gyro/Sensoren/Lebenserhaltung */
+.system-row { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; margin-top: 0.5rem; }
+.system-block { display: flex; align-items: center; gap: 0.45rem; }
+.system-block .sys-name { font-family: var(--mono); font-size: 0.75rem; font-weight: 600; color: var(--muted); }
+.system-block .pip { width: 32px; height: 32px; font-size: 0.95rem; }
+
+/* Paper Doll: das mobile Panzerungsdiagramm des Classic-Datenbogens */
+.doll-wrap { display: flex; justify-content: center; }
+.doll { width: 100%; max-width: 360px; display: block; margin-top: 0.3rem; }
+.doll [data-zone] {
+    fill: var(--surface); stroke: var(--line); stroke-width: 1.5;
+    cursor: pointer;
+}
+.doll [data-zone]:hover { stroke: var(--muted); }
+.doll .z-part { fill: var(--accent-tint); }
+.doll .z-open { fill: var(--accent-tint); stroke: var(--accent); stroke-width: 2; }
+.doll .z-gone { stroke: var(--muted); stroke-dasharray: 4 3; }
+.doll .z-active { stroke: var(--accent); stroke-width: 3; }
+.doll .gone-line { stroke: var(--accent-deep); stroke-width: 2; opacity: 0.55; }
+.doll text { pointer-events: none; font-family: var(--mono); text-anchor: middle; }
+.doll .z-nr { fill: var(--ink); font-size: 16px; font-weight: 700; }
+.doll .num-open { fill: var(--accent-deep); }
+.doll .num-gone { fill: var(--muted); }
+.doll .z-snr { fill: var(--muted); font-size: 10px; }
+.doll .z-label { fill: var(--muted); font-size: 8px; letter-spacing: 0.08em; }
+
+.zones-panel {
+    border: 1px solid var(--line); border-radius: var(--radius);
+    background: var(--paper);
+    padding: 0.8rem; margin-top: 0.6rem;
+}
+.zones-panel .chips { margin-top: 0.5rem; }
+.zones-fine { display: flex; flex-wrap: wrap; gap: 0.5rem 1.6rem; margin-top: 0.7rem; }
+.zones-fine-block { display: flex; align-items: center; gap: 0.6rem; }
+
+/* Top-Down-Unit-Icons (MegaMek) als Standard-Grafik, solange kein Foto da ist */
+.photo-thumb.mech-icon {
+    image-rendering: pixelated;
+    object-fit: contain;
+    background: var(--surface);
+    padding: 4px;
+}
+
+/* GATOR/SATOR-Rechner */
+.calculator-readout { position: sticky; top: 0.5rem; z-index: 30; margin-bottom: 1rem; box-shadow: 0 0 0 6px var(--paper); }
+.calculator-category { padding: 0.9rem 1.1rem; margin-bottom: 0.7rem; }
+.calculator-category .chips { margin-top: 0.4rem; }
+.calculator-category .stepper { margin-top: 0.4rem; }
+.gator-letter {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 1.5rem; height: 1.5rem; margin-right: 0.3rem;
+    background: var(--accent-tint); border: 1px solid var(--accent);
+    border-radius: 2px; color: var(--accent-deep);
+    font-family: var(--mono); font-size: 0.8rem;
+}
+
+/* Trefferzonen-Helfer */
+.doll-hit [data-zone], .doll-hit polygon { cursor: default; }
+.doll .z-hit {
+    fill: var(--accent); fill-opacity: 0.55;
+    stroke: var(--accent); stroke-width: 3;
+    animation: hit-pulse 0.9s ease-out 2;
+}
+@keyframes hit-pulse { 0% { fill-opacity: 0.9; } 100% { fill-opacity: 0.55; } }
+.zones-table tr.hit-row td { background: var(--accent-tint); }
+.zones-table tr.hit-row .zone-name { color: var(--accent-deep); }
+
+/* Eingebetteter Angriffs-Rechner im Datenbogen */
+.attack-block { margin-top: 0.8rem; }
+.attack-content { padding: 0 0.8rem 0.8rem; }
+.calculator-compact { margin-top: 0.7rem; }
+.attack-content .readout { margin-top: 0.6rem; }
+
+/* Überschriften: weniger Luft darunter, kompakte Heros */
+.hero h1 { margin: 0.25rem 0 0.45rem; }
+.hero .sub { margin: 0 0 0.6rem; }
+.hero .cta { margin: 0.8rem 0 0; }
+.hero .short {
+    margin: 0; color: var(--muted); font-size: 0.95rem;
+}
+.hero .short b, .hero .short strong { color: var(--ink); }
+/* Das hervorgehobene Wort in der Kopfzeile: schlicht in der Signalfarbe.
+   Eine Instanz darf daraus machen, was sie will (css/style.local.css). */
+.hero .accent { color: var(--accent-deep); }
+
+/* Startseite: plakativ und laut */
+.hero h1.loud {
+    font-size: clamp(2.8rem, 12vw, 4.4rem);
+    line-height: 0.92;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin: 0.4rem 0 0.7rem;
+}
+.hero .sub.loud {
+    font-weight: 600;
+    font-size: clamp(0.95rem, 3.4vw, 1.15rem);
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+}
+
+/* Sonderfähigkeiten im Gefecht: klickbare Chips + Erklärungs-Popup */
+.special-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.2rem 0 0.4rem; }
+.special-chip {
+    min-height: 32px; padding: 0.15rem 0.55rem;
+    border: 1px dashed var(--line); border-radius: 2px;
+    background: transparent; color: var(--muted);
+    font-family: var(--mono); font-size: 0.75rem; font-weight: 600;
+    cursor: pointer;
+}
+.special-chip:hover { color: var(--accent-deep); border-color: var(--accent); }
+.dialog-box {
+    border: 1px solid var(--ink); border-radius: var(--radius);
+    background: var(--surface); color: var(--ink);
+    max-width: min(26rem, 90vw); padding: 1.1rem 1.2rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+.dialog-box::backdrop { background: rgba(0, 0, 0, 0.55); }
+.dialog-box .cta { margin-top: 0.8rem; }
+
+/* Rundenleiste im Gefecht */
+.round-bar {
+    display: flex; align-items: center; gap: 0.8rem;
+    padding: 0.5rem 0.9rem; margin-bottom: 0.9rem;
+    border: 1px solid var(--line); border-radius: var(--radius);
+    background: var(--surface);
+}
+.round-bar .round-number { font-family: var(--mono); font-weight: 700; font-variant-numeric: tabular-nums; }
+.round-bar .round-limit { font-family: var(--mono); font-size: 0.75rem; font-weight: 700; color: var(--accent-deep); text-transform: uppercase; }
+.round-bar .btn { margin-left: auto; }
+.end-phase-dialog { min-width: min(24rem, 88vw); }
+.end-phase-dialog h3 { margin: 0.4rem 0 0.5rem; }
+.crit-dialog table { width: 100%; border-collapse: collapse; margin: 0.6rem 0; }
+.crit-dialog td { padding: 0.3rem 0.5rem; border-bottom: 1px solid var(--line); font-size: 0.85rem; }
+.crit-dialog td.num { font-family: var(--mono); font-weight: 700; white-space: nowrap; }
+.pip-label .special-chip { margin-left: 0.5rem; }
+.dialog-box .pip-label {
+    font-family: var(--mono); font-size: 0.7rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted);
+    display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 0.3rem;
+}
+
+/* Gefecht: Aktionszeile, Angriffs-Dialog, Würfel, Mech-Sprungleiste */
+.action-row { margin: 0.7rem 0 0.2rem; }
+.action-btn { width: 100%; justify-content: center; font-size: 0.95rem; }
+.attack-dialog {
+    width: min(30rem, 92vw);
+    max-height: 88vh; overflow-y: auto;
+}
+.attack-dialog h3 { margin: 0.3rem 0 0.5rem; }
+.dice-block { margin: 0.8rem 0 0.4rem; }
+.dice-btn { width: 100%; justify-content: center; }
+.dice-row { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.6rem; }
+.die-face { font-size: 2.6rem; line-height: 1; }
+.dice-total { font-family: var(--mono); font-size: 1.4rem; font-weight: 700; }
+.dice-verdict { font-family: var(--mono); font-weight: 700; margin: 0.3rem 0 0; }
+.dice-verdict.is-hit { color: var(--accent-deep); text-transform: uppercase; }
+.dice-verdict.is-miss { color: var(--muted); }
+.mech-jump-bar {
+    display: flex; gap: 0.4rem; overflow-x: auto; padding: 0.1rem 0 0.5rem;
+    scrollbar-width: none;
+}
+.mech-jump-bar::-webkit-scrollbar { display: none; }
+.mech-jump-bar .special-chip { white-space: nowrap; }
+.mech-jump-bar .special-chip.is-gone { text-decoration: line-through; opacity: 0.55; }
+
+/* Wissen: Glossar & Epochen */
+.glossary-row .glossary-arrow { color: var(--muted); }
+.glossary-row .glossary-target { color: var(--accent-deep); }
+.glossary-row .topic-tag { margin-right: 0.4rem; }
+.era-header { display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap; margin-bottom: 0.4rem; }
+.era-header h2 { font-size: 1.1rem; margin: 0; }
+.era-years {
+    font-family: var(--mono); font-size: 0.75rem; font-weight: 700;
+    color: var(--accent-deep); border: 1px solid var(--line);
+    border-radius: 2px; padding: 0.15rem 0.45rem; white-space: nowrap;
+}
+.card.era, .card.scenario { border-left: 3px solid var(--accent); }
+table.comparison td:first-child { font-weight: 600; white-space: nowrap; }
+a.tile { display: block; color: inherit; text-decoration: none; }
+a.tile:hover { border-color: var(--accent); }
+
+/* Bemalen: Silhouetten-Vorschau, Schema-Werkstatt, Farbtabelle */
+.f-preview { display: flex; gap: 0.9rem; align-items: flex-start; margin: 0.5rem 0; }
+.f-preview .mech-silhouette { width: 92px; flex: 0 0 auto; }
+.f-preview .f-legend { flex: 1; margin: 0; }
+.scheme-row { display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: flex-start; }
+.scheme-form { flex: 1 1 15rem; }
+.scheme-preview { flex: 0 0 auto; margin: 0 auto; }
+.scheme-preview .mech-silhouette { width: 140px; }
+.scheme-color-row { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.6rem; }
+.scheme-color-row label { flex: 0 0 4.2rem; margin: 0; }
+.scheme-color-row input[type="color"] {
+    width: 52px; height: 44px; padding: 2px;
+    border: 1px solid var(--line); border-radius: 2px; background: var(--surface);
+}
+.scheme-color-row input[type="text"] { width: 6.5rem; font-family: var(--mono); }
+.scheme-card .mech-silhouette { width: 80px; }
+.color-swatch { margin-right: 0.5rem; vertical-align: middle; }
+
+/* Stufe B: Waffen im Angriffsdialog, Initiative, Teilen */
+.weapons-dialog .weapon-row { align-items: flex-start; }
+.weapons-dialog .weapon-row.fired { opacity: 0.75; }
+.weapons-dialog .weapon-row.fired .w-name::before { content: "✓ "; color: var(--accent-deep); }
+.weapons-dialog .roll-result { color: var(--accent-deep); font-family: var(--mono); }
+.dice-chip { min-width: 44px; font-size: 1.3rem; flex: 0 0 auto; }
+.initiative-badge { font-family: var(--mono); font-size: 0.72rem; color: var(--accent-deep); }
+.initiative-row { display: flex; align-items: center; gap: 0.6rem; margin: 0.4rem 0; }
+.initiative-label { flex: 0 0 4.5rem; font-family: var(--mono); font-size: 0.8rem; text-transform: uppercase; color: var(--muted); }
+.initiative-roll { flex: 1; font-family: var(--mono); font-size: 1.4rem; font-weight: 700; }
+.initiative-row input { width: 4.5rem; text-align: center; }
+.initiative-counts { display: flex; gap: 0.8rem; margin-top: 0.6rem; }
+.initiative-counts label { flex: 1; }
+.qr-box { max-width: 240px; margin: 0.6rem auto; background: #fff; padding: 6px; border-radius: 2px; }
+.qr-box svg { display: block; width: 100%; height: auto; }
+.share-dialog input[readonly] { font-size: 0.75rem; margin-top: 0.4rem; }
+.round-bar { flex-wrap: wrap; row-gap: 0.4rem; }
+
+/* Einheitstypen im AS-Gefecht (KONZEPT §10, F2) */
+.unit-type {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.5rem;
+    white-space: nowrap;
+}
+.motive-row { margin-top: 0.6rem; }
+.motive-row .chips { margin-bottom: 0.4rem; }
+
+/* Eigene Modifikatoren: Fähigkeiten & Quirks (KONZEPT §10, F5) */
+.mod-edit-row {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: flex-end;
+    padding: 0.4rem 0; border-bottom: 1px solid var(--line);
+}
+.mod-edit-row .mod-field-name { flex: 1 1 12rem; }
+.mod-edit-row .mod-field-value { flex: 0 0 6.5rem; }
+.mod-edit-row .mod-field-button { flex: 0 0 auto; padding-bottom: 0.1rem; }
+.mod-edit-row label { display: block; }
+.mod-edit-row input, .mod-edit-row select { width: 100%; }
+.mod-chips { margin-bottom: 0.6rem; }
+
+/* Kampagne light: mitgeführter Schaden (KONZEPT §10, F9) */
+.state-badge {
+    display: inline-block; margin-top: 0.35rem;
+    font-family: var(--mono); font-size: 0.72rem; line-height: 1.3;
+    color: var(--accent-deep); border: 1px solid var(--accent-deep);
+    border-radius: 2px; padding: 0.12rem 0.45rem;
+}
+.state-badge.state-destroyed { background: var(--accent-deep); color: var(--paper); }
+.selection-row .state-badge { margin-top: 0; flex-basis: 100%; }
+/* Wie beim Endphase-Dialog: ohne min-width fällt der Dialog bei wenigen
+   kurzen Posten in sich zusammen (Breite käme sonst nur vom Inhalt). */
+.workshop-dialog { min-width: min(24rem, 88vw); }
+.workshop-dialog .workshop-list { max-height: 46vh; overflow-y: auto; margin: 0.4rem 0 0.8rem; }
+.workshop-dialog .selection-row { display: flex; align-items: center; gap: 0.6rem; padding: 0.3rem 0; min-height: 44px; }
+.workshop-dialog label { flex: 1; cursor: pointer; }
+.workshop-dialog label { margin: 0; text-transform: none; letter-spacing: 0; font-size: 0.92rem; }
+
+/* Kampagnen-Seite */
+/* Kopfzeile direkt in einer Karte: zwei Spans links und rechts - sonst
+   kleben "Aktiv" und das Datum aneinander. */
+.card > .pip-label {
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted);
+    display: flex; justify-content: space-between; gap: 0.6rem; margin-bottom: 0.3rem;
+}
+.campaign-card h3 { margin: 0.2rem 0 0.4rem; font-size: 1.1rem; }
+.state-row {
+    display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap;
+    padding: 0.6rem 0; border-bottom: 1px solid var(--line);
+}
+.state-row:last-child { border-bottom: 0; }
+.state-row > div { flex: 1; min-width: 12rem; }
+.state-row strong { display: block; }
+.log-entry { margin-bottom: 0.9rem; }
+.log-entry .log-note { margin: 0.2rem 0 0.5rem; font-weight: 600; }
+.log-entry .mech-stats { margin: 0.1rem 0; }
+.log-entry .destroyed-row { color: var(--accent-deep); }
+.log-entry .btn { margin-top: 0.6rem; }

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="{{site.defaultLang}}" name="site-default-lang"/>
+<meta content="{{site.name}}" name="site-name"/>
+<title>Painting – Faction colours · Mechs</title>
+<meta content="BattleTech faction colours with hex codes, paint recipes and tips – Inner Sphere, Clans, mercenaries and Periphery." name="description"/>
+<meta content="#14161A" name="theme-color"/>
+<link href="../img/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="../manifest.webmanifest" rel="manifest"/>
+<link href="../css/tokens.css" rel="stylesheet"/>
+<link href="../css/components.css" rel="stylesheet"/>
+<link href="../css/app.css" rel="stylesheet"/>
+<link href="../css/tokens.local.css" rel="stylesheet"/>
+<link href="../css/style.local.css" rel="stylesheet"/>
+<script>try{if(localStorage.getItem("mechs-theme")==="light")document.documentElement.dataset.theme="light";}catch(e){}</script>
+
+<link href="../de/painting/index.html" hreflang="de" rel="alternate"/>
+<script src="../js/i18n.js"></script>
+</head>
+<body class="hat-bottom-nav">
+<header class="site-head">
+<div class="wrap">
+<a class="brand" href="../index.html">
+<img alt="" height="34" src="../img/logo-badge.svg" width="34"/>
+<span class="brand-name"><span class="brand-tld">{{site.brand.prefix}}</span>{{site.brand.core}}<span class="brand-tld">{{site.brand.suffix}}</span></span>
+</a>
+<div class="header-buttons">
+<button aria-label="Table mode: keep the display awake" aria-pressed="false" class="btn btn-small btn-icon" hidden="" id="table-btn" title="Table mode: keep the display awake" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="10" rx="1.5" width="14" x="5" y="10.5"></rect><path class="shackle-open" d="M8.5 10.5V7.5a3.5 3.5 0 0 1 6.6-1.6"></path><path class="shackle-shut" d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"></path></svg></button>
+<a aria-label="Deutsch" class="btn btn-small btn-icon" data-lang="de" href="../de/painting/index.html" hreflang="de" id="lang-btn" lang="de" title="Deutsch">DE</a>
+<button aria-label="Toggle light/dark" class="btn btn-small btn-icon" id="theme-btn" title="Light/Dark" type="button">◐</button>
+</div>
+</div>
+</header>
+<main class="wrap">
+<noscript><p class="flash flash-err">This page needs JavaScript – the hangar, battle, dice and search are built with it.</p></noscript>
+<div class="hero">
+<p class="eyebrow">Field manual · <span id="f-status">Data status</span></p>
+<h1>Faction colours</h1>
+<p class="sub short"><b>Search or filter a faction → open the card</b> for hex codes, paint sequence and pitfalls. Colours are a starting point, not a rule.</p>
+<nav aria-label="Painting sections" class="tab-row">
+<a aria-current="page" href="index.html">Factions</a>
+<a href="guide.html">Guide</a>
+<a href="techniques.html">Techniques</a>
+<a href="scheme.html">Scheme</a>
+<a href="paints.html">Paints</a>
+</nav>
+</div>
+<div class="filter-row">
+<div class="chips" id="f-categories" style="margin-bottom:0.8rem"></div>
+<label for="f-search">Search faction</label>
+<input id="f-search" placeholder="e.g. Jade Falcon, Davion, gold …" type="search"/>
+<p class="no-match" hidden="" id="no-match">No faction matches – try another keyword.</p>
+</div>
+<div class="f-grid" id="f-grid">
+<p class="no-match">Loading factions …</p>
+</div>
+</main>
+<button aria-label="Back to top" class="to-top" type="button">↑</button>
+<footer class="site-foot">
+<div class="wrap">
+<p class="rules-version">Colours follow common practice and fan sources – for regimental details the <a href="https://unitcolorcompendium.com" rel="noopener">Unit Color Compendium</a> is the most comprehensive collection.</p>
+<p>{{site.name}} · <a href="../imprint.html">Legal notice</a> · <a href="../privacy.html">Privacy</a><br/> <span class="small">Mech Companion by Dennis Bormann · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a><br/>MechWarrior, BattleMech, ’Mech and BattleTech are registered trademarks of The Topps Company, Inc. Catalyst Game Labs is the licensee. Unofficial, private fan site.</span></p>
+</div>
+</footer>
+<nav aria-label="Main navigation" class="bottom-nav">
+<a href="../index.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4 11 L12 4 L20 11 V20 H14 V15 H10 V20 H4 Z"></path></svg>
+        Home
+    </a>
+<a href="../classic/hangar.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 3 L20 8 V16 L12 21 L4 16 V8 Z"></path><path d="M12 3 V21 M4 8 L20 16 M20 8 L4 16" stroke-width="0.9"></path></svg>
+        Classic
+    </a>
+<a href="../alpha-strike/hangar.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M13 3 L5 14 H11 L9 21 L19 9 H13 Z"></path></svg>
+        Alpha Strike
+    </a>
+<a aria-current="page" href="index.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M17 4 L20 7 L9 18 L4 20 L6 15 Z"></path><path d="M14 7 L17 10" stroke-width="1.2"></path></svg>
+        Painting
+    </a>
+<a href="../knowledge/index.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 4 H11 V20 H5 Z M13 4 H19 V20 H13 Z" stroke-width="1.4"></path><path d="M8 8 H8.01 M16 8 H16.01" stroke-linecap="round" stroke-width="2.4"></path></svg>
+        Reference
+    </a>
+</nav>
+<script src="../js/app.js"></script>
+<script src="../js/silhouette.js"></script>
+<script src="../js/factions.js"></script>
+<script src="../js/rules.js"></script>
+</body>
+</html>

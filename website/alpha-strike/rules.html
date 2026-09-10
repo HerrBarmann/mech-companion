@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="{{site.defaultLang}}" name="site-default-lang"/>
+<meta content="{{site.name}}" name="site-name"/>
+<title>Alpha Strike – Rules · Mechs</title>
+<meta content="Alpha Strike quick reference: unit card, turn sequence, movement, SATOR, damage, heat and special abilities." name="description"/>
+<meta content="#14161A" name="theme-color"/>
+<link href="../img/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="../manifest.webmanifest" rel="manifest"/>
+<link href="../css/tokens.css" rel="stylesheet"/>
+<link href="../css/components.css" rel="stylesheet"/>
+<link href="../css/app.css" rel="stylesheet"/>
+<link href="../css/tokens.local.css" rel="stylesheet"/>
+<link href="../css/style.local.css" rel="stylesheet"/>
+<script>try{if(localStorage.getItem("mechs-theme")==="light")document.documentElement.dataset.theme="light";}catch(e){}</script>
+
+<link href="../de/alpha-strike/rules.html" hreflang="de" rel="alternate"/>
+<script src="../js/i18n.js"></script>
+</head>
+<body class="hat-bottom-nav">
+<header class="site-head">
+<div class="wrap">
+<a class="brand" href="../index.html">
+<img alt="" height="34" src="../img/logo-badge.svg" width="34"/>
+<span class="brand-name"><span class="brand-tld">{{site.brand.prefix}}</span>{{site.brand.core}}<span class="brand-tld">{{site.brand.suffix}}</span></span>
+</a>
+<div class="header-buttons">
+<button aria-label="Table mode: keep the display awake" aria-pressed="false" class="btn btn-small btn-icon" hidden="" id="table-btn" title="Table mode: keep the display awake" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="10" rx="1.5" width="14" x="5" y="10.5"></rect><path class="shackle-open" d="M8.5 10.5V7.5a3.5 3.5 0 0 1 6.6-1.6"></path><path class="shackle-shut" d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"></path></svg></button>
+<a aria-label="Deutsch" class="btn btn-small btn-icon" data-lang="de" href="../de/alpha-strike/rules.html" hreflang="de" id="lang-btn" lang="de" title="Deutsch">DE</a>
+<button aria-label="Toggle light/dark" class="btn btn-small btn-icon" id="theme-btn" title="Light/Dark" type="button">◐</button>
+</div>
+</div>
+</header>
+<main class="wrap">
+<noscript><p class="flash flash-err">This page needs JavaScript – the hangar, battle, dice and search are built with it.</p></noscript>
+<div class="hero">
+<p class="eyebrow">Miniatures game with tape measure · Quick reference</p>
+<h1>Alpha Strike</h1>
+<p class="sub short"><b>Tap a section to expand it</b> – or search below. At the very bottom: the searchable special abilities lexicon.</p>
+</div>
+<nav aria-label="Sections" class="jump-bar">
+<a href="#sator">SATOR</a>
+<a href="#damage">Damage</a>
+<a href="#units">Vehicles &amp; co.</a>
+<a href="#heat">Heat</a>
+<a href="#abilities">Abilities</a>
+<a href="#melee">Melee</a>
+<a href="#movement">movement</a>
+<a href="#unitcard">Unit card</a>
+<a href="#turn-sequence">Round</a>
+</nav>
+<div class="filter-row">
+<label for="rules-filter">Search the rules</label>
+<input id="rules-filter" placeholder="e.g. overheat, TMM, charge …" type="search"/>
+<p class="no-match" hidden="" id="no-match">No section matches – try another keyword.</p>
+</div>
+<details class="card section" data-keywords="zielzahl to-hit angriffswurf treffen modifikator attack tmm" id="sator" open="">
+<summary>Attack <span class="topic-tag">mnemonic: SATOR</span></summary>
+<div class="content">
+<p class="formula-note">Build the to-hit number, roll 2D6, result ≥ to-hit number = hit. Above 12 is an automatic miss; a rolled 12 is not an automatic hit – but always triggers a crit roll.</p>
+<div class="formula">
+<div class="term"><span class="box">S</span><span class="v">Skill</span><span class="d">base to-hit number, usually 4</span></div>
+<div class="op">+</div>
+<div class="term"><span class="box">A</span><span class="v">Attacker</span><span class="d">own movement</span></div>
+<div class="op">+</div>
+<div class="term"><span class="box">T</span><span class="v">Target</span><span class="d">the target’s TMM</span></div>
+<div class="op">+</div>
+<div class="term"><span class="box">O</span><span class="v">Other</span><span class="d">terrain, heat, damage</span></div>
+<div class="op">+</div>
+<div class="term"><span class="box">R</span><span class="v">Range</span><span class="d">measured distance</span></div>
+</div>
+<h3>A · Own movement</h3>
+<div class="table-scroll">
+<table>
+<tr><td>Ground move</td><td class="num">+0</td></tr>
+<tr><td>Standstill / immobile</td><td class="num">−1</td></tr>
+<tr><td>Jump</td><td class="num">+2</td></tr>
+</table>
+</div>
+<h3>T · Target</h3>
+<div class="table-scroll">
+<table>
+<tr><td>Ground move / sprint</td><td class="num">+ TMM</td></tr>
+<tr><td>Standstill</td><td class="num">+0</td></tr>
+<tr><td>Jumped</td><td class="num">+ TMM +1</td></tr>
+<tr><td>Immobile / shut down</td><td class="num">−4</td></tr>
+</table>
+</div>
+<h3>R · Range</h3>
+<div class="table-scroll">
+<table>
+<tr><td>Short — up to 6″</td><td class="num">+0</td></tr>
+<tr><td>Medium — over 6″ up to 24″</td><td class="num">+2</td></tr>
+<tr><td>Long — over 24″ up to 42″</td><td class="num">+4</td></tr>
+</table>
+</div>
+<h3>O · Other</h3>
+<div class="table-scroll">
+<table>
+<tr><td>Light woods (in between or occupied)</td><td class="num">+1</td></tr>
+<tr><td>Heavy woods (in between or occupied)</td><td class="num">+2</td></tr>
+<tr><td>Partial cover, including water</td><td class="num">+1</td></tr>
+<tr><td>Fire control damage, per hit</td><td class="num">+2</td></tr>
+<tr><td>Own heat level</td><td class="num">+ level</td></tr>
+</table>
+</div>
+<ul class="tight">
+<li>Line of sight is blocked from 6″ of light or 3″ of heavy woods in between (ultra-heavy woods: 2″), or if more than two thirds of the target is behind solid terrain.</li>
+</ul>
+</div>
+</details>
+<details class="card section" data-keywords="krit critical panzerung armor struktur minimalschaden heck rear" id="damage">
+<summary>Damage &amp; critical hits <span class="topic-tag">two rows of bubbles</span></summary>
+<div class="content">
+<h3>Procedure</h3>
+<ul class="tight">
+<li>Damage = the value for the matching range band (S, M or L).</li>
+<li><strong>0*</strong> (minimal damage): attack allowed, to-hit +1 – on success exactly 1 damage.</li>
+<li>Hits from behind: <strong>+1 damage</strong>. Front or rear is determined with a ruler from base centre to base centre.</li>
+<li>Tick off <strong>armor</strong> first, then <strong>structure</strong>.</li>
+<li>Every hit that damages structure: roll once on the crit table.</li>
+<li>Structure empty or damage left over → ’Mech destroyed.</li>
+</ul>
+<h3>Critical hit table (2D6)</h3>
+<div class="table-scroll">
+<table>
+<tr><td class="num">2</td><td>Ammo — destroyed, unless CASE/CASEII/ENE</td></tr>
+<tr><td class="num">3 · 11</td><td>Engine — +1 heat when firing, second hit destroys</td></tr>
+<tr><td class="num">4 · 10</td><td>Fire control — +2 to all attacks each</td></tr>
+<tr><td class="num">5 · 9</td><td>no effect</td></tr>
+<tr><td class="num">6 · 8</td><td>Weapon — all damage values −1</td></tr>
+<tr><td class="num">7</td><td>MP — halve MV and TMM, at least −2″ and −1</td></tr>
+<tr><td class="num">12</td><td>’Mech destroyed</td></tr>
+</table>
+</div>
+</div>
+</details>
+<details class="card section" data-keywords="fahrzeug vehicle vtol hover infanterie infantry battle armor protomech motive crew bewegungsunfaehig immobile" id="units">
+<summary>Vehicles, infantry &amp; ProtoMechs <span class="topic-tag">what works differently</span></summary>
+<div class="content">
+<h3>Basics</h3>
+<ul class="tight">
+<li><strong>Heat</strong> only applies to ’Mechs (and aerospace units). Vehicles, infantry, battle armor and ProtoMechs have neither a heat level nor OV.</li>
+<li><strong>Infantry and battle armor</strong> never suffer critical hits – damage simply goes to armor and structure.</li>
+<li><strong>Vehicles</strong> also roll on the motive table on <em>every</em> hit (even pure armor damage); critical hits only on structure damage, as usual.</li>
+<li>An <strong>immobile</strong> target (crew stunned, motive 12+) is attacked with TMM −4.</li>
+</ul>
+<h3>Critical hit table, vehicles (2D6)</h3>
+<div class="table-scroll">
+<table>
+<tr><td class="num">2</td><td>Ammo — destroyed, unless CASE/CASEII/ENE</td></tr>
+<tr><td class="num">3</td><td>Crew stunned — no movement, no attacks, counts as immobile (until the end of the next turn)</td></tr>
+<tr><td class="num">4 · 5</td><td>Fire control — +2 to all attacks each</td></tr>
+<tr><td class="num">6 · 7 · 8</td><td>no effect</td></tr>
+<tr><td class="num">9 · 10</td><td>Weapon — all damage values −1</td></tr>
+<tr><td class="num">11</td><td>Crew killed — vehicle out of action</td></tr>
+<tr><td class="num">12</td><td>Engine — MV and damage halved, a second hit destroys</td></tr>
+</table>
+</div>
+<h3>Motive damage (2D6, on every hit)</h3>
+<p class="small muted">Modifier: tracked/naval +0 · wheeled/hover +1 · VTOL/WiGE +2 · ARS −1</p>
+<div class="table-scroll">
+<table>
+<tr><td class="num">2–8</td><td>no effect</td></tr>
+<tr><td class="num">9 · 10</td><td>MV −2″, TMM −1</td></tr>
+<tr><td class="num">11</td><td>MV and TMM halved (at least −2″ and −1)</td></tr>
+<tr><td class="num">12+</td><td>immobile — VTOL/WiGE crashes</td></tr>
+</table>
+</div>
+<h3>Critical hit table, ProtoMechs (2D6)</h3>
+<div class="table-scroll">
+<table>
+<tr><td class="num">2 · 3 · 11 · 12</td><td>Weapon — all damage values −1</td></tr>
+<tr><td class="num">4</td><td>Fire control — +2 to all attacks</td></tr>
+<tr><td class="num">5 · 7 · 9</td><td>MP — halve MV and TMM (at least −2″ and −1), stacks</td></tr>
+<tr><td class="num">6 · 8</td><td>no effect</td></tr>
+<tr><td class="num">10</td><td>ProtoMech destroyed</td></tr>
+</table>
+</div>
+</div>
+</details>
+<details class="card section" data-keywords="heat overheat ov abschaltung shutdown abkuehlen endphase wasser" id="heat">
+<summary>Heat &amp; overheat <span class="topic-tag">only four levels</span></summary>
+<div class="content">
+<div class="hazard hazard-warn hazard-edge"></div>
+<h3>Effects — from the next round on</h3>
+<div class="table-scroll">
+<table>
+<tr><td>Attacks</td><td class="num">+ heat level</td></tr>
+<tr><td>movement</td><td class="num">−2″ per heat level</td></tr>
+<tr><td>From level 2</td><td class="num">TMM −1</td></tr>
+<tr><td>Level 4 = “S”</td><td class="num">Shutdown</td></tr>
+</table>
+</div>
+<ul class="tight">
+<li>When jumping, heat penalties to MV and TMM do not apply.</li>
+<li>Shut down means: do nothing for a full round, TMM −4, then heat back to 0.</li>
+</ul>
+<h3>Using overheat</h3>
+<ul class="tight">
+<li>Declare before the roll how many OV points you use.</li>
+<li>Each point = +1 damage at short and medium range, but +1 heat in the end phase.</li>
+<li>At long range only with the <code>OVL</code> ability.</li>
+</ul>
+<h3>Cooling down in the end phase</h3>
+<ul class="tight">
+<li>Add the overheat points used.</li>
+<li>In water: −1 level.</li>
+<li>Did not fire at all this round: heat drops all the way to 0.</li>
+</ul>
+</div>
+</details>
+<details class="card section" data-keywords="special abilities sonderfaehigkeiten lexikon kuerzel abkuerzung" id="abilities">
+<summary>Special abilities <span class="topic-tag">lexicon · searchable</span></summary>
+<div class="content">
+<label for="fx-search">Search code or term</label>
+<input id="fx-search" placeholder="e.g. CASE, stealth, heat …" type="search"/>
+<p class="no-match" hidden="" id="fx-empty">Nothing found – is the code still missing? Add it in <code>daten/as-faehigkeiten.json</code>.</p>
+<div id="fx-list" style="margin-top:0.6rem"></div>
+<p class="hint">Curated short versions (<span id="fx-status">2026-08</span>) – when in doubt, the rulebook applies.</p>
+</div>
+</details>
+<details class="card section" data-keywords="melee physisch charge dfa schlag kuerzel specials" id="melee">
+<summary>Melee &amp; special abilities <span class="topic-tag">the most common codes</span></summary>
+<div class="content">
+<h3>Physical attacks</h3>
+<div class="table-scroll">
+<table>
+<thead><tr><th>Attack</th><th>Range</th><th>Damage</th></tr></thead>
+<tr><td>Standard</td><td class="num">1″</td><td class="num">Size</td></tr>
+<tr><td>Melee (MEL)</td><td class="num">2″</td><td class="num">Size +1</td></tr>
+<tr><td>Charge</td><td class="num">Contact</td><td class="num">Size + ½ TMM</td></tr>
+<tr><td>DFA</td><td class="num">Contact</td><td class="num">Charge +1</td></tr>
+</table>
+</div>
+<ul class="tight">
+<li>Charge and DFA are declared during the movement phase already, to-hit +1 each.</li>
+<li>Both also damage the attacker.</li>
+<li>Whoever attacks physically does not shoot this round – and vice versa.</li>
+</ul>
+<h3>Codes that come up all the time</h3>
+<div class="table-scroll">
+<table>
+<tr><td><code>ENE</code></td><td>no ammunition, ignores ammo hits</td></tr>
+<tr><td><code>CASE / CASEII</code></td><td>survives ammo explosions</td></tr>
+<tr><td><code>HT#/#/#</code></td><td>inflicts extra heat on the target</td></tr>
+<tr><td><code>OVL</code></td><td>overheat also applies at long range</td></tr>
+<tr><td><code>AMS</code></td><td>−1 damage against IF/LRM attacks from the front</td></tr>
+<tr><td><code>MEL</code></td><td>melee weapon, +1 physical damage</td></tr>
+<tr><td><code>STL</code></td><td>hard to hit: +1 medium, +2 long</td></tr>
+<tr><td><code>REAR#/#/#</code></td><td>rear weapons, +1 to the to-hit number</td></tr>
+<tr><td><code>JMPS# / JMPW#</code></td><td>strong or weak jump jets, TMM ±#</td></tr>
+</table>
+</div>
+<div class="callout">
+<strong>Where to start?</strong>
+<p class="small" style="margin:0.4rem 0 0">Alpha Strike is the easier entry: one card per ’Mech, no hit locations, no bookkeeping of individual weapons. When the decisions get too coarse for you – which weapon, which location, exactly how much heat – you switch to Classic BattleTech. The same models work in both systems.</p>
+</div>
+</div>
+</details>
+<details class="card section" data-keywords="movement move sprint jump springen gelaende terrain zoll" id="movement">
+<summary>Movement <span class="topic-tag">in inches, measured freely</span></summary>
+<div class="content">
+<h3>Four movement modes</h3>
+<div class="table-scroll">
+<table>
+<tr><td>Standstill (under 1″)</td><td class="num">−1 to own attacks</td></tr>
+<tr><td>Ground move</td><td class="num">up to MV, no modifiers</td></tr>
+<tr><td>Sprint</td><td class="num">MV × 1.5 ↑, no attack</td></tr>
+<tr><td>Jump</td><td class="num">up to jump MV, +2 to own attacks</td></tr>
+</table>
+</div>
+<ul class="tight">
+<li>Minimum movement: 2″ are always possible, whatever the terrain.</li>
+<li>At the end of movement you may face any direction.</li>
+<li>Jumping ignores terrain costs; you cannot jump out of water.</li>
+</ul>
+<h3>Terrain costs per inch</h3>
+<div class="table-scroll">
+<table>
+<tr><td>Open terrain</td><td class="num">1″</td></tr>
+<tr><td>Light woods</td><td class="num">+1″</td></tr>
+<tr><td>Heavy woods</td><td class="num">+2″</td></tr>
+<tr><td>Rough terrain / rubble</td><td class="num">+1″</td></tr>
+<tr><td>Water</td><td class="num">+1″</td></tr>
+<tr><td>Buildings</td><td class="num">+1″ to +4″</td></tr>
+<tr><td>Elevation change per 1″</td><td class="num">+2″</td></tr>
+</table>
+</div>
+<ul class="tight">
+<li>More than 2″ of elevation change over 2″ of distance is impassable.</li>
+</ul>
+</div>
+</details>
+<details class="card section" data-keywords="karte card werte legende erklaerung pv sz mv skill" id="unitcard">
+<summary>Reading the unit card <span class="topic-tag">everything a ’Mech is</span></summary>
+<div class="content">
+<div class="legend">
+<div><b>PV</b><span>Point value for force building</span></div>
+<div><b>SZ</b><span>Size 1 light to 4 assault – important for melee damage</span></div>
+<div><b>MV</b><span>Movement in inches; a “j” after it means jump jets</span></div>
+<div><b>TMM</b><span>Target movement modifier: how hard the ’Mech is to hit</span></div>
+<div><b>Skill</b><span>The pilot’s skill, default 4 – that is the base to-hit number</span></div>
+<div><b>S / M / L</b><span>Damage at short, medium, long range</span></div>
+<div><b>OV</b><span>Overheat: that much extra damage is available in exchange for heat</span></div>
+<div><b>A / S</b><span>Armor (white) and structure (red) as bubbles to tick off</span></div>
+<div><b>Special</b><span>Special abilities as codes, see the melee section</span></div>
+</div>
+</div>
+</details>
+<details class="card section" data-keywords="phasen initiative reihenfolge runde turn" id="turn-sequence">
+<summary>Turn sequence <span class="topic-tag">four phases</span></summary>
+<div class="content">
+<ol class="phases">
+<li>
+<span class="no">1</span>
+<span class="ph">Initiative</span>
+<p>Both roll 2D6, reroll on a tie. The winner acts <em>last</em> and thus reacts to the opponent.</p>
+</li>
+<li>
+<span class="no">2</span>
+<span class="ph">movement</span>
+<p>The loser moves one ’Mech, then the winner, alternating. With unequal numbers, the larger side moves proportionally more models per pass.</p>
+</li>
+<li>
+<span class="no">3</span>
+<span class="ph">Combat</span>
+<p>Unlike movement: the initiative loser makes <em>all</em> of their attacks, then the winner. Every ’Mech attacks once. Damage is ticked off immediately, but its effects only apply in the end phase.</p>
+</li>
+<li>
+<span class="no">4</span>
+<span class="ph">End phase</span>
+<p>Apply damage effects, remove wrecks, apply heat or cool down, check victory conditions.</p>
+</li>
+</ol>
+</div>
+</details>
+</main>
+<button aria-label="Back to top" class="to-top" type="button">↑</button>
+<footer class="site-foot">
+<div class="wrap">
+<p class="rules-version">Rules baseline: Alpha Strike Quick-Start Rules (3rd printing) and Alpha Strike: Commander’s Edition · August 2026. The Commander’s Edition adds vehicles, infantry, aerospace and further special abilities. Changes: <a href="../knowledge/index.html#rules-version">Reference › Rules baseline</a>.</p>
+<p>{{site.name}} · <a href="../imprint.html">Legal notice</a> · <a href="../privacy.html">Privacy</a><br/> <span class="small">Mech Companion by Dennis Bormann · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a><br/>MechWarrior, BattleMech, ’Mech and BattleTech are registered trademarks of The Topps Company, Inc. Catalyst Game Labs is the licensee. Unofficial, private fan site.</span></p>
+</div>
+</footer>
+<nav aria-label="Section navigation" class="bottom-nav">
+<a href="../index.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4 11 L12 4 L20 11 V20 H14 V15 H10 V20 H4 Z"></path></svg>
+        Home
+    </a>
+<a href="hangar.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M3 20 V10 L12 4 L21 10 V20"></path><path d="M8 20 V13 H16 V20" stroke-width="1.4"></path></svg>
+        Hangar
+    </a>
+<a href="battle.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="6"></circle><path d="M12 2 V6 M12 18 V22 M2 12 H6 M18 12 H22" stroke-width="1.4"></path></svg>
+        Battle
+    </a>
+<a aria-current="page" href="rules.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 3 H18 V21 H6 Z"></path><path d="M9 7 H15 M9 11 H15 M9 15 H13" stroke-width="1.4"></path></svg>
+        Rules
+    </a>
+</nav>
+<script src="../js/app.js"></script>
+<script src="../js/rules.js"></script>
+<script src="../js/abilities.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="{{site.defaultLang}}" name="site-default-lang"/>
+<meta content="{{site.name}}" name="site-name"/>
+<title>Glossar · Mechs</title>
+<meta content="BattleTech-Glossar Deutsch/Englisch: alle Begriffe von Record Sheets und Unit Cards, durchsuchbar." name="description"/>
+<meta content="#14161A" name="theme-color"/>
+<link href="../../img/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../../img/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="../manifest.webmanifest" rel="manifest"/>
+<link href="../../css/tokens.css" rel="stylesheet"/>
+<link href="../../css/components.css" rel="stylesheet"/>
+<link href="../../css/app.css" rel="stylesheet"/>
+<link href="../../css/tokens.local.css" rel="stylesheet"/>
+<link href="../../css/style.local.css" rel="stylesheet"/>
+<script>try{if(localStorage.getItem("mechs-theme")==="light")document.documentElement.dataset.theme="light";}catch(e){}</script>
+
+<script src="../../js/i18n-de.js"></script>
+<link href="../../knowledge/glossary.html" hreflang="en" rel="alternate"/>
+<script src="../../js/i18n.js"></script>
+</head>
+<body class="hat-bottom-nav">
+<header class="site-head">
+<div class="wrap">
+<a class="brand" href="../index.html">
+<img alt="" height="34" src="../../img/logo-badge.svg" width="34"/>
+<span class="brand-name"><span class="brand-tld">{{site.brand.prefix}}</span>{{site.brand.core}}<span class="brand-tld">{{site.brand.suffix}}</span></span>
+</a>
+<div class="header-buttons">
+<button aria-label="Tisch-Modus: Display wachhalten" aria-pressed="false" class="btn btn-small btn-icon" hidden="" id="table-btn" title="Tisch-Modus: Display wachhalten" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><rect height="10" rx="1.5" width="14" x="5" y="10.5"></rect><path class="shackle-open" d="M8.5 10.5V7.5a3.5 3.5 0 0 1 6.6-1.6"></path><path class="shackle-shut" d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"></path></svg></button>
+<a aria-label="English" class="btn btn-small btn-icon" data-lang="en" href="../../knowledge/glossary.html" hreflang="en" id="lang-btn" lang="en" title="English">EN</a>
+<button aria-label="Hell/Dunkel umschalten" class="btn btn-small btn-icon" id="theme-btn" title="Hell/Dunkel" type="button">◐</button>
+</div>
+</div>
+</header>
+<main class="wrap">
+<noscript><p class="flash flash-err">Diese Seite braucht JavaScript – Hangar, Gefecht, Würfel und Suche werden damit aufgebaut.</p></noscript>
+<div class="hero">
+<p class="eyebrow">Wissen · Deutsch ↔ Englisch</p>
+<h1>Glossar</h1>
+<p class="sub short"><b>Tippen, was auf der Karte steht – egal in welcher Sprache.</b> Die Suche findet englische und deutsche Begriffe, die Chips filtern nach Thema.</p>
+</div>
+<div class="card">
+<label for="glossary-search">Begriff suchen</label>
+<input autocomplete="off" id="glossary-search" placeholder="z. B. prone, Zielzahl, heat sink …" type="search"/>
+<div class="chips" id="glossary-categories" style="margin-top:0.6rem"></div>
+</div>
+<div class="card">
+<div id="glossary-list"></div>
+<p class="muted small" hidden="" id="glossary-empty">Kein Treffer – anderes Stichwort probieren.</p>
+<p class="small muted" style="margin-top:0.8rem">Stand: <span id="glossary-status">2026-08</span> · Alpha-Strike-Kürzel (CASE, JMPS …) stehen im <a href="../alpha-strike/rules.html#abilities">Fähigkeiten-Lexikon</a>.</p>
+</div>
+</main>
+<footer class="site-foot">
+<div class="wrap">
+<p class="small muted">Regelstand: Total Warfare / BattleMech Manual · Alpha Strike: Commander’s Edition · August 2026.</p>
+<p>{{site.name}} · <a href="index.html">Wissen</a> · <a href="../imprint.html">Impressum</a> · <a href="../privacy.html">Datenschutz</a><br/> <span class="small">Mech Companion von Dennis Bormann · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a><br/>MechWarrior, BattleMech, ’Mech und BattleTech sind eingetragene Marken von The Topps Company, Inc. Catalyst Game Labs ist Lizenznehmer. Inoffizielle, private Fanseite.</span></p>
+</div>
+</footer>
+<nav aria-label="Hauptnavigation" class="bottom-nav">
+<a href="../index.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4 11 L12 4 L20 11 V20 H14 V15 H10 V20 H4 Z"></path></svg>
+        Start
+    </a>
+<a href="../classic/hangar.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 3 L20 8 V16 L12 21 L4 16 V8 Z"></path><path d="M12 3 V21 M4 8 L20 16 M20 8 L4 16" stroke-width="0.9"></path></svg>
+        Classic
+    </a>
+<a href="../alpha-strike/hangar.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M13 3 L5 14 H11 L9 21 L19 9 H13 Z"></path></svg>
+        Alpha Strike
+    </a>
+<a href="../painting/index.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M17 4 L20 7 L9 18 L4 20 L6 15 Z"></path><path d="M14 7 L17 10" stroke-width="1.2"></path></svg>
+        Bemalen
+    </a>
+<a aria-current="page" href="index.html">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 4 H11 V20 H5 Z M13 4 H19 V20 H13 Z" stroke-width="1.4"></path><path d="M8 8 H8.01 M16 8 H16.01" stroke-linecap="round" stroke-width="2.4"></path></svg>
+        Wissen
+    </a>
+</nav>
+<script src="../../js/app.js"></script>
+<script src="../../js/glossary.js"></script>
+</body>
+</html>

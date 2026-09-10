@@ -1,0 +1,1045 @@
+{
+    "_note": "Rule values for Classic BattleTech as data, not as code (CLAUDE.md working rule 1) - this is the file to maintain when a new Core Rulebook lands. structure.tonnage: internal structure per location by tonnage (ct, sideTorso, arm, leg; the head is always 3). heatThresholds: cumulative, per type the highest threshold reached applies. pilotConsciousness: the target number of the consciousness roll after 1..5 hits; the 6th hit is death (null).",
+    "version": 1,
+    "asOf": "2026-08 · Total Warfare / BattleMech Manual",
+    "structure": {
+        "head": 3,
+        "tonnage": {
+            "20": {
+                "ct": 6,
+                "sideTorso": 5,
+                "arm": 3,
+                "leg": 4
+            },
+            "25": {
+                "ct": 8,
+                "sideTorso": 6,
+                "arm": 4,
+                "leg": 6
+            },
+            "30": {
+                "ct": 10,
+                "sideTorso": 7,
+                "arm": 5,
+                "leg": 7
+            },
+            "35": {
+                "ct": 11,
+                "sideTorso": 8,
+                "arm": 6,
+                "leg": 8
+            },
+            "40": {
+                "ct": 12,
+                "sideTorso": 10,
+                "arm": 6,
+                "leg": 10
+            },
+            "45": {
+                "ct": 14,
+                "sideTorso": 11,
+                "arm": 7,
+                "leg": 11
+            },
+            "50": {
+                "ct": 16,
+                "sideTorso": 12,
+                "arm": 8,
+                "leg": 12
+            },
+            "55": {
+                "ct": 18,
+                "sideTorso": 13,
+                "arm": 9,
+                "leg": 13
+            },
+            "60": {
+                "ct": 20,
+                "sideTorso": 14,
+                "arm": 10,
+                "leg": 14
+            },
+            "65": {
+                "ct": 21,
+                "sideTorso": 15,
+                "arm": 10,
+                "leg": 15
+            },
+            "70": {
+                "ct": 22,
+                "sideTorso": 15,
+                "arm": 11,
+                "leg": 15
+            },
+            "75": {
+                "ct": 23,
+                "sideTorso": 16,
+                "arm": 12,
+                "leg": 16
+            },
+            "80": {
+                "ct": 25,
+                "sideTorso": 17,
+                "arm": 13,
+                "leg": 17
+            },
+            "85": {
+                "ct": 27,
+                "sideTorso": 18,
+                "arm": 14,
+                "leg": 18
+            },
+            "90": {
+                "ct": 29,
+                "sideTorso": 19,
+                "arm": 15,
+                "leg": 19
+            },
+            "95": {
+                "ct": 30,
+                "sideTorso": 20,
+                "arm": 16,
+                "leg": 20
+            },
+            "100": {
+                "ct": 31,
+                "sideTorso": 21,
+                "arm": 17,
+                "leg": 21
+            }
+        }
+    },
+    "heatThresholds": [
+        {
+            "value": 5,
+            "type": "mp",
+            "effect": "−1 MP"
+        },
+        {
+            "value": 8,
+            "type": "attack",
+            "effect": "+1 to attacks"
+        },
+        {
+            "value": 10,
+            "type": "mp",
+            "effect": "−2 MP"
+        },
+        {
+            "value": 13,
+            "type": "attack",
+            "effect": "+2 to attacks"
+        },
+        {
+            "value": 14,
+            "type": "shutdown",
+            "effect": "Avoid shutdown on 4+"
+        },
+        {
+            "value": 15,
+            "type": "mp",
+            "effect": "−3 MP"
+        },
+        {
+            "value": 17,
+            "type": "attack",
+            "effect": "+3 to attacks"
+        },
+        {
+            "value": 18,
+            "type": "shutdown",
+            "effect": "Avoid shutdown on 6+"
+        },
+        {
+            "value": 19,
+            "type": "ammo",
+            "effect": "Avoid ammo explosion on 4+"
+        },
+        {
+            "value": 20,
+            "type": "mp",
+            "effect": "−4 MP"
+        },
+        {
+            "value": 22,
+            "type": "shutdown",
+            "effect": "Avoid shutdown on 8+"
+        },
+        {
+            "value": 23,
+            "type": "ammo",
+            "effect": "Avoid ammo explosion on 6+"
+        },
+        {
+            "value": 24,
+            "type": "attack",
+            "effect": "+4 to attacks"
+        },
+        {
+            "value": 25,
+            "type": "mp",
+            "effect": "−5 MP"
+        },
+        {
+            "value": 26,
+            "type": "shutdown",
+            "effect": "Avoid shutdown on 10+"
+        },
+        {
+            "value": 28,
+            "type": "ammo",
+            "effect": "Avoid ammo explosion on 8+"
+        },
+        {
+            "value": 30,
+            "type": "shutdown",
+            "effect": "Shutdown, no roll"
+        }
+    ],
+    "pilotConsciousness": [
+        3,
+        5,
+        7,
+        10,
+        11,
+        null
+    ],
+    "critRoll": "Structure hit → 2D6: 2–7 no crit · 8–9 one crit · 10–11 two crits · 12 three crits (head/limb: blown off)",
+    "hitLocations": {
+        "_note": "2D6 hit location tables (Total Warfare). Per roll: the location (armor location key) plus crit=true for an automatic crit roll. Under 'rear' the rear armor of the torso locations counts.",
+        "front": {
+            "2": [
+                "ct",
+                true
+            ],
+            "3": [
+                "ra",
+                false
+            ],
+            "4": [
+                "ra",
+                false
+            ],
+            "5": [
+                "rl",
+                false
+            ],
+            "6": [
+                "rt",
+                false
+            ],
+            "7": [
+                "ct",
+                false
+            ],
+            "8": [
+                "lt",
+                false
+            ],
+            "9": [
+                "ll",
+                false
+            ],
+            "10": [
+                "la",
+                false
+            ],
+            "11": [
+                "la",
+                false
+            ],
+            "12": [
+                "head",
+                false
+            ]
+        },
+        "rear": {
+            "2": [
+                "ct",
+                true
+            ],
+            "3": [
+                "ra",
+                false
+            ],
+            "4": [
+                "ra",
+                false
+            ],
+            "5": [
+                "rl",
+                false
+            ],
+            "6": [
+                "rt",
+                false
+            ],
+            "7": [
+                "ct",
+                false
+            ],
+            "8": [
+                "lt",
+                false
+            ],
+            "9": [
+                "ll",
+                false
+            ],
+            "10": [
+                "la",
+                false
+            ],
+            "11": [
+                "la",
+                false
+            ],
+            "12": [
+                "head",
+                false
+            ]
+        },
+        "left": {
+            "2": [
+                "lt",
+                true
+            ],
+            "3": [
+                "ll",
+                false
+            ],
+            "4": [
+                "la",
+                false
+            ],
+            "5": [
+                "la",
+                false
+            ],
+            "6": [
+                "ll",
+                false
+            ],
+            "7": [
+                "lt",
+                false
+            ],
+            "8": [
+                "ct",
+                false
+            ],
+            "9": [
+                "rt",
+                false
+            ],
+            "10": [
+                "ra",
+                false
+            ],
+            "11": [
+                "rl",
+                false
+            ],
+            "12": [
+                "head",
+                false
+            ]
+        },
+        "right": {
+            "2": [
+                "rt",
+                true
+            ],
+            "3": [
+                "rl",
+                false
+            ],
+            "4": [
+                "ra",
+                false
+            ],
+            "5": [
+                "ra",
+                false
+            ],
+            "6": [
+                "rl",
+                false
+            ],
+            "7": [
+                "rt",
+                false
+            ],
+            "8": [
+                "ct",
+                false
+            ],
+            "9": [
+                "lt",
+                false
+            ],
+            "10": [
+                "la",
+                false
+            ],
+            "11": [
+                "ll",
+                false
+            ],
+            "12": [
+                "head",
+                false
+            ]
+        }
+    },
+    "critSlots": {
+        "_note": "Slot count and default filling per location (Total Warfare). A 12-slot location is rolled with 1D6 (1-3 = upper half, 4-6 = lower) plus 1D6 for the slot, a 6-slot location with one 1D6. An empty slot means: roll again.",
+        "count": {
+            "head": 6,
+            "ct": 12,
+            "rt": 12,
+            "lt": 12,
+            "ra": 12,
+            "la": 12,
+            "rl": 6,
+            "ll": 6
+        },
+        "defaults": {
+            "head": [
+                "Life Support",
+                "Sensors",
+                "Cockpit",
+                "",
+                "Sensors",
+                "Life Support"
+            ],
+            "ct": [
+                "Engine",
+                "Engine",
+                "Engine",
+                "Gyro",
+                "Gyro",
+                "Gyro",
+                "Gyro",
+                "Engine",
+                "Engine",
+                "Engine",
+                "",
+                ""
+            ],
+            "rt": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "lt": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "ra": [
+                "Shoulder",
+                "Upper Arm Actuator",
+                "Lower Arm Actuator",
+                "Hand Actuator",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "la": [
+                "Shoulder",
+                "Upper Arm Actuator",
+                "Lower Arm Actuator",
+                "Hand Actuator",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "rl": [
+                "Hip",
+                "Upper Leg Actuator",
+                "Lower Leg Actuator",
+                "Foot Actuator",
+                "",
+                ""
+            ],
+            "ll": [
+                "Hip",
+                "Upper Leg Actuator",
+                "Lower Leg Actuator",
+                "Foot Actuator",
+                "",
+                ""
+            ]
+        },
+        "nameMap": [
+            [
+                "life support",
+                "life-support"
+            ],
+            [
+                "sensor",
+                "sensors"
+            ],
+            [
+                "cockpit",
+                "cockpit"
+            ],
+            [
+                "engine",
+                "engine"
+            ],
+            [
+                "gyro",
+                "gyro"
+            ],
+            [
+                "hip",
+                "hip"
+            ],
+            [
+                "upper leg",
+                "leg-actuator"
+            ],
+            [
+                "lower leg",
+                "leg-actuator"
+            ],
+            [
+                "foot actuator",
+                "leg-actuator"
+            ],
+            [
+                "shoulder",
+                "shoulder"
+            ],
+            [
+                "upper arm",
+                "arm-actuator"
+            ],
+            [
+                "lower arm",
+                "arm-actuator"
+            ],
+            [
+                "hand actuator",
+                "hand"
+            ],
+            [
+                "heat sink",
+                "heat-sink"
+            ],
+            [
+                "jump jet",
+                "jump-jet"
+            ],
+            [
+                "ammo",
+                "ammo"
+            ],
+            [
+                "lebenserhalt",
+                "life-support"
+            ],
+            [
+                "triebwerk",
+                "engine"
+            ],
+            [
+                "hüfte",
+                "hip"
+            ],
+            [
+                "huefte",
+                "hip"
+            ],
+            [
+                "oberschenkel",
+                "leg-actuator"
+            ],
+            [
+                "unterschenkel",
+                "leg-actuator"
+            ],
+            [
+                "fuß",
+                "leg-actuator"
+            ],
+            [
+                "fuss",
+                "leg-actuator"
+            ],
+            [
+                "schulter",
+                "shoulder"
+            ],
+            [
+                "oberarm",
+                "arm-actuator"
+            ],
+            [
+                "unterarm",
+                "arm-actuator"
+            ],
+            [
+                "hand",
+                "hand"
+            ],
+            [
+                "wärmetauscher",
+                "heat-sink"
+            ],
+            [
+                "waermetauscher",
+                "heat-sink"
+            ],
+            [
+                "sprungdüse",
+                "jump-jet"
+            ],
+            [
+                "sprungduese",
+                "jump-jet"
+            ],
+            [
+                "munition",
+                "ammo"
+            ]
+        ]
+    },
+    "critComponents": [
+        {
+            "id": "engine",
+            "name": "Engine",
+            "max": 3,
+            "levels": [
+                "+5 heat per turn",
+                "+10 heat per turn",
+                "Engine destroyed – out of action"
+            ],
+            "outOfActionAt": 3
+        },
+        {
+            "id": "gyro",
+            "name": "Gyro",
+            "max": 2,
+            "levels": [
+                "+3 to piloting rolls",
+                "Gyro destroyed – ’Mech falls, cannot stand up"
+            ]
+        },
+        {
+            "id": "sensors",
+            "name": "Sensors",
+            "max": 2,
+            "levels": [
+                "+2 to all weapon attacks",
+                "No more weapon attacks possible"
+            ]
+        },
+        {
+            "id": "cockpit",
+            "name": "Cockpit",
+            "max": 1,
+            "levels": [
+                "Pilot dead – out of action"
+            ],
+            "outOfActionAt": 1
+        },
+        {
+            "id": "life-support",
+            "name": "Life Support",
+            "max": 1,
+            "levels": [
+                "Pilot hit at end of turn at heat 15+"
+            ]
+        },
+        {
+            "id": "heat-sink",
+            "name": "Heat Sink",
+            "max": 20,
+            "perHit": "−1 heat dissipation (double: −2)"
+        },
+        {
+            "id": "jump-jet",
+            "name": "Jump Jet",
+            "max": 12,
+            "perHit": "−1 jumping MP"
+        },
+        {
+            "id": "shoulder",
+            "name": "Shoulder",
+            "max": 2,
+            "perHit": "+4 to attacks with this arm · no punch"
+        },
+        {
+            "id": "arm-actuator",
+            "name": "Arm Actuator",
+            "max": 4,
+            "perHit": "+1 to attacks with this arm · punch damage halved"
+        },
+        {
+            "id": "hand",
+            "name": "Hand",
+            "max": 2,
+            "perHit": "No punching or grabbing with this hand"
+        },
+        {
+            "id": "hip",
+            "name": "Hip",
+            "max": 2,
+            "perHit": "Walking MP halved · +2 to piloting rolls"
+        },
+        {
+            "id": "leg-actuator",
+            "name": "Leg Actuator / Foot",
+            "max": 6,
+            "perHit": "−1 walking MP · +1 to piloting rolls"
+        },
+        {
+            "id": "ammo",
+            "name": "Ammo Hit",
+            "max": 9,
+            "perHit": "Explosion: full stored damage internally, 2 pilot hits (mind CASE)"
+        }
+    ],
+    "bvSkillFactor": {
+        "_note": "BV-Multiplikator nach Pilot (Total Warfare S.315): Zeile = Gunnery 0-8, Spalte = Piloting 0-8. 4/5 = 1.00. Gefechts-Budget rechnet damit den effektiven BV.",
+        "table": [
+            [
+                2.42,
+                2.31,
+                2.21,
+                2.1,
+                1.93,
+                1.75,
+                1.68,
+                1.59,
+                1.5
+            ],
+            [
+                2.21,
+                2.11,
+                2.02,
+                1.92,
+                1.76,
+                1.6,
+                1.54,
+                1.46,
+                1.38
+            ],
+            [
+                1.93,
+                1.85,
+                1.76,
+                1.68,
+                1.54,
+                1.4,
+                1.35,
+                1.28,
+                1.21
+            ],
+            [
+                1.66,
+                1.58,
+                1.51,
+                1.44,
+                1.32,
+                1.2,
+                1.16,
+                1.1,
+                1.04
+            ],
+            [
+                1.38,
+                1.32,
+                1.26,
+                1.2,
+                1.1,
+                1.0,
+                0.95,
+                0.92,
+                0.86
+            ],
+            [
+                1.31,
+                1.19,
+                1.13,
+                1.08,
+                0.99,
+                0.9,
+                0.86,
+                0.83,
+                0.78
+            ],
+            [
+                1.24,
+                1.12,
+                1.07,
+                1.02,
+                0.93,
+                0.85,
+                0.81,
+                0.78,
+                0.73
+            ],
+            [
+                1.17,
+                1.06,
+                1.01,
+                0.96,
+                0.88,
+                0.8,
+                0.76,
+                0.73,
+                0.69
+            ],
+            [
+                1.1,
+                0.99,
+                0.95,
+                0.9,
+                0.82,
+                0.75,
+                0.71,
+                0.68,
+                0.64
+            ]
+        ]
+    },
+    "clusterTable": {
+        "_note": "Cluster Hits Table (Total Warfare): the key is the weapon size (missiles or slugs per salvo), the values are the hits per 2D6 result 2..12.",
+        "2": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2
+        ],
+        "3": [
+            1,
+            1,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            3,
+            3,
+            3
+        ],
+        "4": [
+            1,
+            2,
+            2,
+            2,
+            2,
+            3,
+            3,
+            3,
+            3,
+            4,
+            4
+        ],
+        "5": [
+            1,
+            2,
+            2,
+            3,
+            3,
+            3,
+            3,
+            4,
+            4,
+            5,
+            5
+        ],
+        "6": [
+            2,
+            2,
+            3,
+            3,
+            4,
+            4,
+            4,
+            5,
+            5,
+            6,
+            6
+        ],
+        "7": [
+            2,
+            2,
+            3,
+            4,
+            4,
+            4,
+            4,
+            6,
+            6,
+            7,
+            7
+        ],
+        "8": [
+            3,
+            3,
+            4,
+            4,
+            5,
+            5,
+            5,
+            6,
+            7,
+            8,
+            8
+        ],
+        "9": [
+            3,
+            3,
+            4,
+            5,
+            5,
+            5,
+            5,
+            7,
+            7,
+            9,
+            9
+        ],
+        "10": [
+            3,
+            3,
+            4,
+            6,
+            6,
+            6,
+            6,
+            8,
+            8,
+            10,
+            10
+        ],
+        "12": [
+            4,
+            4,
+            5,
+            8,
+            8,
+            8,
+            8,
+            10,
+            10,
+            12,
+            12
+        ],
+        "15": [
+            5,
+            5,
+            6,
+            9,
+            9,
+            9,
+            9,
+            12,
+            12,
+            15,
+            15
+        ],
+        "20": [
+            6,
+            6,
+            9,
+            12,
+            12,
+            12,
+            12,
+            16,
+            16,
+            20,
+            20
+        ],
+        "25": [
+            6,
+            6,
+            10,
+            15,
+            15,
+            15,
+            15,
+            20,
+            20,
+            25,
+            25
+        ],
+        "30": [
+            8,
+            8,
+            12,
+            18,
+            18,
+            18,
+            18,
+            24,
+            24,
+            30,
+            30
+        ],
+        "40": [
+            12,
+            12,
+            18,
+            24,
+            24,
+            24,
+            24,
+            32,
+            32,
+            40,
+            40
+        ]
+    },
+    "damageTransfer": {
+        "_note": "Damage transfer when a location is destroyed or ammo explodes without CASE (Total Warfare Damage Transfer): location -> the next location inward.",
+        "la": "lt",
+        "ra": "rt",
+        "ll": "lt",
+        "rl": "rt",
+        "lt": "ct",
+        "rt": "ct"
+    }
+}

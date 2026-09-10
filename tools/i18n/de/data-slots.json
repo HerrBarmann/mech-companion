@@ -1,0 +1,11 @@
+{
+    "Life Support": "Lebenserhaltung",
+    "Heat Sink": "Wärmetauscher",
+    "Jump Jet": "Sprungdüse",
+    "Upper Arm Actuator": "Oberarm-Aktuator",
+    "Lower Arm Actuator": "Unterarm-Aktuator",
+    "Hand Actuator": "Hand",
+    "Upper Leg Actuator": "Oberschenkel",
+    "Lower Leg Actuator": "Unterschenkel",
+    "Foot Actuator": "Fuß"
+}

@@ -1,0 +1,232 @@
+{
+    "_note": "GATOR configuration (CONCEPT 4.1): the categories are data, not code. type 'chips' = exactly one option, 'toggle' = on/off (value applies when on), 'counter' = a step counter (value per step). group ties a category to its letter in the mnemonic. source 'mech' marks what the record sheet fills in by itself.",
+    "version": 1,
+    "asOf": "2026-08 · Total Warfare",
+    "title": "GATOR",
+    "base": 0,
+    "above12": "Above 12 is impossible – don’t even roll.",
+    "categories": [
+        {
+            "id": "gunnery",
+            "group": "G",
+            "label": "Gunnery – marksmanship",
+            "type": "chips",
+            "default": 3,
+            "options": [
+                {
+                    "label": "1",
+                    "value": 1
+                },
+                {
+                    "label": "2",
+                    "value": 2
+                },
+                {
+                    "label": "3",
+                    "value": 3
+                },
+                {
+                    "label": "4",
+                    "value": 4
+                },
+                {
+                    "label": "5",
+                    "value": 5
+                },
+                {
+                    "label": "6",
+                    "value": 6
+                }
+            ],
+            "source": "mech"
+        },
+        {
+            "id": "attacker-movement",
+            "group": "A",
+            "label": "Attacker – own movement",
+            "type": "chips",
+            "default": 0,
+            "options": [
+                {
+                    "label": "Stood still +0",
+                    "value": 0
+                },
+                {
+                    "label": "Walked +1",
+                    "value": 1
+                },
+                {
+                    "label": "Ran +2",
+                    "value": 2
+                },
+                {
+                    "label": "Jumped +3",
+                    "value": 3
+                },
+                {
+                    "label": "Prone +2",
+                    "value": 2
+                }
+            ]
+        },
+        {
+            "id": "target-movement",
+            "group": "T",
+            "label": "Target – hexes the target moved",
+            "type": "chips",
+            "default": 0,
+            "options": [
+                {
+                    "label": "0–2 +0",
+                    "value": 0
+                },
+                {
+                    "label": "3–4 +1",
+                    "value": 1
+                },
+                {
+                    "label": "5–6 +2",
+                    "value": 2
+                },
+                {
+                    "label": "7–9 +3",
+                    "value": 3
+                },
+                {
+                    "label": "10–17 +4",
+                    "value": 4
+                },
+                {
+                    "label": "18–24 +5",
+                    "value": 5
+                },
+                {
+                    "label": "25+ +6",
+                    "value": 6
+                }
+            ]
+        },
+        {
+            "id": "target-jumped",
+            "group": "T",
+            "label": "Target jumped",
+            "type": "toggle",
+            "value": 1
+        },
+        {
+            "id": "light-woods",
+            "group": "O",
+            "label": "Light woods in the way (per hex)",
+            "type": "counter",
+            "value": 1,
+            "max": 2,
+            "note": "Light woods count 1, heavy 2 – at a total of 3, line of sight is blocked."
+        },
+        {
+            "id": "heavy-woods",
+            "group": "O",
+            "label": "Heavy woods in the way (per hex)",
+            "type": "counter",
+            "value": 2,
+            "max": 1,
+            "note": "Light woods count 1, heavy 2 – at a total of 3, line of sight is blocked."
+        },
+        {
+            "id": "partial-cover",
+            "group": "O",
+            "label": "Partial cover",
+            "type": "toggle",
+            "value": 1
+        },
+        {
+            "id": "heat",
+            "group": "O",
+            "label": "Own heat (attack penalty per the heat scale)",
+            "type": "chips",
+            "default": 0,
+            "options": [
+                {
+                    "label": "+0",
+                    "value": 0
+                },
+                {
+                    "label": "+1",
+                    "value": 1
+                },
+                {
+                    "label": "+2",
+                    "value": 2
+                },
+                {
+                    "label": "+3",
+                    "value": 3
+                },
+                {
+                    "label": "+4",
+                    "value": 4
+                }
+            ],
+            "source": "mech"
+        },
+        {
+            "id": "secondary-target",
+            "group": "O",
+            "label": "Secondary target",
+            "type": "chips",
+            "default": 0,
+            "options": [
+                {
+                    "label": "No +0",
+                    "value": 0
+                },
+                {
+                    "label": "Front arc +1",
+                    "value": 1
+                },
+                {
+                    "label": "Side/rear +2",
+                    "value": 2
+                }
+            ]
+        },
+        {
+            "id": "range",
+            "group": "R",
+            "label": "Range – the weapon’s range bracket",
+            "type": "chips",
+            "default": 0,
+            "options": [
+                {
+                    "label": "Short +0",
+                    "value": 0
+                },
+                {
+                    "label": "Medium +2",
+                    "value": 2
+                },
+                {
+                    "label": "Long +4",
+                    "value": 4
+                }
+            ]
+        },
+        {
+            "id": "minimum-range",
+            "group": "R",
+            "label": "Inside minimum range (per hex under)",
+            "type": "counter",
+            "value": 1,
+            "max": 8,
+            "note": "Modifier = minimum range − distance + 1."
+        },
+        {
+            "id": "other",
+            "group": "O",
+            "label": "Other (±)",
+            "type": "counter",
+            "value": 1,
+            "min": -4,
+            "max": 8
+        }
+    ]
+}

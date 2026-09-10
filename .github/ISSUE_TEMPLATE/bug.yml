@@ -1,0 +1,33 @@
+name: Bug
+description: Something does not work
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        If this is about a **stored** thing — a hangar, a battle, a campaign
+        — please export a backup first (hangar page, "Export backup"). It
+        makes the difference between a guess and a fix.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, what you got.
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Page
+      placeholder: "classic/battle.html, German"
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and device
+      placeholder: "Safari 18 on iPhone, installed as an app"
+  - type: textarea
+    id: console
+    attributes:
+      label: Console output
+      description: If you can get at it — everything red.
+      render: text

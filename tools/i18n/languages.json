@@ -1,0 +1,4 @@
+[
+    { "code": "en", "name": "English", "native": "English", "source": true },
+    { "code": "de", "name": "German", "native": "Deutsch" }
+]

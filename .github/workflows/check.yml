@@ -1,0 +1,61 @@
+name: Checks
+
+# Everything that has to hold before a change lands. The same commands a
+# contributor runs locally (see CONTRIBUTING.md) - nothing here that cannot
+# be reproduced on a laptop.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install the generator's one dependency
+        run: pip install beautifulsoup4
+
+      - name: Project checks
+        # JSON valid · precache complete and without unit data · translations
+        # without gaps · node --check over every script · no private patterns
+        # · placeholders still in the imprint and the privacy page.
+        run: python3 tools/opensource/check.py
+
+      - name: Tests
+        run: node --test tests/*.test.js
+
+      - name: The generated mirrors are up to date
+        # The German pages under website/de/ are generated. If a pull request
+        # changes a text without running the generator, the mirror drifts -
+        # this notices.
+        run: |
+          python3 tools/translate.py
+          git diff --exit-code --stat -- website/ tools/i18n/ \
+            || (echo "::error::website/de is out of date - run: python3 tools/translate.py" && exit 1)
+
+      - name: The precache list is up to date
+        run: |
+          python3 tools/build-sw.py
+          git diff --exit-code --stat -- website/sw.js \
+            || (echo "::error::the precache list is out of date - run: python3 tools/build-sw.py --bump" && exit 1)
+
+      - name: The redirects cover every old address
+        run: python3 tools/build-redirects.py --check
+
+      - name: The deploy build runs
+        # Without site/ the build takes site.default.json - that is the
+        # neutral instance, exactly what GitHub Pages publishes.
+        run: python3 tools/opensource/build.py --out /tmp/dist

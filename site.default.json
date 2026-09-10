@@ -1,0 +1,28 @@
+{
+    "_note": "Default configuration of the repository. Your own instance creates site/site.json with the same fields (gitignored) - build.py prefers that file. The values end up in the {{site.…}} placeholders.",
+    "name": "Mech Companion",
+    "shortName": "Mechs",
+    "brand": {
+        "prefix": "",
+        "core": "Mech",
+        "suffix": " Companion"
+    },
+    "domain": "example.org",
+    "url": "https://example.org/",
+    "defaultLang": "en",
+    "operator": {
+        "name": "Operator name",
+        "street": "Street and number",
+        "city": "Postcode and town",
+        "email": "contact@example.org"
+    },
+    "hosting": {
+        "provider": "Name of the hosting provider",
+        "address": "Address of the hosting provider"
+    },
+    "authority": {
+        "name": "Competent data protection authority",
+        "url": "https://edpb.europa.eu/about-edpb/about-edpb/members_en",
+        "label": "edpb.europa.eu"
+    }
+}

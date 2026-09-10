@@ -1,0 +1,66 @@
+/* ===========================================================================
+   Design tokens
+
+   The colour and measurement table of the app. Two rules of the concept
+   (CONCEPT §6) are baked in here:
+
+   1. DARK IS THE DEFAULT. Dark mode is what the concept asks for (game table,
+      evening rounds, battery). So the dark set sits on `:root` and LIGHT is
+      the deviation: `:root[data-theme="light"]`. No prefers-color-scheme -
+      the mode is set by the switch (localStorage); without the attribute
+      dark applies, even without JavaScript.
+
+   2. THE ACCENT IS DARK, not light. Filled accent areas therefore carry light
+      type (see .btn-primary in components.css). Whoever turns the accent to a
+      light colour has to think of that one place.
+
+   An instance overwrites the values in css/tokens.local.css and adds its own
+   rules in css/style.local.css - in the repository both files are empty.
+
+   The role logic:
+     --accent       the signal colour itself (areas, borders)
+     --accent-deep  the same colour as TEXT - has to make 4.5:1 against
+                    --paper (WCAG AA). In the dark it is the LIGHTER value.
+     --accent-tint  pale tint for hover, chips, marked rows
+   =========================================================================== */
+
+:root {
+    /* Dark = default. Very dark neutral grey, no pure black. */
+    color-scheme: dark;
+
+    --paper: #14161A;        /* page ground */
+    --surface: #1B1F25;      /* cards, areas */
+    --ink: #E8EAED;          /* text and borders */
+    --muted: #99A1AB;        /* secondary text */
+    --line: #2A2F37;         /* dividers */
+
+    /* The project's signal colour. Contrast on --paper: accent 3.98:1 (areas
+       only), accent-deep 5.66:1 (text, meets 4.5:1), white on accent 4.55:1. */
+    --accent: #2F6FED;
+    --accent-deep: #5A8DF5;
+    --accent-tint: #14203A;
+
+    /* --- Shape ----------------------------------------------------------- */
+    --radius: 6px;
+
+    /* --- Type: mono for readouts and data, grotesque for running text ---- */
+    --mono: ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Code", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* --- Light mode: the deviation, by switch ------------------------------- */
+:root[data-theme="light"] {
+    color-scheme: light;
+
+    --paper: #F6F5F2;        /* warm paper, no pure white */
+    --surface: #EDEBE6;
+    --ink: #16191E;
+    --muted: #5C6470;
+    --line: #DAD6CE;
+
+    /* On a light ground the colour carries itself; as text a touch darker.
+       Contrast on --paper: accent 6.71:1, accent-deep 8.10:1. */
+    --accent: #1F4FB8;
+    --accent-deep: #1A44A0;
+    --accent-tint: #E4ECFB;
+}
