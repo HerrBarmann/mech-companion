@@ -103,9 +103,12 @@
 
 /* --- Regel-Abschnitte: aufklappbare Karten -------------------------------- */
 details.card { padding: 0; }
+/* flex-wrap, damit die Merkwort-Marke rechts umbricht statt aus der Karte
+   zu laufen: im Deutschen sind die Marken ein Drittel länger ("GELERNT AUF
+   DIE HARTE TOUR"), und ohne Umbruch schob sie den Titel über den Rand. */
 details.card summary {
     list-style: none; cursor: pointer;
-    display: flex; align-items: baseline; gap: 0.6rem;
+    display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap;
     padding: 1rem 1.2rem; min-height: 44px;
     font-weight: 700; font-size: 1rem;
 }
@@ -115,7 +118,7 @@ details.card summary::before {
 }
 details.card[open] summary::before { content: "\2212"; }
 details.card summary .topic-tag {
-    margin-left: auto; flex: none;
+    margin-left: auto; flex: 0 1 auto; min-width: 0;
     font-size: 0.66rem; font-weight: 600; color: var(--muted);
     text-transform: uppercase; letter-spacing: 0.08em;
 }
