@@ -220,14 +220,30 @@ td.num { text-align: right; white-space: nowrap; font-family: var(--mono); font-
 .f-colors { display: flex; gap: 0.35rem; flex: none; }
 .f-color { width: 26px; height: 26px; border-radius: 2px; border: 1px solid var(--line); }
 .f-legend { list-style: none; margin: 0.9rem 0; padding: 0.55rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.f-legend li { display: flex; align-items: center; gap: 0.5rem; padding: 0.18rem 0; font-size: 0.85rem; }
+/* Vier Spalten statt Flex-Zeile: Feld, Rolle, Farbname, Hex. Der Name
+   bekommt minmax(0, 1fr) - ohne die 0 als Minimum wächst er über die Karte
+   hinaus, sobald der Name lang ist ("Gebrochenes Weiß"). */
+.f-legend li {
+    display: grid; grid-template-columns: 14px 3.1rem minmax(0, 1fr) auto;
+    align-items: center; column-gap: 0.5rem; row-gap: 0.1rem;
+    padding: 0.18rem 0; font-size: 0.85rem;
+}
 .f-legend .f-color { width: 14px; height: 14px; }
 .f-legend .role {
     font-family: var(--mono); font-size: 0.66rem; font-weight: 600;
     text-transform: uppercase; letter-spacing: 0.06em;
-    color: var(--muted); width: 3.6rem; flex: none;
+    color: var(--muted);
 }
-.f-legend .hex { margin-left: auto; font-family: var(--mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.03em; }
+.f-legend .f-name { overflow-wrap: break-word; }
+.f-legend .hex { justify-self: end; font-family: var(--mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.03em; }
+
+/* Am Telefon ist neben Rolle und Namen kein Platz mehr für den Hex-Wert -
+   er bekommt eine eigene Zeile unter dem Namen, rechtsbündig. Am Maltisch
+   wird er abgelesen, abgeschnitten wäre er wertlos. */
+@media (max-width: 460px) {
+    .f-legend li { grid-template-columns: 14px 3.1rem minmax(0, 1fr); row-gap: 0; }
+    .f-legend .hex { grid-column: 3; justify-self: start; }
+}
 .f-card .f-text { margin: 0 0 0.6rem; font-size: 0.92rem; }
 .f-card details { border-top: 1px solid var(--line); margin-top: 0.8rem; padding-top: 0.6rem; }
 .f-card details summary {
@@ -668,7 +684,9 @@ a.tile:hover { border-color: var(--accent); }
 /* Bemalen: Silhouetten-Vorschau, Schema-Werkstatt, Farbtabelle */
 .f-preview { display: flex; gap: 0.9rem; align-items: flex-start; margin: 0.5rem 0; }
 .f-preview .mech-silhouette { width: 92px; flex: 0 0 auto; }
-.f-preview .f-legend { flex: 1; margin: 0; }
+/* min-width: 0 hebt die Vorgabe min-width: auto auf - ohne sie schrumpft ein
+   Flex-Kind nie unter seinen Inhalt und schiebt die Liste aus der Karte. */
+.f-preview .f-legend { flex: 1; min-width: 0; margin: 0; }
 .scheme-row { display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: flex-start; }
 .scheme-form { flex: 1 1 15rem; }
 .scheme-preview { flex: 0 0 auto; margin: 0 auto; }

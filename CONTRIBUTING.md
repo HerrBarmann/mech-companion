@@ -62,6 +62,16 @@ node --test tests/*.test.js
 And open it in the browser in **both** languages at 375 px. The tools do not
 see a dead click handler; a click does.
 
+If you touched a layout, check for horizontal overflow while you are there:
+
+```js
+document.documentElement.scrollWidth   // has to equal the viewport width
+```
+
+`html` carries `overflow-x: clip` as a safety net, so an overflow does not
+show up as a scrollbar — it silently cuts content off at the edge. German
+text is a third longer than English and finds these first.
+
 If you changed anything that is stored, say so in the pull request. Stored
 structures carry a version and are migrated in `website/js/migrate.js`; a
 migration is written once and never rewritten.

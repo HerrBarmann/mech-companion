@@ -117,7 +117,7 @@
             chip.style.background = color.hex;
             li.appendChild(chip);
             li.appendChild(el("span", "role", role));
-            li.appendChild(el("span", "", color.name));
+            li.appendChild(el("span", "f-name", color.name));
             li.appendChild(el("span", "hex", color.hex.toUpperCase()));
             legend.appendChild(li);
         });

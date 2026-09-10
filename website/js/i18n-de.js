@@ -1320,7 +1320,6 @@ window.MechsI18nWords = {
 "Official values, point costs and availability of all units": "Offizielle Werte, Punktkosten und Verfügbarkeit aller Einheiten",
 "Digital record sheets for Classic in the browser": "Digitale Record Sheets für Classic im Browser",
 "The most comprehensive collection of faction and regimental colours": "Die ausführlichste Sammlung von Fraktions- und Regimentsfarben",
-"Official product site, errata and downloads": "Offizielle Produktseite, Errata und Downloads",
 "Rules baseline &amp; changes": "Regelstand &amp; Änderungen",
 "Date": "Datum",
 "Change": "Änderung",
@@ -1424,6 +1423,8 @@ window.MechsI18nWords = {
 "Campaigns live only on this device – the hangar backup takes them along.": "Kampagnen liegen nur auf diesem Gerät – das Hangar-Backup nimmt sie mit.",
 "Responsible pursuant to § 18 (2) MStV (German State Media Treaty): {{site.operator.name}} (address as above).": "Verantwortlich im Sinne des § 18 Abs. 2 MStV: {{site.operator.name}} (Anschrift wie oben).",
 "This website is hosted by {{site.hosting.provider}} ({{site.hosting.address}}). The provider is a processor under Art. 28 GDPR; a data processing agreement is in place. When you visit, the server processes technically necessary connection data (e.g. IP address, time, requested file) in log files. The legal basis is Art. 6(1)(f) GDPR (secure operation of the site).": "Diese Website wird bei {{site.hosting.provider}} ({{site.hosting.address}}) gehostet. Der Anbieter ist Auftragsverarbeiter nach Art. 28 DSGVO; ein Auftragsverarbeitungsvertrag besteht. Beim Aufruf verarbeitet der Server technisch notwendige Verbindungsdaten (z. B. IP-Adresse, Zeitpunkt, abgerufene Datei) in Protokolldateien. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (sicherer Betrieb der Seite).",
-"Rules reference, play aids and a painting guide for Classic BattleTech and Alpha Strike.": "Regelreferenz, Spielwerkzeuge und Bemalhandbuch für Classic BattleTech und Alpha Strike."
+"Rules reference, play aids and a painting guide for Classic BattleTech and Alpha Strike.": "Regelreferenz, Spielwerkzeuge und Bemalhandbuch für Classic BattleTech und Alpha Strike.",
+"The official site: news, downloads and errata": "Die offizielle Seite: Neuigkeiten, Downloads und Errata",
+"The publisher – books, boxes and rulebooks to buy": "Der Verlag – Bücher, Boxen und Regelwerke zum Kaufen"
 };
 window.MechsI18nPatterns = [["(\\d+)/missile", "$1/Rakete", "g"], ["^(\\d+) per shot$", "$1 je Schuss"], ["^(\\d+) / cluster$", "$1 / Cluster"], [" \\(water only\\)$", " (nur Wasser)"], ["^Ammo \\((.+)\\)$", "Munition ($1)"], [" \\(Rear\\)$", " (Heck)"], ["^min \\d+ · [\\d/]+$"], ["^Cluster \\d+×\\d+$"]];
