@@ -72,7 +72,7 @@
     function storage() { return window.MechsStorage; }
     function newCampaign(name) {
         return { id: (storage() ? storage().newId() : "k" + Date.now()), name: name,
-                 created: today(), states: {}, log: [] };
+                 created: today(), states: {}, log: [], record: {} };
     }
     function data(system) {
         var d = storage() ? storage().load(STORE + system, null) : null;
@@ -116,6 +116,46 @@
         if (state) { c.states[mechId] = state; } else { delete c.states[mechId]; }
         saveData(system, d);
     }
+    /* --- The record of a unit (CONCEPT §10, F9) ---------------------------
+       Battles fought and kills, counted per campaign. Deliberately a raw
+       number and nothing else: what a group makes of it belongs to their
+       book, not to this app. That keeps the campaign what it has been from
+       the start - bookkeeping, with no rule value to maintain when the
+       rules move.
+
+       It lives NEXT TO states, not inside it: a state is damage and gets
+       wiped by the workshop and by "end without damage", while a record is
+       history and must survive both.
+
+       Keyed by the unit, not by the pilot, like everything else here - the
+       app has no pilot roster, a pilot is a field on the 'Mech. Move a
+       pilot to another machine and the record stays with the machine. */
+    function blankRecord() { return { battles: 0, kills: 0 }; }
+    function recordOf(system, mechId) {
+        var c = active(system);
+        var r = (c.record || {})[mechId];
+        return { battles: (r && r.battles) || 0, kills: (r && r.kills) || 0 };
+    }
+    function setRecord(system, mechId, patch) {
+        var d = data(system);
+        var c = active(system, d);
+        if (!c.record) { c.record = {}; }
+        var r = c.record[mechId] || blankRecord();
+        Object.keys(patch).forEach(function (k) { r[k] = Math.max(0, patch[k] | 0); });
+        if (!r.battles && !r.kills) { delete c.record[mechId]; } else { c.record[mechId] = r; }
+        saveData(system, d);
+        return r;
+    }
+    /* Every unit that has flown at least one battle in this campaign. */
+    function records(system) {
+        var c = active(system);
+        var record = c.record || {};
+        return Object.keys(record).map(function (mechId) {
+            return { mechId: mechId, battles: record[mechId].battles || 0,
+                     kills: record[mechId].kills || 0 };
+        });
+    }
+
     function campaigns(system) { return data(system).campaigns; }
     function activeId(system) { return data(system).active; }
     function create(system, name) {
@@ -221,6 +261,11 @@
             if (!e.mechId) { return; }          /* ad-hoc unit without a hangar entry */
             var state = readState(system, e);
             setState(system, e.mechId, state);
+            /* One battle fought, whether it came home scratched or not.
+               Kills are not counted here and cannot be: this app tracks
+               your own lance and knows nothing about the other side, so
+               that number is entered by hand on the campaign page. */
+            setRecord(system, e.mechId, { battles: recordOf(system, e.mechId).battles + 1 });
             if (state) { n++; }
             report.push({
                 mechId: e.mechId,
@@ -495,6 +540,8 @@
         campaigns: campaigns, active: active, activeId: activeId, create: create,
         activate: activate, rename: rename, remove: remove,
         log: log, removeLogEntry: removeLogEntry,
-        stateOf: stateOf, setState: setState, data: data, saveData: saveData
+        stateOf: stateOf, setState: setState, data: data, saveData: saveData,
+        /* Record: battles fought and kills, per unit and campaign */
+        recordOf: recordOf, setRecord: setRecord, records: records
     };
 })();

@@ -838,6 +838,8 @@ window.MechsI18nWords = {
 "Weapon values could not be loaded.": "Waffenwerte konnten nicht geladen werden.",
 "Minimum range": "Mindestreichweite",
 "Shots per ton": "Schuss je Tonne",
+"Battles": "Gefechte",
+"Kills": "Abschüsse",
 "Capture Classic BattleTech record sheets digitally: armor, structure, weapons, pilot – the data base for the digital record sheet.": "Classic-BattleTech-Record-Sheets digital erfassen: Panzerung, Struktur, Waffen, Pilot – die Datenbasis für den digitalen Datenbogen.",
 "From the database": "Aus der Datenbank",
 "Search ’Mech": "’Mech suchen",
@@ -1452,6 +1454,8 @@ window.MechsI18nWords = {
 "This website is hosted by {{site.hosting.provider}} ({{site.hosting.address}}). The provider is a processor under Art. 28 GDPR; a data processing agreement is in place. When you visit, the server processes technically necessary connection data (e.g. IP address, time, requested file) in log files. The legal basis is Art. 6(1)(f) GDPR (secure operation of the site).": "Diese Website wird bei {{site.hosting.provider}} ({{site.hosting.address}}) gehostet. Der Anbieter ist Auftragsverarbeiter nach Art. 28 DSGVO; ein Auftragsverarbeitungsvertrag besteht. Beim Aufruf verarbeitet der Server technisch notwendige Verbindungsdaten (z. B. IP-Adresse, Zeitpunkt, abgerufene Datei) in Protokolldateien. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (sicherer Betrieb der Seite).",
 "Rules reference, play aids and a painting guide for Classic BattleTech and Alpha Strike.": "Regelreferenz, Spielwerkzeuge und Bemalhandbuch für Classic BattleTech und Alpha Strike.",
 "The official site: news, downloads and errata": "Die offizielle Seite: Neuigkeiten, Downloads und Errata",
-"The publisher – books, boxes and rulebooks to buy": "Der Verlag – Bücher, Boxen und Regelwerke zum Kaufen"
+"The publisher – books, boxes and rulebooks to buy": "Der Verlag – Bücher, Boxen und Regelwerke zum Kaufen",
+"Record": "Bilanz",
+"No battle flown yet. Every unit that finishes a battle is counted here.": "Noch kein Gefecht geflogen. Jede Einheit, die ein Gefecht beendet, wird hier gezählt."
 };
 window.MechsI18nPatterns = [["(\\d+)/missile", "$1/Rakete", "g"], ["^(\\d+) per shot$", "$1 je Schuss"], ["^(\\d+) / cluster$", "$1 / Cluster"], [" \\(water only\\)$", " (nur Wasser)"], ["^Ammo \\((.+)\\)$", "Munition ($1)"], [" \\(Rear\\)$", " (Heck)"], ["^min \\d+ · [\\d/]+$"], ["^Cluster \\d+×\\d+$"]];

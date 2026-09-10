@@ -162,3 +162,82 @@ test("Zustände hängen an der Kampagne, nicht am Hangar", () => {
     K.activate("classic", a.id);
     assert.ok(K.stateOf("classic", "m1"), "die erste hat ihren Schaden noch");
 });
+
+/* --- Bilanz (CONCEPT §10, F9): Gefechte und Abschüsse je Einheit -------- */
+
+test("Eine frische Bilanz steht auf null", () => {
+    const { K } = kampagne();
+    assert.deepEqual(K.recordOf("classic", "m1"), { battles: 0, kills: 0 });
+    assert.deepEqual(K.records("classic"), []);
+});
+
+test("Das Gefechtsende zählt für jede Einheit ein Gefecht", () => {
+    const { K } = kampagne();
+    K.carryOver({ system: "classic", units: [einheit()], round: 4 });
+    assert.equal(K.recordOf("classic", "m1").battles, 1);
+    K.carryOver({ system: "classic", units: [einheit()], round: 6 });
+    assert.equal(K.recordOf("classic", "m1").battles, 2);
+});
+
+test("Auch eine heil zurückgekehrte Einheit zählt", () => {
+    /* Gezählt wird die Teilnahme, nicht der Schaden. */
+    const { K } = kampagne();
+    const heil = { gid: "g", mechId: "m9", copy: { name: "Locust" },
+                   armorDamage: {}, structureDamage: {}, crits: [] };
+    K.carryOver({ system: "classic", units: [heil] });
+    assert.equal(K.stateOf("classic", "m9"), null, "kein Schaden");
+    assert.equal(K.recordOf("classic", "m9").battles, 1, "aber ein Gefecht");
+});
+
+test("Eine Ad-hoc-Einheit ohne Hangar-Eintrag zählt nicht mit", () => {
+    const { K } = kampagne();
+    K.carryOver({ system: "classic", units: [{ gid: "g", mechId: null, copy: {} }] });
+    assert.deepEqual(K.records("classic"), []);
+});
+
+test("Abschüsse werden von Hand gesetzt und nicht negativ", () => {
+    /* Die App kennt nur die eigene Lanze - wer abgeschossen wurde, weiß
+       nur der Tisch. Deshalb ein Zähler und keine Automatik. */
+    const { K } = kampagne();
+    K.setRecord("classic", "m1", { kills: 2 });
+    assert.equal(K.recordOf("classic", "m1").kills, 2);
+    K.setRecord("classic", "m1", { kills: -5 });
+    assert.equal(K.recordOf("classic", "m1").kills, 0, "unter null geht nicht");
+});
+
+test("Die Bilanz übersteht die Werkstatt", () => {
+    /* Das ist der Grund, warum sie neben states liegt und nicht darin:
+       Reparieren löscht den Zustand, die Geschichte bleibt. */
+    const { K } = kampagne();
+    K.carryOver({ system: "classic", units: [einheit()] });
+    K.setRecord("classic", "m1", { kills: 3 });
+    K.setState("classic", "m1", null);            /* vollständig repariert */
+    assert.equal(K.stateOf("classic", "m1"), null);
+    assert.deepEqual(K.recordOf("classic", "m1"), { battles: 1, kills: 3 });
+});
+
+test("Jede Kampagne führt ihre eigene Bilanz", () => {
+    const { K } = kampagne();
+    K.carryOver({ system: "classic", units: [einheit()] });
+    assert.equal(K.recordOf("classic", "m1").battles, 1);
+    const zweite = K.create("classic", "Zweiter Feldzug");
+    assert.equal(K.activeId("classic"), zweite.id);
+    assert.equal(K.recordOf("classic", "m1").battles, 0, "neue Kampagne, neue Bilanz");
+    K.activate("classic", K.campaigns("classic")[0].id);
+    assert.equal(K.recordOf("classic", "m1").battles, 1, "die alte steht noch");
+});
+
+test("records() listet auf, was geflogen ist", () => {
+    const { K } = kampagne();
+    K.carryOver({ system: "classic", units: [einheit()] });
+    K.setRecord("classic", "m1", { kills: 1 });
+    assert.deepEqual(K.records("classic"), [{ mechId: "m1", battles: 1, kills: 1 }]);
+});
+
+test("Eine Bilanz auf null verschwindet wieder", () => {
+    const { K } = kampagne();
+    K.setRecord("classic", "m1", { kills: 1 });
+    assert.equal(K.records("classic").length, 1);
+    K.setRecord("classic", "m1", { kills: 0 });
+    assert.deepEqual(K.records("classic"), [], "kein leerer Eintrag im Speicher");
+});

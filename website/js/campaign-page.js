@@ -13,6 +13,7 @@
 
     var listBox = document.getElementById("campaign-list");
     var stateBox = document.getElementById("state-list");
+    var recordBox = document.getElementById("record-list");
     var logBox = document.getElementById("log-list");
     var message = document.getElementById("message");
     var rules = null;   /* classic-rules.json, only for the crit names */
@@ -133,6 +134,59 @@
         });
     }
 
+    /* --- Record: battles fought, kills ------------------------------------- */
+    /* Battles count themselves at the end of a battle. Kills cannot: this
+       app tracks your own lance and never sees the other side, so that
+       number is set by hand - which is also the honest place for it, since
+       what counts as a kill is a table's own convention. */
+    function renderRecord() {
+        recordBox.innerHTML = "";
+        var byId = {};
+        mechs().forEach(function (m) { byId[m.id] = m; });
+        var rows = K.records(SYSTEM)
+            .filter(function (r) { return byId[r.mechId]; })
+            .sort(function (a, b) { return (b.battles - a.battles) || (b.kills - a.kills); });
+        document.getElementById("record-empty").hidden = rows.length !== 0;
+
+        rows.forEach(function (r) {
+            var m = byId[r.mechId];
+            var row = el("div", "state-row");
+            var info = el("div");
+            /* Unit and pilot names are what a person typed - past T(). */
+            var name = document.createElement("strong");
+            name.textContent = m.name;
+            info.appendChild(name);
+            var pilot = (m.pilot && m.pilot.name) || "";
+            var line = document.createElement("span");
+            line.className = "mech-stats";
+            /* Label before the number, so no singular and plural forms are
+               needed - and a single lowercase word like "battles" would
+               never reach the dictionary anyway. */
+            line.textContent = (pilot ? pilot + " · " : "") + T("Battles") + " " + r.battles;
+            info.appendChild(line);
+            row.appendChild(info);
+
+            /* Kills as a stepper - the same shape the trackers use. */
+            var box = el("div", "record-kills");
+            box.appendChild(el("span", "pip-label", "Kills"));
+            var minus = el("button", "btn btn-small", "−");
+            minus.type = "button";
+            var value = el("span", "record-value", String(r.kills));
+            var plus = el("button", "btn btn-small", "+");
+            plus.type = "button";
+            function change(by) {
+                var next = K.setRecord(SYSTEM, r.mechId, { kills: r.kills + by });
+                r.kills = next.kills || 0;
+                value.textContent = String(r.kills);
+            }
+            minus.addEventListener("click", function () { change(-1); });
+            plus.addEventListener("click", function () { change(1); });
+            box.appendChild(minus); box.appendChild(value); box.appendChild(plus);
+            row.appendChild(box);
+            recordBox.appendChild(row);
+        });
+    }
+
     /* --- Log ---------------------------------------------------------------- */
     function renderLog() {
         logBox.innerHTML = "";
@@ -166,6 +220,7 @@
     function renderAll() {
         renderCampaigns();
         renderState();
+        renderRecord();
         renderLog();
         var active = K.active(SYSTEM);
         document.getElementById("active-name").textContent = active.name;

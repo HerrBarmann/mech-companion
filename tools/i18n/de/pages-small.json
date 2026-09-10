@@ -158,5 +158,7 @@
     "Under Art. 15–21 GDPR you have the rights to access, rectification, erasure, restriction of processing, data portability and objection – requests to <a href=\"mailto:{{site.operator.email}}\">{{site.operator.email}}</a>. You also have the right to lodge a complaint with a supervisory authority; the competent one is {{site.authority.name}} (<a href=\"{{site.authority.url}}\" rel=\"noopener\">{{site.authority.label}}</a>).": "Du hast nach Art. 15–21 DSGVO Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch – Anfragen an <a href=\"mailto:{{site.operator.email}}\">{{site.operator.email}}</a>. Dazu kommt ein Beschwerderecht bei einer Aufsichtsbehörde; zuständig ist {{site.authority.name}} (<a href=\"{{site.authority.url}}\" rel=\"noopener\">{{site.authority.label}}</a>).",
     "Rules reference, play aids and a painting guide for Classic BattleTech and Alpha Strike.": "Regelreferenz, Spielwerkzeuge und Bemalhandbuch für Classic BattleTech und Alpha Strike.",
     "The official site: news, downloads and errata": "Die offizielle Seite: Neuigkeiten, Downloads und Errata",
-    "The publisher – books, boxes and rulebooks to buy": "Der Verlag – Bücher, Boxen und Regelwerke zum Kaufen"
+    "The publisher – books, boxes and rulebooks to buy": "Der Verlag – Bücher, Boxen und Regelwerke zum Kaufen",
+    "Record": "Bilanz",
+    "No battle flown yet. Every unit that finishes a battle is counted here.": "Noch kein Gefecht geflogen. Jede Einheit, die ein Gefecht beendet, wird hier gezählt."
 }

@@ -831,6 +831,14 @@ a.tile:hover { border-color: var(--accent); }
 .state-row:last-child { border-bottom: 0; }
 .state-row > div { flex: 1; min-width: 12rem; }
 .state-row strong { display: block; }
+/* Abschussliste: Beschriftung, Minus, Zahl, Plus - flex: none, damit die
+   Gruppe nicht als 12rem breite Spalte behandelt wird wie die Infozeile. */
+.record-kills { display: flex; align-items: center; gap: 0.4rem; flex: none !important; min-width: 0 !important; }
+.record-kills .pip-label { margin: 0; }
+.record-value {
+    font-family: var(--mono); font-size: 1.1rem; font-weight: 700;
+    min-width: 1.6rem; text-align: center;
+}
 .log-entry { margin-bottom: 0.9rem; }
 .log-entry .log-note { margin: 0.2rem 0 0.5rem; font-weight: 600; }
 .log-entry .mech-stats { margin: 0.1rem 0; }
