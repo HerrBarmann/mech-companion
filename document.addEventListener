@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weapon Quick Reference - Mech Companion</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div id="nav-container"></div>
+    <main class="container">
+        <h1 data-i18n="weapons_title">Weapons Quick Reference</h1>
+        <div class="controls">
+            <input type="text" id="search-input" placeholder="Search weapons..." data-i18n-placeholder="search_weapons">
+            <div id="category-chips" class="chips"></div>
+        </div>
+        <div class="table-responsive">
+            <table id="weapons-table" class="sortable">
+                <thead>
+                    <tr>
+                        <th data-sort="name" data-i18n="th_weapon">Weapon</th>
+                        <th data-sort="type" data-i18n="th_type">Type</th>
+                        <th data-sort="min_range" data-i18n="th_min_range">Min Range</th>
+                        <th data-sort="short_range" data-i18n="th_short_range">Short</th>
+                        <th data-sort="medium_range" data-i18n="th_medium_range">Medium</th>
+                        <th data-sort="long_range" data-i18n="th_long_range">Long</th>
+                        <th data-sort="damage" data-i18n="th_damage">Damage</th>
+                        <th data-sort="heat" data-i18n="th_heat">Heat</th>
+                        <th data-sort="ammo" data-i18n="th_ammo">Ammo</th>
+                    </tr>
+                </thead>
+                <tbody id="weapons-tbody"></tbody>
+            </table>
+        </div>
+    </main>
+    <script src="../js/weapon-math.js"></script>
+    <script src="../js/weapons-ref.js"></script>
+</body>
+</html>
