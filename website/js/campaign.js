@@ -267,11 +267,17 @@
                that number is entered by hand on the campaign page. */
             setRecord(system, e.mechId, { battles: recordOf(system, e.mechId).battles + 1 });
             if (state) { n++; }
+            /* The STATE goes into the log, not a rendered sentence. Storing
+               the sentence froze it in whichever language was active when
+               the battle ended, so an entry written in English still read
+               "Armor −4" next to a badge saying "Panzerung −4" (CLAUDE.md
+               working rule 6). The page renders it through summary() at
+               display time instead. */
             report.push({
                 mechId: e.mechId,
                 name: (e.copy && e.copy.name) || "?",
                 destroyed: !!e.destroyed,
-                summary: state ? summary(system, state) : T("undamaged")
+                state: state || null
             });
         });
         if (report.length) {

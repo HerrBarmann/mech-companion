@@ -188,6 +188,18 @@
     }
 
     /* --- Log ---------------------------------------------------------------- */
+    /* An entry carries the state and is put into words here, so it follows
+       the display language. Entries written before that change carry a
+       finished sentence instead, frozen in the language of the evening they
+       were written - it is shown as it stands, because without the numbers
+       it cannot be rendered again, and deleting history to tidy up the
+       language would be the worse trade. */
+    function logSummary(u) {
+        if (u.state) { return K.summary(SYSTEM, u.state); }
+        if (u.summary) { return u.summary; }
+        return T("undamaged");
+    }
+
     function renderLog() {
         logBox.innerHTML = "";
         var entries = K.log(SYSTEM);
@@ -199,10 +211,16 @@
             header.appendChild(el("span", "", entry.rounds
                 ? entry.rounds + " " + T(entry.rounds === 1 ? "round" : "rounds") : ""));
             card.appendChild(header);
-            if (entry.note) { card.appendChild(el("p", "log-note", entry.note)); }
+            if (entry.note) {
+                /* The note is what someone typed - past T(). */
+                var noteRow = document.createElement("p");
+                noteRow.className = "log-note";
+                noteRow.textContent = entry.note;
+                card.appendChild(noteRow);
+            }
             (entry.units || []).forEach(function (u) {
                 var row = el("p", "mech-stats" + (u.destroyed ? " destroyed-row" : ""));
-                row.textContent = u.name + " – " + u.summary;
+                row.textContent = u.name + " – " + logSummary(u);
                 card.appendChild(row);
             });
             var remove = el("button", "btn btn-small btn-danger", "Delete entry");

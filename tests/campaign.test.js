@@ -123,7 +123,10 @@ test("carryOver schreibt den Zustand aller Einheiten und schreibt das Protokoll"
     assert.equal(protokoll.length, 1, "ein Eintrag je Gefecht");
     assert.equal(protokoll[0].rounds, 5);
     assert.equal(protokoll[0].units.length, 2, "die Stegreif-Einheit steht nicht darin");
-    assert.match(protokoll[0].units[0].summary, /Armor/);
+    /* Seit #14 steht der Zustand im Eintrag und der Satz entsteht erst
+       beim Anzeigen - geprüft wird also die Zahl, nicht die Sprache. */
+    assert.ok(protokoll[0].units[0].state, "der Zustand liegt im Eintrag");
+    assert.match(K.summary("classic", protokoll[0].units[0].state), /Armor/);
 });
 
 test("repair räumt einen Zustand ganz weg", () => {
@@ -240,4 +243,57 @@ test("Eine Bilanz auf null verschwindet wieder", () => {
     assert.equal(K.records("classic").length, 1);
     K.setRecord("classic", "m1", { kills: 0 });
     assert.deepEqual(K.records("classic"), [], "kein leerer Eintrag im Speicher");
+});
+
+/* --- Protokoll: Daten statt fertiger Sätze (#14) ------------------------ */
+
+test("Der Protokolleintrag trägt den Zustand, nicht den Satz", () => {
+    /* Ein gespeicherter Satz stünde für immer in der Sprache des Abends,
+       an dem er entstand - CLAUDE.md Arbeitsregel 6. */
+    const { K } = kampagne();
+    K.carryOver({ system: "classic", units: [einheit()], round: 4, note: "Sieg bei Hesperus" });
+    const eintrag = K.log("classic")[0];
+    const u = eintrag.units[0];
+    assert.equal(u.summary, undefined, "kein fertiger Satz im Speicher");
+    assert.ok(u.state, "dafür der Zustand");
+    assert.deepEqual(u.state.armorDamage, { ct: 12, ll: 4 });
+    assert.equal(u.name, "Griffin GRF-1N");
+    assert.equal(eintrag.note, "Sieg bei Hesperus");
+});
+
+test("Aus dem gespeicherten Zustand entsteht derselbe Satz wie vorher", () => {
+    const { K } = kampagne();
+    K.carryOver({ system: "classic", units: [einheit()] });
+    const u = K.log("classic")[0].units[0];
+    const satz = K.summary("classic", u.state);
+    assert.match(satz, /Armor −16/);
+    assert.match(satz, /Structure −2/);
+    assert.match(satz, /Pilot 1/);
+});
+
+test("Eine heile Einheit steht ohne Zustand im Protokoll", () => {
+    const { K } = kampagne();
+    const heil = { gid: "g", mechId: "m9", copy: { name: "Locust" },
+                   armorDamage: {}, structureDamage: {}, crits: [] };
+    K.carryOver({ system: "classic", units: [heil] });
+    const u = K.log("classic")[0].units[0];
+    assert.equal(u.state, null, "nichts zu erzählen");
+    assert.equal(u.summary, undefined);
+    /* Die Seite schreibt daraus "unbeschädigt" - hier steht nur die Lücke. */
+});
+
+test("Alte Einträge mit fertigem Satz bleiben lesbar", () => {
+    /* Die Seite fällt auf u.summary zurück, wenn kein Zustand dabei ist.
+       Ohne die Zahlen lässt sich der Satz nicht neu bauen, und Geschichte
+       wegwerfen wäre der schlechtere Tausch. */
+    const { K } = kampagne();
+    K.carryOver({ system: "classic", units: [einheit()] });
+    const d = K.data("classic");
+    const c = d.campaigns.filter((x) => x.id === d.active)[0];
+    c.log[0].units[0] = { mechId: "m1", name: "Griffin GRF-1N",
+                          destroyed: false, summary: "Panzerung −16 · Struktur −2" };
+    K.saveData("classic", d);
+    const u = K.log("classic")[0].units[0];
+    assert.equal(u.state, undefined);
+    assert.equal(u.summary, "Panzerung −16 · Struktur −2");
 });
