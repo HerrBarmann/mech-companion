@@ -581,9 +581,29 @@ statt zu ihren Kindern abzusteigen; neue Strukturen trugen `version: 1`.
   öffentlich haben will, stellt GitHubs `@users.noreply.github.com` ein
   und schreibt den einen Commit mit `git commit --amend --reset-author`
   neu.
-- [ ] **5.2 Repo öffentlich**, Beschreibung + Topics (`battletech`,
-  `alpha-strike`, `pwa`, `tabletop`), GitHub Pages aktivieren.
-- [ ] **5.3 Release `v1.0.0`** mit Changelog (Kurzfassung der Phasen 1–4) und
-  Migrationshinweis („Backup exportieren, dann aktualisieren“).
+- [x] **5.2 Repo öffentlich** (10.09.2026): `HerrBarmann/mech-companion`,
+  Beschreibung, Topics (`battletech`, `alpha-strike`, `pwa`, `tabletop`,
+  `offline-first`, `vanilla-js`, `wargaming`), Homepage auf die Demo,
+  GitHub Pages über Actions aktiv:
+  <https://herrbarmann.github.io/mech-companion/>. Commit-Identität auf
+  `83811409+HerrBarmann@users.noreply.github.com` umgestellt, `CLAUDE.md`
+  und `.claude/` aus dem Commit genommen und gitignored.
+
+  **Lizenz doch geändert** (Nutzerwunsch am 10.09., s. Nachtrag oben): das
+  ganze Repo steht unter CC BY-NC-SA 4.0, `LICENSE` trägt nur Copyright-Zeile
+  und Legalcode, `NOTICE.md` die Kurzfassung. Jede Fußzeile nennt „Mech
+  Companion by Dennis Bormann · CC BY-NC-SA 4.0". GitHub zeigt die Lizenz als
+  „Other" – dessen Erkennung kennt nur 13 Lizenzen und keine CC-NC-Variante,
+  daran ist nichts zu machen.
+
+  **In der CI gefunden:** `node --test 'tests/*.test.js'` mit Anführungszeichen
+  braucht Nodes eigenes Glob (ab Node 21); der Runner hatte Node 20. Ohne
+  Anführungszeichen expandiert die Shell und es läuft überall. Runner jetzt
+  Node 22. Der erste Pages-Lauf schlug fehl, weil Pages noch nicht aktiviert
+  war – `configure-pages` legt die Site nicht selbst an.
+- [x] **5.3 Release `v1.0.0`** (10.09.2026): `CHANGELOG.md` mit der
+  Kurzfassung der Phasen 1–4, der Migrationstabelle (v2 Werte, v3 Schlüssel,
+  v4 Slot-Namen, v5 Icon-Pfade) und dem Hinweis „Backup exportieren, dann
+  aktualisieren“. Tag `v1.0.0` und GitHub-Release daraus.
 - [ ] **5.4 Live-Deploy:** `build.py` → `dist/` → FTP (Betreiber). Gruppe
   informieren.

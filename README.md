@@ -212,6 +212,7 @@ its redirect.
 | [`docs/I18N.md`](docs/I18N.md) | adding a language in five steps |
 | [`docs/RULES-SOURCES.md`](docs/RULES-SOURCES.md) | which rule value comes from which book |
 | [`docs/CONCEPT.md`](docs/CONCEPT.md) | the original design document — why things are the way they are |
+| [`CHANGELOG.md`](CHANGELOG.md) | what changed per release, and what an update does to stored data |
 | [`docs/history/`](docs/history/) | how the app was taken from German to English for release |
 
 ## Contributing
