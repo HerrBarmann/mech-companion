@@ -47,6 +47,7 @@
 <nav aria-label="Abschnitte" class="jump-bar">
 <a href="#gator">GATOR</a>
 <a href="#cluster">Cluster</a>
+<a href="#weapons">Waffen</a>
 <a href="#damage">Trefferzonen</a>
 <a href="#heat">Hitze</a>
 <a href="#piloting">Piloting</a>
@@ -228,6 +229,17 @@
 </ul>
 </div>
 </details>
+<details class="card section" data-keywords="weapons waffen reichweite range schaden damage hitze heat munition ammo laser ppc autocannon lrm srm gauss" id="weapons">
+<summary>Waffen <span class="topic-tag">Schnellreferenz · durchsuchbar</span></summary>
+<div class="content">
+<label for="wx-search">Waffe suchen</label>
+<input id="wx-search" placeholder="z. B. Laser, LRM, AC/10 …" type="search"/>
+<div class="filterzeile" id="wx-tech" style="margin-top:0.5rem"></div>
+<p class="no-match" hidden="" id="wx-empty">Keine Waffe passt.</p>
+<div id="wx-list" style="margin-top:0.6rem"></div>
+<p class="hint">Die gängigen Waffen, kuratiert (<span id="wx-status">2026-08</span>). Ein ’Mech aus der Datenbank bringt eigene Werte mit – im Zweifel gilt der Datenbogen, nicht diese Tabelle.</p>
+</div>
+</details>
 <details class="card section" data-keywords="psr piloting skill roll sturz fallen fall prone aufstehen hinlegen umfallen liegen" id="piloting">
 <summary>Piloting-Würfe &amp; Stürze <span class="topic-tag">2W6 ≥ Piloting + Mod.</span></summary>
 <div class="content">
@@ -393,6 +405,7 @@
 </nav>
 <script src="../../js/app.js"></script>
 <script src="../../js/dice.js"></script>
+<script src="../../js/weapons.js"></script>
 <script src="../../js/rules.js"></script>
 </body>
 </html>

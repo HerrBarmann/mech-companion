@@ -420,5 +420,8 @@
     "that decides the hit location column": "sie entscheidet über die Trefferzonen-Spalte",
     "no effects": "keine Effekte",
     "image not readable": "Bild nicht lesbar",
-    "points of damage": "Schadenspunkte"
+    "points of damage": "Schadenspunkte",
+    "Weapon values could not be loaded.": "Waffenwerte konnten nicht geladen werden.",
+    "Minimum range": "Mindestreichweite",
+    "Shots per ton": "Schuss je Tonne"
 }
