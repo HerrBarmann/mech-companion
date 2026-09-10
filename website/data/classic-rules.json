@@ -1041,5 +1041,14 @@
         "rl": "rt",
         "lt": "ct",
         "rt": "ct"
+    },
+    "falling": {
+        "_note": "Falling damage (BattleMech Manual p. 56-57). Confirmed against BMM errata v7.01, which works the example out loud: 45 tons ÷ 10 = 4.5, rounded up to 5, per level fallen. A fall inside the same hex is one level.",
+        "perTons": 10,
+        "roundUp": true,
+        "levelsPlus": 1,
+        "groupSize": 5,
+        "facingDie": 6,
+        "facingTable": "Facing After Fall Table (BMM p. 57) - the new facing decides which hit location column the damage goes to."
     }
 }

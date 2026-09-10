@@ -355,9 +355,26 @@ JS_KEIN_TEXT = (
     # Pfade, Ids, Selektoren - aber NICHT ein einzelnes großgeschriebenes
     # Wort: "Zurücksetzen" besteht auch nur aus Wortzeichen.
     re.compile(r'^(?![A-ZÄÖÜ][a-zäöüß])[\w./#?&=:*\[\]-]+$'),
-    re.compile(r'^[a-z0-9-]+(?:[ ,]+[a-z0-9-]+)*$'),           # CSS-Klassenlisten
     re.compile(r'^(?:var|rgba?|hsla?|url|calc|translate|linear-gradient)\('),   # CSS-Werte
 )
+
+# CSS-Klassenlisten sehen aus wie kleingeschriebene Wortfolgen - und
+# kleingeschriebene Anzeigetexte auch ("in groups of", "no effects"). Bis
+# 09.2026 hat eine einzelne Regex beides verworfen, und damit fielen echte
+# Anzeigetexte still auf Englisch zurück, ohne je im Bericht aufzutauchen.
+# Unterscheidung: Klassennamen sind in diesem Projekt kebab-case, sobald es
+# mehr als einer ist. Ein einzelnes kleines Wort bleibt mehrdeutig ("wide"
+# ist eine Klasse, "damage" ein Text) und gilt weiter als Klasse.
+KLASSENLISTE = re.compile(r'^[a-z0-9-]+(?:[ ,]+[a-z0-9-]+)*$')
+
+
+def ist_klassenliste(t):
+    if not KLASSENLISTE.match(t):
+        return False
+    teile = re.split(r'[ ,]+', t)
+    if len(teile) == 1:
+        return True
+    return any("-" in x for x in teile)
 
 
 def js_entschluesseln(roh):
@@ -457,7 +474,9 @@ def js_literale(quelle):
 # Stoppliste, mit der factions.js Technikwörter aus den Farbnamen wirft -
 # von außen sieht sie wie Anzeige aus.
 JS_KEINE_ANZEIGE = {"Edge", "Highlight", "Like", "Panels", "Primer", "Wash",
-                    "Drybrush", "Edges", "Zenithal", "Base", "Contrast"}
+                    "Drybrush", "Edges", "Zenithal", "Base", "Contrast",
+                    # Direktive, keine Anzeige - steht in jeder Datei.
+                    "use strict"}
 
 
 def js_zeichenketten(quelle):
@@ -468,7 +487,7 @@ def js_zeichenketten(quelle):
         t = text.strip()
         if len(t) < 3 or not HAT_BUCHSTABEN.search(t):
             continue
-        if any(p.search(t) for p in JS_KEIN_TEXT):
+        if any(p.search(t) for p in JS_KEIN_TEXT) or ist_klassenliste(t):
             continue
         yield text
 

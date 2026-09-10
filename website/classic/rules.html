@@ -253,10 +253,11 @@
 <ul class="tight">
 <li>Damage: <strong>tonnage ÷ 10 (round up) × (fall height + 1)</strong> – on level ground that is 1×. Spread over locations in groups of 5.</li>
 <li>Facing after the fall: 1D6 – the new position then determines the hit table (front/side/rear).</li>
-<li>Pilot: separate piloting roll, otherwise <strong>1 pilot hit</strong>.</li>
+<li>Pilot: separate piloting roll, otherwise <strong>1 pilot hit</strong>. Automatic if the ’Mech is immobile or the modified target number is above 12.</li>
 <li>Prone: +1 to own attacks; torso and head weapons fire normally, only one arm may fire (the other props the ’Mech up); prone target: −2 from an adjacent hex, +1 from a distance.</li>
 <li>Standing up: 2 MP + piloting roll (failure: stay down, MP lost).</li>
 </ul>
+<div class="fall-calc" id="fall-calc"></div>
 </div>
 </details>
 <details class="card section" data-keywords="movement gehen laufen springen jump run walk mp gelaende terrain torso twist drehung" id="movement">
@@ -390,6 +391,7 @@
     </a>
 </nav>
 <script src="../js/app.js"></script>
+<script src="../js/dice.js"></script>
 <script src="../js/rules.js"></script>
 </body>
 </html>

@@ -657,6 +657,33 @@ td.num { text-align: right; white-space: nowrap; font-family: var(--mono); font-
 .dice-verdict { font-family: var(--mono); font-weight: 700; margin: 0.3rem 0 0; }
 .dice-verdict.is-hit { color: var(--accent-deep); text-transform: uppercase; }
 .dice-verdict.is-miss { color: var(--muted); }
+
+/* Sturzschaden-Rechner auf der Classic-Regelseite: zwei Zahlenfelder und
+   eine Zeile Ergebnis. Die Felder dürfen schrumpfen (min-width: 0), sonst
+   schiebt sich die Zeile bei 375 px aus der Karte. */
+.fall-calc {
+    margin-top: 1rem; padding-top: 0.9rem;
+    border-top: 1px solid var(--line);
+}
+.fall-calc h3 { margin: 0 0 0.6rem; }
+.fall-row { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+.fall-field { flex: 1 1 8rem; min-width: 0; }
+.fall-field label {
+    display: block; margin-bottom: 0.25rem;
+    font-family: var(--mono); font-size: 0.72rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+}
+.fall-field input {
+    width: 100%; min-width: 0; min-height: 44px;
+    padding: 0.4rem 0.6rem; font-size: 1rem;
+    background: var(--surface); color: var(--ink);
+    border: 1px solid var(--line); border-radius: var(--radius);
+}
+.fall-result { margin: 0.7rem 0 0; font-size: 1.05rem; }
+.fall-result strong { font-family: var(--mono); font-size: 1.3rem; }
+.fall-result .muted { color: var(--muted); font-size: 0.85rem; }
+.fall-facing { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.7rem; }
+.fall-facing-result { font-family: var(--mono); font-size: 0.85rem; color: var(--muted); }
 .mech-jump-bar {
     display: flex; gap: 0.4rem; overflow-x: auto; padding: 0.1rem 0 0.5rem;
     scrollbar-width: none;
