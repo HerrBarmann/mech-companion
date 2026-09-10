@@ -577,6 +577,14 @@ td.num { text-align: right; white-space: nowrap; font-family: var(--mono); font-
 .attack-content .readout { margin-top: 0.6rem; }
 
 /* Überschriften: weniger Luft darunter, kompakte Heros */
+/* Der Hero braucht unten denselben Abstand, den die Karten untereinander
+   haben - sonst klebt das erste Element daran. Auffällig wurde es am
+   Hangar, wo der Hero mit einem Knopf endet (.cta hat unten keinen
+   Rand) und die Karte direkt darunter anfing. Weil der Hero unten weder
+   Polsterung noch Rahmen hat, fallen dieser Rand, der des letzten Kindes
+   und der des nächsten Geschwisters zusammen: es wird der größte
+   genommen, nichts addiert sich. */
+.hero { margin-bottom: 1.2rem; }
 .hero h1 { margin: 0.25rem 0 0.45rem; }
 .hero .sub { margin: 0 0 0.6rem; }
 .hero .cta { margin: 0.8rem 0 0; }
