@@ -231,6 +231,18 @@ p:not([class]) > .btn + .btn { margin-left: 0.5rem; }
 /* Pages with a bottom nav need room below, otherwise the foot sits under it. */
 .hat-bottom-nav { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
 
+/* Solange die Bildschirmtastatur offen ist, verschwindet die Leiste. Ein
+   fixes Element hängt am Layout-Viewport, den die Tastatur nicht verkleinert
+   - die Leiste stünde hinter der Tastatur und schöbe sich beim Scrollen
+   darüber. Nur auf Touch-Geräten: an einer Tastatur am Rechner gibt es keine
+   Bildschirmtastatur und damit keinen Grund, die Navigation wegzunehmen.
+   Das reservierte Stück Höhe (.hat-bottom-nav) bleibt bewusst stehen, sonst
+   springt der Inhalt unter dem Finger weg. */
+@media (pointer: coarse) {
+    body.keyboard-open .bottom-nav,
+    body.keyboard-open .to-top { display: none; }
+}
+
 /* --- Forms --------------------------------------------------------------- */
 label {
     display: block; font-weight: 600; font-size: 0.78rem;

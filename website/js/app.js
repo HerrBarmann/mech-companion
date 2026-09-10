@@ -93,4 +93,35 @@
         box.appendChild(button);
         document.body.appendChild(box);
     }
+
+    /* --- Bottom nav out of the keyboard's way ---------------------------- */
+    /* A fixed element is pinned to the LAYOUT viewport, and the on-screen
+       keyboard does not shrink that - it only shrinks the visual viewport.
+       So the bar sits behind the keyboard, and scrolling drags it up across
+       it. Reported from the hangar: type in the search field, scroll the
+       results, and the bar climbs over the keyboard.
+
+       Repositioning it per visualViewport would mean listening to two
+       events on every scroll frame. Hiding it is both simpler and what you
+       actually want: while typing you need the results, not the areas. The
+       room it occupied stays reserved, so nothing jumps under the finger. */
+    var KEYBOARD_TYPES = {
+        text: 1, search: 1, email: 1, url: 1, tel: 1, number: 1,
+        password: 1, date: 1, "datetime-local": 1, month: 1, time: 1, week: 1
+    };
+    function raisesKeyboard(node) {
+        if (!node) { return false; }
+        if (node.isContentEditable) { return true; }
+        var tag = node.tagName;
+        if (tag === "TEXTAREA") { return true; }
+        if (tag !== "INPUT") { return false; }
+        return !!KEYBOARD_TYPES[(node.type || "text").toLowerCase()];
+    }
+    function syncKeyboardState() {
+        document.body.classList.toggle("keyboard-open", raisesKeyboard(document.activeElement));
+    }
+    document.addEventListener("focusin", syncKeyboardState);
+    /* On blur the next field may already be taking focus - deciding a tick
+       later keeps the bar from flashing when moving between two inputs. */
+    document.addEventListener("focusout", function () { setTimeout(syncKeyboardState, 0); });
 })();
