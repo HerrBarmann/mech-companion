@@ -222,6 +222,14 @@ the book and page), language packs, and unit data problems. Start with
 [`CONTRIBUTING.md`](CONTRIBUTING.md); it lists the checks to run and the
 handful of constraints that are not negotiable.
 
+What is planned but unbuilt is filed under the
+[`roadmap`](https://github.com/HerrBarmann/mech-companion/labels/roadmap) label,
+straight out of the design document. Two of them are a good place to start:
+a [weapons quick reference](https://github.com/HerrBarmann/mech-companion/issues/8)
+and a [falling damage calculator](https://github.com/HerrBarmann/mech-companion/issues/9).
+If you play BattleTech in a language this app does not speak yet, there is
+[an issue for that too](https://github.com/HerrBarmann/mech-companion/issues/10).
+
 ## License
 
 Mech Companion by **Dennis Bormann**, licensed under

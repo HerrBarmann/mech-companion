@@ -527,7 +527,11 @@ statt zu ihren Kindern abzusteigen; neue Strukturen trugen `version: 1`.
   englisch, Datei- und Bezeichnernamen auf den heutigen Stand gezogen,
   datierte Einträge unverändert). Ein Kasten am Kopf sagt, dass es ein
   historisches Entwurfsdokument ist und `ARCHITECTURE.md` den Code beschreibt.
-  **Offen:** §10-Fahrplan als GitHub-Issues (braucht das Repository).
+  **Erledigt am 10.09.2026:** §10-Fahrplan als Issues #1–#9 angelegt (Label
+  `roadmap`), dazu #10 als Aufruf für ein spanisches Sprachpaket (Label
+  `i18n`). Neue Labels: `roadmap`, `rules`, `i18n`. Beim Durchgehen bestätigt:
+  Piloting-Referenz und Cluster-Tabelle sind in den Regelseiten gebaut, die
+  Waffen-Schnellreferenz (§3.2) und der Sturzschaden-Rechner fehlen wirklich.
 - [x] **4.3 GitHub Actions** (10.09.2026): `.github/workflows/check.yml` (auf push/PR:
   `python3 tools/opensource/check.py`, `node --test tests/`),
   `.github/workflows/pages.yml` (deploy `website/` nach GitHub Pages; ohne
