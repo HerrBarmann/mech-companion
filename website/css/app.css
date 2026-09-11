@@ -337,9 +337,27 @@ td.num { text-align: right; white-space: nowrap; font-family: var(--mono); font-
     border: 1px dashed var(--line); border-radius: var(--radius);
     color: var(--muted); font-family: var(--mono); font-size: 0.65rem;
 }
-.mech-row h3 { margin: 0 0 0.15rem; font-size: 1rem; }
+.mech-row h3 { margin: 0; font-size: 1rem; }
 .mech-stats { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); margin: 0; }
 .mech-row .cta { margin-top: 0.6rem; }
+
+/* Hangar-Zeile: Name links, der Vergleichswert rechts. Tonnage und BV (bzw.
+   PV) stehen so untereinander in einer Spalte - eine Lanze stellt man
+   zusammen, indem man genau diese Zahlen von oben nach unten liest.
+   min-width: 0 am Textblock, damit ein langer Name die Spalte nicht
+   wegschiebt, sondern selbst umbricht. */
+.mech-info { flex: 1 1 auto; min-width: 0; }
+.mech-head, .mech-line { display: flex; align-items: baseline; gap: 0.6rem; }
+.mech-head h3, .mech-line > span:first-child { flex: 1 1 auto; min-width: 0; }
+.mech-key {
+    flex: none; font-family: var(--mono); font-variant-numeric: tabular-nums;
+    font-size: 0.8rem; font-weight: 700; color: var(--ink);
+}
+.mech-head .mech-key { font-size: 0.85rem; }
+/* Die dritte Zeile trägt Beiwerk (Pilot, Waffenzahl bzw. die AS-Werte).
+   Sie darf umbrechen - abschneiden hieße im Classic-Hangar, den
+   Pilotennamen mitten im Wort zu kappen. */
+.mech-sub { margin-top: 0.1rem; }
 
 .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr)); gap: 0 1rem; }
 .form-grid .wide { grid-column: 1 / -1; }

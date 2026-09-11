@@ -243,17 +243,34 @@
                 row.replaceChild(image, photo);
             });
 
-            var info = el("div");
-            info.appendChild(el("h3", "", m.name));
-            info.appendChild(el("p", "mech-stats",
-                m.tonnage + " t · MP " + m.movement.walk + "/" + runMp(m.movement.walk) +
+            /* Eine Lanze stellt man zusammen, indem man Tonnage und BV
+               vergleicht - also stehen die beiden rechtsbündig
+               untereinander und bilden eine Spalte, die man am Daumen
+               herunterlesen kann. Vorher standen sie mitten in einer
+               Zeile, die auf fünf umbrach. */
+            var info = el("div", "mech-info");
+            var kopf = el("div", "mech-head");
+            var name = document.createElement("h3");
+            name.textContent = m.name;               /* Produktname, nie durch T() */
+            kopf.appendChild(name);
+            kopf.appendChild(el("span", "mech-key", m.tonnage + " t"));
+            info.appendChild(kopf);
+
+            var zeile = el("p", "mech-stats mech-line");
+            zeile.appendChild(el("span", "",
+                "MP " + m.movement.walk + "/" + runMp(m.movement.walk) +
                 "/" + (m.movement.jump || 0) +
-                " · G" + m.pilot.gunnery + "/P" + m.pilot.piloting +
-                (m.bv ? " · BV " + m.bv : "")));
-            info.appendChild(el("p", "mech-stats",
-                m.weapons.length + " " + T("weapons") + " · " + T("Dissipation") + " " +
-                (m.heatSinks.count * (m.heatSinks.double ? 2 : 1)) + " " + T("Heat") +
-                (m.pilot.name ? " · " + T("Pilot:") + " " + m.pilot.name : "")));
+                " · G" + m.pilot.gunnery + "/P" + m.pilot.piloting));
+            if (m.bv) { zeile.appendChild(el("span", "mech-key", "BV " + m.bv)); }
+            info.appendChild(zeile);
+
+            var zweit = el("p", "mech-stats mech-sub");
+            /* Pilot und Waffenzahl reichen zum Aufstellen. Die Wärmeabfuhr
+               stand hier auch und drängte den Pilotennamen in die Ellipse -
+               sie steht im Editor und auf der Gefechtskarte, wo sie zählt. */
+            zweit.textContent = (m.pilot.name ? m.pilot.name + " · " : "") +
+                m.weapons.length + " " + T("weapons");
+            info.appendChild(zweit);
 
             if (window.MechsCampaign && MechsCampaign.isDamaged(SYSTEM, m)) {
                 info.appendChild(MechsCampaign.badge(SYSTEM, m));

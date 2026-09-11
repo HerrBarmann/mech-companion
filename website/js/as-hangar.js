@@ -80,17 +80,29 @@
                 row.replaceChild(image, photo);
             });
 
-            var info = el("div");
-            info.appendChild(el("h3", "", m.name));
-            info.appendChild(el("p", "mech-stats",
+            /* Wie im Classic-Hangar: der Wert, gegen den man aufstellt,
+               steht rechtsbündig in einer Spalte - hier PV. */
+            var info = el("div", "mech-info");
+            var kopf = el("div", "mech-head");
+            var name = document.createElement("h3");
+            name.textContent = m.name;
+            kopf.appendChild(name);
+            kopf.appendChild(el("span", "mech-key", "PV " + (m.pv || "?")));
+            info.appendChild(kopf);
+
+            var zeile = el("p", "mech-stats mech-line");
+            zeile.appendChild(el("span", "",
                 (m.type && m.type !== "BM" ? typeName(m.type) + " · " : "") +
-                "PV " + (m.pv || "?") + " · SZ " + (m.sz || "?") + " · MV " + (m.mv || "?") +
-                " · TMM " + numberOr(m.tmm, "?") + " · Skill " + numberOr(m.skill, "?")));
-            info.appendChild(el("p", "mech-stats",
-                T("Damage") + " " + (m.s || "0") + "/" + (m.m || "0") + "/" + (m.l || "0") +
+                "MV " + (m.mv || "?") + " · TMM " + numberOr(m.tmm, "?") +
+                " · SZ " + (m.sz || "?") + " · Skill " + numberOr(m.skill, "?")));
+            info.appendChild(zeile);
+
+            var zweit = el("p", "mech-stats mech-sub");
+            zweit.textContent = T("Damage") + " " + (m.s || "0") + "/" + (m.m || "0") + "/" + (m.l || "0") +
                 " · OV " + numberOr(m.ov, 0) + " · A " + numberOr(m.armor, 0) +
                 " · S " + numberOr(m.structure, 0) +
-                (m.special ? " · " + m.special : "")));
+                (m.special ? " · " + m.special : "");
+            info.appendChild(zweit);
 
             var buttons = el("p", "cta");
             var b1 = el("button", "btn btn-small", "Edit");
