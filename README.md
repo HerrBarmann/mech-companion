@@ -24,16 +24,18 @@ Install it from the browser menu and it works from the home screen, offline.
 
 <table>
 <tr>
-<td><img src="docs/img/home-en.png" width="165" alt="Home screen with the four areas and the rules baseline"></td>
-<td><img src="docs/img/battle-classic-en.png" width="165" alt="Classic battle tracker with armor pips on a paper doll"></td>
-<td><img src="docs/img/attack-en.png" width="165" alt="Attack dialog with the GATOR breakdown and the 2D6 chance"></td>
-<td><img src="docs/img/rules-classic-de.png" width="165" alt="Classic rules reference, German language pack"></td>
-<td><img src="docs/img/factions-de.png" width="165" alt="Faction colors with a paint recipe, German language pack"></td>
+<td><img src="docs/img/home-en.png" width="140" alt="Home screen with the four areas and the two ways into a battle"></td>
+<td><img src="docs/img/battle-classic-en.png" width="140" alt="Classic battle card: armor on a paper doll, critical hits below it"></td>
+<td><img src="docs/img/attack-en.png" width="140" alt="Attack dialog with the GATOR breakdown and the 2D6 chance"></td>
+<td><img src="docs/img/weapons-en.png" width="140" alt="Searchable weapons quick reference on the Classic rules page"></td>
+<td><img src="docs/img/rules-classic-de.png" width="140" alt="Classic rules, GATOR explained, German language pack"></td>
+<td><img src="docs/img/factions-de.png" width="140" alt="Faction colours with a paint recipe, German language pack"></td>
 </tr>
 <tr>
 <td align="center"><sub>Home</sub></td>
-<td align="center"><sub>Battle tracker</sub></td>
+<td align="center"><sub>Battle</sub></td>
 <td align="center"><sub>Attack</sub></td>
+<td align="center"><sub>Weapons</sub></td>
 <td align="center"><sub>Rules · <i>de</i></sub></td>
 <td align="center"><sub>Painting · <i>de</i></sub></td>
 </tr>
