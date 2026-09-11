@@ -163,3 +163,32 @@ test("Beide Konfigurationen sind in sich stimmig", () => {
         });
     });
 });
+
+test("Die Zielzahl des Angriffsdialogs kennt die Reichweite nicht", () => {
+    /* Im Classic-Gefecht steht die Entfernung als Stepper unter dem
+       Rechner und wird JE WAFFE verrechnet - jede Waffe hat eigene
+       Bänder. Die Reichweiten-Kategorien gehörten deshalb nie in die
+       Chips: ein Tipp auf "Long +4" schob die große Zielzahl um 4,
+       während die Waffenzeilen unverändert blieben. Beide Wege müssen
+       dieselbe Basis liefern. */
+    const optionen = { withoutMechSources: true, skip: ["range", "minimum-range"] };
+    const zustand = CALC.defaultState(GATOR, optionen);
+
+    /* Die Kategorien tauchen im Zustand gar nicht erst auf ... */
+    assert.equal(zustand.range, undefined);
+    assert.equal(zustand["minimum-range"], undefined);
+
+    /* ... und ein untergeschobener Wert ändert die Summe nicht. */
+    const basis = CALC.toHit(GATOR, zustand, optionen);
+    const mitReichweite = Object.assign({}, zustand, { range: 3, "minimum-range": 2 });
+    assert.equal(CALC.toHit(GATOR, mitReichweite, optionen), basis,
+        "die Reichweite darf die Basis nicht verschieben");
+
+    /* Ohne skip zählt sie sehr wohl - das war der Fehler im Dialog. */
+    const ohneSkip = { withoutMechSources: true };
+    const mitSkipWeg = CALC.defaultState(GATOR, ohneSkip);
+    const kat = GATOR.categories.find((c) => c.id === "range");
+    const gewaehlt = Object.assign({}, mitSkipWeg, { range: kat.options.length - 1 });
+    assert.notEqual(CALC.toHit(GATOR, gewaehlt, ohneSkip),
+                    CALC.toHit(GATOR, mitSkipWeg, ohneSkip));
+});

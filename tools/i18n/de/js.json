@@ -426,5 +426,6 @@
     "Shots per ton": "Schuss je Tonne",
     "Battles": "Gefechte",
     "Kills": "Abschüsse",
-    "Locations without crits": "Zonen ohne Krits"
+    "Locations without crits": "Zonen ohne Krits",
+    "To-hit before range": "Zielzahl ohne Reichweite"
 }

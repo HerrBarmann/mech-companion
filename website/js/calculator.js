@@ -90,7 +90,7 @@
 
         container.innerHTML = "";
         var readout = el("div", "readout" + (options.compact ? "" : " calculator-readout"));
-        readout.appendChild(el("p", "readout-label", "To-hit"));
+        readout.appendChild(el("p", "readout-label", options.readoutLabel || "To-hit"));
         var value = el("div", "readout-value");
         var aside = el("p", "readout-aside");
         readout.appendChild(value);

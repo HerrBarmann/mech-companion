@@ -649,8 +649,17 @@
             }
 
             var calculatorBox = el("div", "attack-content");
+            /* OHNE die Reichweiten-Kategorien: die Entfernung steht unten
+               als Stepper und wird je Waffe verrechnet, weil jede Waffe
+               andere Bänder hat. Sie standen trotzdem als Chips hier und
+               zählten in die große Zielzahl - ein Tipp auf "Long +4" schob
+               die Anzeige von 5+ auf 9+, während die Waffenzeilen bei 7+
+               blieben. Zwei Zahlen auf einem Bildschirm, die sich
+               widersprachen; die Waffenzeilen hatten recht. */
             MechsCalculator.create(calculatorBox, calculatorConfig, {
                 compact: true, withoutMechSources: true,
+                skip: ["range", "minimum-range"],
+                readoutLabel: "To-hit before range",
                 baseExtra: base, baseText: parts.join(" · "),
                 state: e.attack || null,
                 onChange: function (aState) {
