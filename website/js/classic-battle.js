@@ -949,7 +949,11 @@
                     store(); showBattle();
                 });
                 row.appendChild(toggle);
-                var info = el("div");
+                /* w-body: eigene Klasse, damit der Textblock NEBEN dem
+                   Haken sitzt statt darunter. Ohne sie war eine Waffe drei
+                   Zeilen hoch - Haken, Name, Werte - und ein Atlas mit
+                   sieben Waffen 712 px. */
+                var info = el("div", "w-body");
                 info.appendChild(el("div", "w-name", w.name + " (" + T(w.location) + ")"));
                 info.appendChild(el("div", "w-info",
                     T("Damage") + " " + T(w.damage || "?") + " · " + T("Heat") + " " + (w.heat === 0 || w.heat ? w.heat : "?") +
@@ -1315,8 +1319,15 @@
         var row = el("div", "pip-row");
         var label = el("div", "pip-label");
         label.appendChild(el("span", "", "Critical hits"));
+        /* Die 2W6-Regel stand als fester Absatz auf JEDER Karte - derselbe
+           Satz dreimal in einer Lanze, 60 px hoch. Jetzt ein Knopf wie im
+           Alpha-Strike-Gefecht: einen Tipp entfernt statt dauernd im Weg. */
+        var tableButton = el("button", "special-chip", "2D6 table");
+        tableButton.type = "button";
+        tableButton.title = T("Show critical hit table");
+        tableButton.addEventListener("click", showCritRoll);
+        label.appendChild(tableButton);
         row.appendChild(label);
-        row.appendChild(el("p", "hint", rules.critRoll));
 
         /* The system row as on the paper sheet */
         var systems = el("div", "system-row");
@@ -1341,8 +1352,13 @@
         });
         row.appendChild(systems);
 
-        /* Locations with their dice numbers */
-        SLOT_LOCATIONS.forEach(function (z) {
+        /* Locations with their dice numbers.
+
+           Acht gleich aussehende Zeilen, von denen sieben "—" sagen, sind
+           sieben Zeilen, die nichts erzählen und die man trotzdem liest.
+           Sichtbar ist deshalb nur, was wirklich getroffen wurde; der Rest
+           liegt hinter EINER Zeile und ist einen Tipp entfernt. */
+        function locationBox(z) {
             var location = z[0];
             var slots = m.critSlots[location] || [];
             var hit = e.slotCrits[location] || [];
@@ -1386,9 +1402,61 @@
                 groups.appendChild(group);
             });
             box.appendChild(groups);
-            row.appendChild(box);
+            return box;
+        }
+
+        var getroffen = SLOT_LOCATIONS.filter(function (z) {
+            return (e.slotCrits[z[0]] || []).length > 0;
         });
+        var sauber = SLOT_LOCATIONS.filter(function (z) {
+            return (e.slotCrits[z[0]] || []).length === 0;
+        });
+        getroffen.forEach(function (z) { row.appendChild(locationBox(z)); });
+
+        if (sauber.length) {
+            var rest = el("details", "slot-crit slot-crit-rest");
+            var restKey = e.gid + "-rest";
+            rest.open = !!openLocations[restKey];
+            rest.addEventListener("toggle", function () { openLocations[restKey] = rest.open; });
+            var restSummary = el("summary", "", "Locations without crits");
+            restSummary.appendChild(el("span", "count", String(sauber.length)));
+            rest.appendChild(restSummary);
+            var restBox = el("div", "slot-rest-list");
+            sauber.forEach(function (z) { restBox.appendChild(locationBox(z)); });
+            rest.appendChild(restBox);
+            row.appendChild(rest);
+        }
         return row;
+    }
+
+    /* Die 2W6-Regel als Popup - derselbe Griff wie im Alpha-Strike-Gefecht,
+       damit beide Systeme sich gleich anfühlen. */
+    var crDialog = null;
+    function showCritRoll() {
+        if (!crDialog) {
+            crDialog = document.createElement("dialog");
+            crDialog.className = "dialog-box crit-dialog";
+            crDialog.addEventListener("click", function (ev) {
+                if (ev.target === crDialog) { crDialog.close(); }
+            });
+            document.body.appendChild(crDialog);
+        }
+        crDialog.innerHTML = "";
+        var header = el("div", "pip-label");
+        header.appendChild(el("span", "", "Critical hit table (2D6)"));
+        crDialog.appendChild(header);
+        crDialog.appendChild(el("p", "hint", "Roll for every hit that damages structure."));
+        crDialog.appendChild(el("p", "", rules.critRoll));
+        var footer = el("p", "cta");
+        var close = el("button", "btn btn-small", "Close");
+        close.type = "button";
+        close.addEventListener("click", function () { crDialog.close(); });
+        footer.appendChild(close);
+        var more = el("a", "btn btn-small", "Rules: damage");
+        more.href = "rules.html#damage";
+        footer.appendChild(more);
+        crDialog.appendChild(footer);
+        crDialog.showModal();
     }
 
     /* Head or center torso without structure → done for. */

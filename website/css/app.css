@@ -440,6 +440,10 @@ td.num { text-align: right; white-space: nowrap; font-family: var(--mono); font-
 .weapon-row .w-info { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
 .weapon-row.weapon-gone .w-name, .weapon-row.weapon-gone .w-info { color: var(--muted); text-decoration: line-through; }
 .weapon-row .stepper { margin-left: auto; }
+/* Der Textblock einer Waffe teilt sich die Zeile mit dem Haken, statt
+   darunter umzubrechen. min-width: 0 ist der Teil, der zählt: ohne ihn
+   schrumpft ein Flex-Kind nie unter seinen Inhalt und bricht um. */
+.weapon-row .w-body { flex: 1 1 8rem; min-width: 0; }
 
 .heat-display { display: flex; align-items: center; gap: 0.9rem; margin-top: 0.4rem; }
 .heat-display .stepper .value { font-size: 1.4rem; min-width: 2.8rem; }
@@ -480,6 +484,12 @@ td.num { text-align: right; white-space: nowrap; font-family: var(--mono); font-
 .slot-editor details[open] summary::before, .slot-crit[open] summary::before { content: "\2212"; }
 .slot-crit summary .count { margin-left: auto; color: var(--muted); font-weight: 400; font-size: 0.75rem; }
 .slot-crit summary .count.has-crits { color: var(--accent-deep); font-weight: 700; }
+/* Sammelzeile "Zonen ohne Krits": die einzelnen Zonen liegen darin und
+   werden leicht eingerückt, damit die Schachtelung sichtbar ist. */
+.slot-rest-list { padding: 0 0.5rem 0.5rem; }
+.slot-rest-list .slot-crit:last-child { margin-bottom: 0; }
+.slot-crit-rest > summary .count { color: var(--muted); }
+
 .slot-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 0 1.2rem; padding: 0 0.8rem 0.8rem; }
 .slot-group h4 {
     font-family: var(--mono); font-size: 0.68rem; font-weight: 600;
@@ -494,7 +504,7 @@ td.num { text-align: right; white-space: nowrap; font-family: var(--mono); font-
 .slot-row input { flex: 1; padding: 0.35rem 0.5rem; font-size: 0.85rem; }
 .slot-button {
     display: flex; width: 100%; align-items: center; gap: 0.45rem;
-    min-height: 42px; padding: 0.2rem 0.3rem;
+    min-height: 44px; padding: 0.2rem 0.3rem;
     background: transparent; border: 0; border-bottom: 1px solid var(--line);
     color: var(--ink); font-family: var(--mono); font-size: 0.82rem;
     text-align: left; cursor: pointer;
@@ -504,10 +514,20 @@ td.num { text-align: right; white-space: nowrap; font-family: var(--mono); font-
 .slot-button.slot-empty { color: var(--muted); cursor: default; font-style: italic; }
 
 /* Systemzeile wie auf dem Papierbogen: Engine/Gyro/Sensoren/Lebenserhaltung */
-.system-row { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; margin-top: 0.5rem; }
+/* Ein System je Zeile, und die Beschriftungen bekommen eine feste Spalte:
+   sonst fangen die Pips je nach Wortlänge ("Engine" gegen "Life",
+   "Triebwerk" gegen "Leben") an einer anderen Stelle an und die Reihe
+   sieht ausgefranst aus. Unten Luft, damit der Block nicht an der ersten
+   Zonenzeile klebt. */
+.system-row { display: flex; flex-direction: column; gap: 0.35rem; margin: 0.5rem 0 1rem; }
 .system-block { display: flex; align-items: center; gap: 0.45rem; }
-.system-block .sys-name { font-family: var(--mono); font-size: 0.75rem; font-weight: 600; color: var(--muted); }
-.system-block .pip { width: 32px; height: 32px; font-size: 0.95rem; }
+.system-block .sys-name {
+    flex: none; width: 5.2rem;
+    font-family: var(--mono); font-size: 0.75rem; font-weight: 600; color: var(--muted);
+}
+/* 44 px wie jede andere Tippfläche - die Systempips sind klein genug
+   gewesen, dass man am Tisch danebengreift. */
+.system-block .pip { width: 44px; height: 44px; font-size: 1rem; }
 
 /* Paper Doll: das mobile Panzerungsdiagramm des Classic-Datenbogens */
 .doll-wrap { display: flex; justify-content: center; }
