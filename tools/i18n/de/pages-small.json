@@ -115,7 +115,6 @@
     "Saved schemes": "Gespeicherte Schemata",
     "None saved yet – the first one is created above.": "Noch keins gespeichert – das erste entsteht oben.",
     "Schemes stay on this device (localStorage) – use the share link to pass them on.": "Schemata bleiben auf diesem Gerät (localStorage) – zum Weitergeben den Teilen-Link nutzen.",
-    "<a class=\"btn btn-primary\" href=\"classic/battle.html\">Into battle (Classic)</a> <a class=\"btn\" href=\"alpha-strike/battle.html\">Into battle (Alpha Strike)</a>": "<a class=\"btn btn-primary\" href=\"classic/battle.html\">Ins Gefecht (Classic)</a> <a class=\"btn\" href=\"alpha-strike/battle.html\">Ins Gefecht (Alpha Strike)</a>",
     "<strong>Reference</strong> <span>Links · Rules baseline · Glossary · Scenarios</span>": "<strong>Wissen</strong> <span>Links · Regelstand · Glossar · Szenarien</span>",
     "Status: <span id=\"glossary-status\">2026-08</span> · Alpha Strike codes (CASE, JMPS …) are in the <a href=\"../alpha-strike/rules.html#abilities\">abilities lexicon</a>.": "Stand: <span id=\"glossary-status\">2026-08</span> · Alpha-Strike-Kürzel (CASE, JMPS …) stehen im <a href=\"../alpha-strike/rules.html#abilities\">Fähigkeiten-Lexikon</a>.",
     "<button class=\"btn\" id=\"more-btn\" type=\"button\">+ Units</button> <button class=\"btn\" id=\"lance-btn\" type=\"button\">Share lance</button> <button class=\"btn\" id=\"backup-btn\" type=\"button\">Hangar backup</button> <button class=\"btn btn-danger\" id=\"end-btn\" type=\"button\">End battle</button>": "<button class=\"btn\" id=\"more-btn\" type=\"button\">+ Einheiten</button> <button class=\"btn\" id=\"lance-btn\" type=\"button\">Lanze teilen</button> <button class=\"btn\" id=\"backup-btn\" type=\"button\">Hangar-Backup</button> <button class=\"btn btn-danger\" id=\"end-btn\" type=\"button\">Gefecht beenden</button>",
@@ -160,5 +159,6 @@
     "The official site: news, downloads and errata": "Die offizielle Seite: Neuigkeiten, Downloads und Errata",
     "The publisher – books, boxes and rulebooks to buy": "Der Verlag – Bücher, Boxen und Regelwerke zum Kaufen",
     "Record": "Bilanz",
-    "No battle flown yet. Every unit that finishes a battle is counted here.": "Noch kein Gefecht geflogen. Jede Einheit, die ein Gefecht beendet, wird hier gezählt."
+    "No battle flown yet. Every unit that finishes a battle is counted here.": "Noch kein Gefecht geflogen. Jede Einheit, die ein Gefecht beendet, wird hier gezählt.",
+    "<span class=\"cta-lead\">Into battle</span> <a class=\"btn btn-primary\" href=\"classic/battle.html\">Classic</a> <a class=\"btn\" href=\"alpha-strike/battle.html\">Alpha Strike</a>": "<span class=\"cta-lead\">Ins Gefecht</span> <a class=\"btn btn-primary\" href=\"classic/battle.html\">Classic</a> <a class=\"btn\" href=\"alpha-strike/battle.html\">Alpha Strike</a>"
 }

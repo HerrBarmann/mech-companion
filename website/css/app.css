@@ -626,6 +626,14 @@ td.num { text-align: right; white-space: nowrap; font-family: var(--mono); font-
 .hero h1 { margin: 0.25rem 0 0.45rem; }
 .hero .sub { margin: 0 0 0.6rem; }
 .hero .cta { margin: 0.8rem 0 0; }
+/* "Ins Gefecht" einmal als Vorspann statt zweimal auf den Knöpfen: die
+   Knöpfe nennen nur noch das System, und weil das Ziel daneben steht,
+   verwechselt man sie nicht mit den Kacheln darunter, die in den Hangar
+   führen. */
+.cta-lead {
+    font-family: var(--mono); font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted);
+}
 .hero .short {
     margin: 0; color: var(--muted); font-size: 0.95rem;
 }
