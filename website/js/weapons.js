@@ -78,22 +78,38 @@
         return [r.short, r.medium, r.long].join("/");
     }
 
+    /* Alle 52 auf einmal machten den Abschnitt 4132 px hoch - der nächste
+       Abschnitt lag fünf Bildschirme tiefer. Man sucht hier eine Waffe,
+       man liest nicht die Liste; also erst ein Dutzend und ein Knopf. Wer
+       tippt, sieht ohnehin alle Treffer. */
+    var CAP = 12;
+    var showAll = false;
+
     function render() {
         var q = search.value.trim().toLowerCase();
         list.innerHTML = "";
         var hits = 0;
 
+        /* Erst sammeln, dann entscheiden, ob gekürzt wird. */
+        var treffer = [];
         Object.keys(data.weapons).forEach(function (base) {
             if (tech && base !== tech) { return; }
-            var names = Object.keys(data.weapons[base]).filter(function (name) {
-                return !q || name.toLowerCase().indexOf(q) !== -1;
+            Object.keys(data.weapons[base]).forEach(function (name) {
+                if (!q || name.toLowerCase().indexOf(q) !== -1) { treffer.push([base, name]); }
             });
-            if (!names.length) { return; }
+        });
+        var gekuerzt = !q && !showAll && treffer.length > CAP;
+        var zeige = gekuerzt ? treffer.slice(0, CAP) : treffer;
 
+        var letzteBasis = null;
+        zeige.forEach(function (paar) {
+            var base = paar[0], name = paar[1];
             /* The heading only earns its place when both bases are shown. */
-            if (!tech) { list.appendChild(el("h4", "wx-group", TECH_NAMES[base] || base)); }
-
-            names.forEach(function (name) {
+            if (!tech && base !== letzteBasis) {
+                list.appendChild(el("h4", "wx-group", TECH_NAMES[base] || base));
+                letzteBasis = base;
+            }
+            (function () {
                 var w = data.weapons[base][name];
                 hits++;
                 var row = el("div", "wx-row");
@@ -111,8 +127,18 @@
                 if (w.ammoPerTon) { parts.push(T("Shots per ton") + " " + w.ammoPerTon); }
                 row.appendChild(el("div", "wx-values", parts.join(" · ")));
                 list.appendChild(row);
-            });
+            })();
         });
+
+        if (gekuerzt) {
+            var mehr = el("button", "btn btn-small", "Show all");
+            mehr.type = "button";
+            mehr.appendChild(document.createTextNode(" (" + treffer.length + ")"));
+            mehr.addEventListener("click", function () { showAll = true; render(); });
+            var box = el("p", "cta");
+            box.appendChild(mehr);
+            list.appendChild(box);
+        }
 
         noMatch.hidden = hits !== 0;
         techBox.querySelectorAll(".chip").forEach(function (c) {

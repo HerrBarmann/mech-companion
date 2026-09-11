@@ -29,12 +29,21 @@
         })
         .catch(function () { list.textContent = T("Lexicon could not be loaded."); });
 
+    /* 80 Einträge am Stück waren 7825 px - der nächste Abschnitt lag mehr
+       als neun Bildschirme tiefer. Man schlägt hier ein Kürzel nach, das
+       auf einer Karte steht; gelesen wird die Liste nie am Stück. */
+    var CAP = 12;
+    var showAll = false;
+
     function render() {
         var q = search.value.trim().toLowerCase();
         list.innerHTML = "";
         var hits = 0;
-        data.abilities.forEach(function (a) {
-            if (q && (a.key + " " + a.name + " " + a.text).toLowerCase().indexOf(q) === -1) { return; }
+        var treffer = data.abilities.filter(function (a) {
+            return !q || (a.key + " " + a.name + " " + a.text).toLowerCase().indexOf(q) !== -1;
+        });
+        var gekuerzt = !q && !showAll && treffer.length > CAP;
+        (gekuerzt ? treffer.slice(0, CAP) : treffer).forEach(function (a) {
             hits++;
             var row = el("div", "weapon-row");
             var info = el("div");
@@ -45,6 +54,15 @@
             row.appendChild(info);
             list.appendChild(row);
         });
+        if (gekuerzt) {
+            var mehr = el("button", "btn btn-small", "Show all");
+            mehr.type = "button";
+            mehr.appendChild(document.createTextNode(" (" + treffer.length + ")"));
+            mehr.addEventListener("click", function () { showAll = true; render(); });
+            var box = el("p", "cta");
+            box.appendChild(mehr);
+            list.appendChild(box);
+        }
         noMatch.hidden = hits !== 0;
     }
 
