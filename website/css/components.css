@@ -85,6 +85,16 @@ code { font-family: var(--mono); }
 .btn:hover { background: var(--accent-tint); text-decoration: none; }
 /* Small only where room beats grip (headers, table rows). */
 .btn-small { min-height: 0; padding: 0.28rem 0.7rem; font-size: 0.8rem; }
+/* Klein aussehen, groß zu treffen: die Schaltfläche bleibt 26 px hoch,
+   die Trefferfläche wächst über ein Pseudo-Element auf die 44 px, die
+   die Projektregeln verlangen. Geprüft, dass dieses unsichtbare Band auf
+   keiner Seite ein anderes Bedienelement überdeckt - sonst würde es
+   Tipps schlucken, die woanders hin sollten. */
+.btn-small { position: relative; }
+.btn-small::after {
+    content: ""; position: absolute; left: 0; right: 0;
+    top: 50%; height: 44px; transform: translateY(-50%);
+}
 
 /* Full width, for forms with exactly one way forward. */
 .btn-block { display: flex; width: 100%; text-align: center; }
