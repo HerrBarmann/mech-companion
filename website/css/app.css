@@ -654,7 +654,12 @@ td.num { text-align: right; white-space: nowrap; font-family: var(--mono); font-
 
 /* Gefecht: Aktionszeile, Angriffs-Dialog, Würfel, Mech-Sprungleiste */
 .action-row { margin: 0.7rem 0 0.2rem; }
-.action-btn { width: 100%; justify-content: center; font-size: 0.95rem; }
+.action-btn { width: 100%; justify-content: center; font-size: 0.95rem; gap: 0.5rem; }
+/* Der Würfel auf dem Angriffsknopf. Das Zeichen ⚁ sitzt in den meisten
+   Schriften klein in seinem Em-Quadrat, 1.25em wirkte daneben wie ein
+   Satzzeichen - deshalb deutlich größer und optisch auf die Schriftlinie
+   gezogen. */
+.action-die { font-size: 1.9em; line-height: 1; margin-top: -0.12em; }
 .attack-dialog {
     width: min(30rem, 92vw);
     max-height: 88vh; overflow-y: auto;

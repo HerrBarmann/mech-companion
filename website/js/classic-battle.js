@@ -896,7 +896,16 @@
            the hit location in one place (CONCEPT 4.7). */
         if (calculatorConfig && !e.destroyed) {
             var action = el("div", "action-row");
-            var attackButton = el("button", "btn btn-primary action-btn", "Attack");
+            /* Der Würfel gehört auf den Knopf: er sagt, dass dahinter
+               gewürfelt wird, nicht nur gerechnet. Eigenes Element, damit
+               "Attack" als Wörterbuch-Schlüssel unverändert bleibt. */
+            var attackButton = el("button", "btn btn-primary action-btn");
+            var die = document.createElement("span");
+            die.className = "action-die";
+            die.setAttribute("aria-hidden", "true");
+            die.textContent = "\u2681";
+            attackButton.appendChild(die);
+            attackButton.appendChild(document.createTextNode(T("Attack")));
             attackButton.type = "button";
             attackButton.addEventListener("click", function () { showAttackDialog(e); });
             action.appendChild(attackButton);
