@@ -794,6 +794,11 @@
             var calculatorBox = el("div", "attack-content");
             MechsCalculator.create(calculatorBox, calculatorConfig, {
                 compact: true, withoutMechSources: true,
+                /* Gelände und Sonderfälle hinter eine Zeile - dieselbe
+                   Aufteilung wie im Classic-Dialog. Die Reichweite bleibt
+                   hier sichtbar: SATOR rechnet sie einmal für die Einheit,
+                   es gibt keine Waffenliste, die sie übernehmen könnte. */
+                collapse: ["woods", "partial-cover", "target-immobile", "other"],
                 baseExtra: base, baseText: parts.join(" · "),
                 state: e.attack || null,
                 onChange: function (aState) { e.attack = aState; store(); },

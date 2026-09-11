@@ -685,6 +685,25 @@ td.num { text-align: right; white-space: nowrap; font-family: var(--mono); font-
     max-height: 88vh; overflow-y: auto;
 }
 .attack-dialog h3 { margin: 0.3rem 0 0.5rem; }
+/* "Gelände & Situation": die seltener gebrauchten Modifikatoren liegen
+   dahinter. Sieht aus wie die Zonenzeilen im Krit-Block, damit beide
+   Sammelzeilen dieselbe Sprache sprechen. */
+.calc-more {
+    border: 1px solid var(--line); border-radius: var(--radius);
+    background: var(--paper); margin: 0.5rem 0;
+}
+.calc-more > summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: center; gap: 0.5rem;
+    min-height: 44px; padding: 0.3rem 0.8rem;
+    font-family: var(--mono); font-size: 0.82rem; font-weight: 600;
+}
+.calc-more > summary::-webkit-details-marker { display: none; }
+.calc-more > summary::before { content: "+"; color: var(--accent-deep); }
+.calc-more[open] > summary::before { content: "\2212"; }
+.calc-more > summary .count { margin-left: auto; color: var(--muted); font-weight: 400; font-size: 0.75rem; }
+.calc-more > summary .count.has-crits { color: var(--accent-deep); font-weight: 700; }
+.calc-more .calculator-compact { padding-left: 0.8rem; padding-right: 0.8rem; }
 .dice-block { margin: 0.8rem 0 0.4rem; }
 .dice-btn { width: 100%; justify-content: center; }
 .dice-row { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.6rem; }

@@ -115,10 +115,51 @@
                    Programm: "83.3" im Englischen, "83,3" im Deutschen. */
                 aside.textContent = format(p) + " " + T("% on 2D6");
             }
+            drawMoreCount();
             if (options.onChange) { options.onChange(state); }
             /* For the dice block in the attack dialog: report the current
                to-hit number. */
             if (options.onToHit) { options.onToHit(Math.max(2, n), n > 12); }
+        }
+
+        /* Situative Modifikatoren hinter EINE Zeile.
+
+           Der Angriffsdialog hatte acht dauerhaft aufgeklappte Kategorien,
+           1145 px in einem 715-px-Fenster. Gebraucht werden in fast jedem
+           Angriff zwei davon (eigene Bewegung, Bewegung des Ziels); Wald,
+           Deckung und Zweitziel sind die Ausnahme. Die Ausnahmen klappen
+           auf, sobald eine davon gesetzt ist - versteckt wird nie etwas,
+           das gerade zählt. */
+        var collapse = options.collapse || [];
+        function isSet(c) {
+            if (c.type === "chips") { return state[c.id] !== (c.default || 0); }
+            if (c.type === "toggle") { return !!state[c.id]; }
+            return !!state[c.id];
+        }
+        function activeCount() {
+            return categories.filter(function (c) {
+                return collapse.indexOf(c.id) !== -1 && isSet(c);
+            }).length;
+        }
+        var moreBox = null, moreCount = null;
+        function boxFor(c) {
+            if (collapse.indexOf(c.id) === -1) { return container; }
+            if (!moreBox) {
+                moreBox = document.createElement("details");
+                moreBox.className = "calc-more";
+                var sum = el("summary", "", "Terrain & situation");
+                moreCount = el("span", "count");
+                sum.appendChild(moreCount);
+                moreBox.appendChild(sum);
+                moreBox.open = activeCount() > 0;
+            }
+            return moreBox;
+        }
+        function drawMoreCount() {
+            if (!moreCount) { return; }
+            var n = activeCount();
+            moreCount.textContent = n ? String(n) : "—";
+            moreCount.className = "count" + (n ? " has-crits" : "");
         }
 
         categories.forEach(function (c) {
@@ -186,8 +227,9 @@
             if (c.note && !options.compact) {
                 card.appendChild(el("p", "hint", c.note));
             }
-            container.appendChild(card);
+            boxFor(c).appendChild(card);
         });
+        if (moreBox) { container.appendChild(moreBox); drawMoreCount(); }
 
         var footer = el("p", "cta");
         var reset = el("button", "btn" + (options.compact ? " btn-small" : ""), T("Reset"));

@@ -659,6 +659,8 @@
             MechsCalculator.create(calculatorBox, calculatorConfig, {
                 compact: true, withoutMechSources: true,
                 skip: ["range", "minimum-range"],
+                collapse: ["light-woods", "heavy-woods", "partial-cover",
+                           "secondary-target", "other"],
                 readoutLabel: "To-hit before range",
                 baseExtra: base, baseText: parts.join(" · "),
                 state: e.attack || null,
