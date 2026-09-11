@@ -844,6 +844,7 @@ window.MechsI18nWords = {
 "To-hit before range": "Zielzahl ohne Reichweite",
 "Terrain & situation": "Gelände & Situation",
 "Show all": "Alle zeigen",
+"Show all specials": "Alle Fähigkeiten zeigen",
 "Capture Classic BattleTech record sheets digitally: armor, structure, weapons, pilot – the data base for the digital record sheet.": "Classic-BattleTech-Record-Sheets digital erfassen: Panzerung, Struktur, Waffen, Pilot – die Datenbasis für den digitalen Datenbogen.",
 "From the database": "Aus der Datenbank",
 "Search ’Mech": "’Mech suchen",

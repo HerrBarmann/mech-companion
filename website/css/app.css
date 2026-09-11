@@ -358,6 +358,12 @@ td.num { text-align: right; white-space: nowrap; font-family: var(--mono); font-
    Sie darf umbrechen - abschneiden hieße im Classic-Hangar, den
    Pilotennamen mitten im Wort zu kappen. */
 .mech-sub { margin-top: 0.1rem; }
+/* Zwei Zeilen, dann Schluss - ein Tipp auf die Zeile zeigt den Rest.
+   Die Zeile IST die Trefferfläche, deshalb braucht es keinen Knopf. */
+.mech-sub.is-clamped {
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden; cursor: pointer;
+}
 
 .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr)); gap: 0 1rem; }
 .form-grid .wide { grid-column: 1 / -1; }

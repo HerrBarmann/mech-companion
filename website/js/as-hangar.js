@@ -97,12 +97,37 @@
                 " · SZ " + (m.sz || "?") + " · Skill " + numberOr(m.skill, "?")));
             info.appendChild(zeile);
 
+            /* Die Sonderfähigkeiten sind eine Kürzelkette ("AC2/2/-, IF1,
+               LRM1/1/1, REAR1/1/-") und schoben die Zeile beim Atlas auf
+               drei Zeilen. Sie bleiben stehen, die Zeile wird aber auf
+               zwei Zeilen beschnitten und klappt auf Tipp auf.
+
+               Kein eigener Knopf dafür: inline wäre er 20 px hoch und
+               seine Trefferfläche hätte mit der von "Löschen" zehn Pixel
+               darunter überlappt, in der Knopfzeile hätte er die vier
+               Knöpfe umbrechen lassen und JEDE Zeile 22 px höher gemacht.
+               So ist die Zeile selbst die Fläche - 233 x 41 px. */
             var zweit = el("p", "mech-stats mech-sub");
             zweit.textContent = T("Damage") + " " + (m.s || "0") + "/" + (m.m || "0") + "/" + (m.l || "0") +
                 " · OV " + numberOr(m.ov, 0) + " · A " + numberOr(m.armor, 0) +
                 " · S " + numberOr(m.structure, 0) +
                 (m.special ? " · " + m.special : "");
             info.appendChild(zweit);
+            if (m.special) {
+                zweit.classList.add("is-clamped");
+                zweit.title = T("Show all specials");
+                zweit.addEventListener("click", function () {
+                    zweit.classList.remove("is-clamped");
+                    zweit.removeAttribute("title");
+                }, { once: true });
+                /* Passt ohnehin alles hin? Dann ist nichts zu verbergen. */
+                requestAnimationFrame(function () {
+                    if (zweit.scrollHeight <= zweit.clientHeight + 1) {
+                        zweit.classList.remove("is-clamped");
+                        zweit.removeAttribute("title");
+                    }
+                });
+            }
 
             var buttons = el("p", "cta");
             var b1 = el("button", "btn btn-small", "Edit");
